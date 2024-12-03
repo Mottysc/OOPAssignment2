@@ -10,5 +10,5 @@ package org.uob.a2.parser;
  */
 public class Token {
 
-   
+
 }
