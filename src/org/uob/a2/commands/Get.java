@@ -13,5 +13,29 @@ import org.uob.a2.gameobjects.*;
  */
 public class Get extends Command {
 
+    public Get(String item) {
+        this.commandType = CommandType.GET;
+        this.value = item;
+    }
+
+    @Override
+    public String execute(GameState gameState) {
+        // Check if the item is present in the current room
+        if (gameState.getMap().getCurrentRoom().hasItem(value)) {
+            // Check if the player already has the item
+            if (gameState.getPlayer().hasItem(value)) {
+                return "You already have a " + value + ".";
+            } else {
+                // Add the item to the player's inventory
+                Item item = gameState.getMap().getCurrentRoom().getItemByName(value);
+                gameState.getPlayer().addItem(item);
+                // Remove the item from the current room
+                gameState.getMap().getCurrentRoom().getItems().remove(item);
+                return "You picked up the " + value + ".";
+            }
+        } else {
+            return "There is no " + value + " here.";
+        }
+    }
    
 }

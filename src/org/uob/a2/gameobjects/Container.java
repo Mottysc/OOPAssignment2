@@ -10,7 +10,9 @@ package org.uob.a2.gameobjects;
  * </p>
  */
 public class Container extends Feature {
-
+    public Container(String id, String name, String description, boolean hidden) {
+        super(id, name, description, hidden);
+    }
     
     /**
      * Returns a string representation of the container.
@@ -27,5 +29,5 @@ public class Container extends Feature {
                 '}';
     
     }
- 
+
 }

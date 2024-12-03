@@ -12,5 +12,26 @@ import org.uob.a2.gameobjects.*;
  */
 public class Move extends Command {
 
-  
+        public Move(String direction) {
+            this.commandType = CommandType.MOVE;
+            this.value = direction;
+        }
+
+        @Override
+        public String execute(GameState gameState) {
+            // Check if the specified direction is a valid exit from the current room
+            if (gameState.getMap().getCurrentRoom().getExit(value) != null) {
+                // Update the player's location to the connected room
+                String nextRoom = gameState.getMap().getCurrentRoom().getExit(value).getId();
+                gameState.getMap().setCurrentRoom(nextRoom);
+                return "You move " + value + ".";
+            } else {
+                return "You cannot move " + value + " from here.";
+            }
+        }
+
+        @Override
+        public String toString() {
+            return "The move command.";
+        }
 }

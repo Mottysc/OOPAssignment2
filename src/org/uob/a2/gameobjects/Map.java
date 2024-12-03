@@ -15,7 +15,30 @@ import org.uob.a2.utils.*;
  * </p>
  */
 public class Map {
-  
+    private ArrayList<Room> rooms;
+    private Room currentRoom;
+
+    public Map() {
+        this.rooms = new ArrayList<>();
+        this.currentRoom = null;
+    }
+
+    public Room getCurrentRoom() {
+        return currentRoom;
+    }
+    public void addRoom(Room room) {
+        this.rooms.add(room);
+    }
+
+    public void setCurrentRoom(String roomId) {
+        for (Room r : this.rooms) {
+            if (r.getId().equals(roomId)) {
+                this.currentRoom = r;
+                break;
+            }
+        }
+    }
+
     /**
      * Returns a string representation of the map, including all rooms.
      *

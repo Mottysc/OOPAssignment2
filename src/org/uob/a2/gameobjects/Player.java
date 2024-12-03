@@ -11,7 +11,63 @@ import java.util.ArrayList;
  * </p>
  */
 public class Player {
-   
+    private String name;
+    private ArrayList<Item> inventory;
+    private ArrayList<Equipment> equipment;
+
+    public Player(String name) {
+        this.name = name;
+        this.inventory = new ArrayList<>();
+        this.equipment = new ArrayList<>();
+    }
+    public void addEquipment(Equipment equipment) {
+        this.equipment.add(equipment);
+    }
+    public void addItem(Item item) {
+        this.inventory.add(item);
+    }
+
+    public ArrayList<Equipment> getEquipment() {
+        return equipment;
+    }
+    public Equipment getEquipment(String equipmentName) {
+        for (Equipment e : this.equipment) {
+            if (e.getName().equals(equipmentName)) {
+                return e;
+            }
+        }
+        return null;
+    }
+    public ArrayList<Item> getInventory() {
+        return inventory;
+    }
+    public Item getItem(String itemName) {
+        for (Item i : this.inventory) {
+            if (i.getName().equals(itemName)) {
+                return i;
+            }
+        }
+        return null;
+    }
+    public String getName() {
+        return name;
+    }
+    public boolean hasItem(String itemName) {
+        for (Item i : this.inventory) {
+            if (i.getName().equals(itemName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean hasEquipment(String equipmentName) {
+        for (Equipment e : this.equipment) {
+            if (e.getName().equals(equipmentName)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     /**
      * Returns a string representation of the player's current state, including their name,

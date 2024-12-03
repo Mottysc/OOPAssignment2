@@ -9,7 +9,21 @@ package org.uob.a2.gameobjects;
  * </p>
  */
 public class GameState {
-   
+   private Map map;
+   private Player player;
+
+   public GameState(Map map, Player player) {
+       this.map = map;
+       this.player = player;
+    }
+    public Map getMap() {
+        return map;
+    }
+    public Player getPlayer() {
+        return player;
+    }
+
+
     /**
      * Returns a string representation of the game state, including the map and player details.
      *

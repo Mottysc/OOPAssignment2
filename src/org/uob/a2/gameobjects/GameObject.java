@@ -9,13 +9,26 @@ package org.uob.a2.gameobjects;
  * </p>
  */
 public abstract class GameObject {
-   
+    private String id;
+    private String name;
+    private String description;
+    private boolean hidden;
+
     /**
-     * Returns a string representation of the game object, including its ID, name,
-     * description, and visibility state.
+     * Constructs a new game object with the specified ID, name, description, and visibility state.
      *
-     * @return a string describing the game object
+     * @param id the unique identifier for the game object
+     * @param name the name of the game object
+     * @param description a description of the game object
+     * @param hidden whether the game object is initially hidden from the player
      */
+    public GameObject(String id, String name, String description, boolean hidden) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.hidden = hidden;
+    }
+
     @Override
     public String toString() {
         return "GameObject {" +
@@ -24,5 +37,33 @@ public abstract class GameObject {
                ", description='" + description + '\'' +
                ", hidden=" + hidden +
                '}';
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean getHidden() {
+        return hidden;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setHidden(boolean hidden) {
+        this.hidden = hidden;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

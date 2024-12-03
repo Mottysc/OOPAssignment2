@@ -9,7 +9,9 @@ package org.uob.a2.gameobjects;
  * </p>
  */
 public class Feature extends GameObject {
-
+    public Feature(String id, String name, String description, boolean hidden) {
+        super(id, name, description, hidden);
+    }
      /**
      * Returns a string representation of the feature by calling the superclass {@code GameObject}'s
      * {@code toString} method.

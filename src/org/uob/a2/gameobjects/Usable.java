@@ -10,4 +10,10 @@ package org.uob.a2.gameobjects;
  */
 public interface Usable {
 
+    String getUseInformation();
+
+    void setUseInformation(String useInformation);
+
+    String getName();
+
 }
