@@ -11,8 +11,8 @@ import org.uob.a2.gameobjects.*;
  * </p>
  */
 public abstract class Command {
-    CommandType commandType;
-    String value;
+    public CommandType commandType;
+    public String value;
 
     public Command(){
         this.commandType = CommandType.HELP;

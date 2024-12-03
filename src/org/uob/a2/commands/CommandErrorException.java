@@ -9,7 +9,9 @@ package org.uob.a2.commands;
  */
 public class CommandErrorException extends Exception {
 
-
+    public CommandErrorException(String error) {
+        super(error);
+    }
     /**
      * Returns a string representation of the exception, including its message.
      *
