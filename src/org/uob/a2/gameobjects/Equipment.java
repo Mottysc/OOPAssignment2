@@ -8,13 +8,13 @@ public class Equipment extends GameObject implements Usable {
         this.useInformation = new UseInformation();
     }
 
-
     public void setUseInformation(UseInformation useInformation) {
         this.useInformation = useInformation;
     }
     public UseInformation getUseInformation() {
         return useInformation;
     }
+
     public String use(GameObject target, GameState gameState) {
         return "Equipment.use() called";
     }
