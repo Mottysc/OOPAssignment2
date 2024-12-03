@@ -14,6 +14,12 @@ import org.uob.a2.commands.*;
  * </p>
  */
 public class Parser {
+    public Parser() {
+    }
 
+    public Command parse(ArrayList<Token> tokens) throws CommandErrorException{
+
+
+    }
  
 }

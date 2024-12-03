@@ -9,7 +9,7 @@ package org.uob.a2.gameobjects;
  * </p>
  */
 public abstract class GameObject {
-    private String id;
+    protected String id;
     protected String name;
     protected String description;
     protected boolean hidden;

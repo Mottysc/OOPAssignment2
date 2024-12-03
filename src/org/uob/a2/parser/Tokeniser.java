@@ -11,5 +11,53 @@ import java.util.ArrayList;
  * </p>
  */
 public class Tokeniser {
+    ArrayList<Token> tokensList;
+    public Tokeniser() {
+    }
+    public String sanitise(String s) {
+        return s.trim().toLowerCase();
+    }
+    public void tokenise(String s) {
+        tokensList = new ArrayList<Token>();
+        String[] tokens = s.split(" ");
+        for (String token : tokens) {
+            switch (token) {
+                case "move":
+                    tokensList.add(new Token(TokenType.MOVE));
+                    break;
+                case "get":
+                    tokensList.add(new Token(TokenType.GET));
+                    break;
+                case "drop":
+                    tokensList.add(new Token(TokenType.DROP));
+                    break;
+                case "use":
+                    tokensList.add(new Token(TokenType.USE));
+                    break;
+                case "look":
+                    tokensList.add(new Token(TokenType.LOOK));
+                    break;
+                case "help":
+                    tokensList.add(new Token(TokenType.HELP));
+                    break;
+                case "quit":
+                    tokensList.add(new Token(TokenType.QUIT));
+                    break;
+                case "status":
+                    tokensList.add(new Token(TokenType.STATUS));
+                    break;
+                case "on", "with":
+                    tokensList.add(new Token(TokenType.PREPOSITION));
+                    break;
+                default:
+                    tokensList.add(new Token(TokenType.VAR, token));
+                    break;
+            }
+        }
+        tokensList.add(new Token(TokenType.EOL));
+    }
+    public ArrayList<Token> getTokens() {
+        return tokensList;
+    }
 
 }
