@@ -15,7 +15,7 @@ public abstract class Command {
     String value;
 
     public Command(){
-        this.commandType = new CommandType();
+        this.commandType = CommandType.HELP;
         this.value = "";
     }
 

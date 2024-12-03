@@ -15,5 +15,35 @@ import org.uob.a2.utils.*;
  * </p>
  */
 public class Game {
+    public static void main(String[] args) {
+        // Setup game state
+        Room currentRoom = new Room("1", "Start Room", "This is the starting room.", false);
+        Map map = new Map();
+        map.addRoom(currentRoom);
+        map.setCurrentRoom("1");
+        GameState gameState = new GameState(map, new Player("Player"));
 
+        // Display the welcome message
+        System.out.println("Welcome to the game!");
+
+        // Main game loop
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            // Read user input
+            System.out.print("> ");
+            String input = scanner.nextLine();
+
+            // Parse the input
+            Command command = Parser.parse(input);
+
+            // Execute the command
+            String output = command.execute(gameState);
+            System.out.println(output);
+
+
+        }
+
+        // Close the scanner
+        scanner.close();
+    }
 }
