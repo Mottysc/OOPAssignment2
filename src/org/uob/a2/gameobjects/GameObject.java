@@ -10,9 +10,9 @@ package org.uob.a2.gameobjects;
  */
 public abstract class GameObject {
     private String id;
-    private String name;
-    private String description;
-    private boolean hidden;
+    protected String name;
+    protected String description;
+    protected boolean hidden;
 
     /**
      * Constructs a new game object with the specified ID, name, description, and visibility state.
