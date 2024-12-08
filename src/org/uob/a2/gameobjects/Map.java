@@ -16,7 +16,7 @@ import org.uob.a2.utils.*;
  */
 public class Map {
     private ArrayList<Room> rooms;
-    private Room currentRoom;
+    private String currentRoom;
 
     public Map() {
         this.rooms = new ArrayList<>();
@@ -24,19 +24,19 @@ public class Map {
     }
 
     public Room getCurrentRoom() {
-        return currentRoom;
+        for (Room r : this.rooms) {
+            if (r.getId().equals(currentRoom)) {
+                return r;
+            }
+        }
+        return null;
     }
     public void addRoom(Room room) {
         this.rooms.add(room);
     }
 
     public void setCurrentRoom(String roomId) {
-        for (Room r : this.rooms) {
-            if (r.getId().equals(roomId)) {
-                this.currentRoom = r;
-                break;
-            }
-        }
+        this.currentRoom = roomId;
     }
 
     public ArrayList<Room> getRooms() {
