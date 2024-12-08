@@ -5,7 +5,7 @@ public class Equipment extends GameObject implements Usable {
 
     public Equipment(String id, String name, String description, boolean hidden, UseInformation useInformation) {
         super(id, name, description, hidden);
-        this.useInformation = new UseInformation();
+        this.useInformation = useInformation;
     }
 
     public void setUseInformation(UseInformation useInformation) {

@@ -39,6 +39,10 @@ public class Map {
         }
     }
 
+    public ArrayList<Room> getRooms() {
+        return rooms;
+    }
+
     /**
      * Returns a string representation of the map, including all rooms.
      *

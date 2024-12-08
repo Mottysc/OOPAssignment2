@@ -15,13 +15,16 @@ public class GameState {
    public GameState(Map map, Player player) {
        this.map = map;
        this.player = player;
-    }
-    public Map getMap() {
-        return map;
-    }
-    public Player getPlayer() {
-        return player;
-    }
+   }
+   public GameState(){
+
+   }
+   public Map getMap() {
+       return map;
+   }
+   public Player getPlayer() {
+       return player;
+   }
 
 
     /**
