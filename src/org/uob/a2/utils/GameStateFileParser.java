@@ -51,36 +51,34 @@ public class GameStateFileParser {
         String playerName = parsedData.containsKey("player") ? parsedData.get("player").get(0) : "Player";
         GameState gameState = new GameState(new Map(), new Player(playerName));
 
+        Room currentEditingRoom = null;
         for (String type : parsedData.keySet()) {
             ArrayList<String> values = parsedData.get(type);
-            System.out.println(gameState);
+
             switch (type) {
                 case "map" -> {
                     gameState.getMap().setCurrentRoom(values.get(0));
-                    System.out.println(gameState.getMap().getCurrentRoom());
-                    System.out.println(values.get(0));
                 }
                 case "room" -> {
-                    System.out.println(values);
-                    Room room   = new Room(values.get(0), values.get(1), values.get(2), Boolean.parseBoolean(values.get(3)));
+                    Room room = new Room(values.get(0), values.get(1), values.get(2), Boolean.parseBoolean(values.get(3)));
                     gameState.getMap().addRoom(room);
+                    currentEditingRoom = room;
                 }
                 case "item" -> {
                     Item item = new Item(values.get(0), values.get(1), values.get(2), Boolean.parseBoolean(values.get(3)));
-                    gameState.getMap().getCurrentRoom().addItem(item);
+                    currentEditingRoom.addItem(item);
                 }
                 case "equipment" -> {
                     Equipment equipment = new Equipment(values.get(0), values.get(1), values.get(2), Boolean.parseBoolean(values.get(3)), new UseInformation(Boolean.parseBoolean(values.get(3)), values.get(4), values.get(5), values.get(6), values.get(7)));
-                    gameState.getPlayer().addEquipment(equipment);
+                    currentEditingRoom.addEquipment(equipment);
                 }
                 case "container" -> {
                     Container container = new Container(values.get(0), values.get(1), values.get(2), Boolean.parseBoolean(values.get(3)));
-                    System.out.println(gameState);
-                    gameState.getMap().getCurrentRoom().addFeature(container);
+                    currentEditingRoom.addFeature(container);
                 }
                 case "exit" -> {
                     Exit exit = new Exit(values.get(0), values.get(1), values.get(2), values.get(3), Boolean.parseBoolean(values.get(4)));
-                    gameState.getMap().getCurrentRoom().addExit(exit);
+                    currentEditingRoom.addExit(exit);
                 }
                 default -> {
                 }
