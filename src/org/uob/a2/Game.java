@@ -35,5 +35,8 @@ public class Game {
         Tokeniser tokeniser = new Tokeniser();
         Scanner scanner = new Scanner(System.in);
         tokeniser.tokenise(scanner.nextLine());
+        Command command = parser.parse(tokeniser.getTokens());
+        System.out.println(command.execute());
+
     }
 }
