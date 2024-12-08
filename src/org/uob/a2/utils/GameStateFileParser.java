@@ -31,7 +31,6 @@ public class GameStateFileParser {
     }
     public static GameState parse(String filename) {
         HashMap<String, ArrayList<String>> parsedData = new HashMap<>();
-
         try {
             BufferedReader reader = new BufferedReader(new FileReader(filename));
             String line;
@@ -41,7 +40,7 @@ public class GameStateFileParser {
                     continue;
                 }
                 String type = parts[0];
-                ArrayList values = new ArrayList<>((Collection) Arrays.stream(parts[1].split(",")));
+                ArrayList<String> values = new ArrayList<>(Arrays.asList(parts[1].split(",")));;
                 parsedData.put(type, values);
             }
             reader.close();
