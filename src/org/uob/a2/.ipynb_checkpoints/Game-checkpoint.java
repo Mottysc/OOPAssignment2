@@ -30,14 +30,6 @@ public class Game {
                 Command help = new Help("move");
         System.out.println(help.execute(gameState));
         */
-    try (BufferedReader reader = new BufferedReader(new FileReader("gamestate.txt"))) {
-    String line;
-    while ((line = reader.readLine()) != null) {
-        System.out.println(line);
-    }
-} catch (IOException e) {
-    e.printStackTrace();
-}
     GameState gameState = GameStateFileParser.parse("gamestate.txt");
     System.out.println(gameState);
     }
