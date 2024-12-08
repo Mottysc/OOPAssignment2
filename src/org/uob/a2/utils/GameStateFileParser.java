@@ -57,6 +57,8 @@ public class GameStateFileParser {
             switch (type) {
                 case "map" -> {
                     gameState.getMap().setCurrentRoom(values.get(0));
+                    System.out.println(gameState.getMap().getCurrentRoom());
+                    System.out.println(values.get(0));
                 }
                 case "room" -> {
                     Room room = new Room(values.get(0), values.get(1), values.get(2), Boolean.parseBoolean(values.get(3)));
