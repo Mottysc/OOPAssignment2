@@ -7,7 +7,7 @@ import org.uob.a2.commands.*;
 /**
  * The {@code Parser} class processes a list of tokens and converts them into {@code Command} objects
  * that can be executed by the game.
- * 
+ *
  * <p>
  * The parser identifies the type of command from the tokens and creates the appropriate command object.
  * If the command is invalid or incomplete, a {@code CommandErrorException} is thrown.
@@ -17,9 +17,46 @@ public class Parser {
     public Parser() {
     }
 
-    public Command parse(ArrayList<Token> tokens) throws CommandErrorException{
-        return new Drop("test");
+    public Command parse(ArrayList<Token> tokens) throws CommandErrorException {
+        if (tokens.size() == 0) {
+            throw new CommandErrorException("No command entered.");
+        }
+        Token firstToken = tokens.get(0);
+        switch (firstToken.getTokenType()) {
+            case MOVE:
+                return new Move(firstToken.getValue());
+            case GET:
+                return new Get(firstToken.getValue());
+            case DROP:
+                return new Drop(firstToken.getValue());
+            case USE:
+                if (tokens.size() != 4 || (tokens.get(2).getTokenType() != TokenType.PREPOSITION)) {
+                    throw new CommandErrorException("Invalid USE command format. Expected: USE <item> ON <object>");
+                }
+
+                return new Use(tokens.get(1).getValue(), tokens.get(2).getValue());
+            case LOOK:
+                return new Look(tokens.get(1).getValue());
+            case HELP:
+                if (tokens.get(1).getTokenType() == TokenType.EOL) {
+                    return new Help(null);
+                }
+                return new Help(tokens.get(1).getValue());
+
+            case QUIT:
+                return new Quit();
+            case STATUS:
+                if (tokens.get(1).getTokenType() == TokenType.EOL){
+                    return new Status(null);
+                }
+                else {
+                    return new Status(tokens.get(1).getValue());
+                }
+
+            default:
+                throw new CommandErrorException("Unrecognized command: " + firstToken.getValue());
+        }
 
     }
- 
+
 }

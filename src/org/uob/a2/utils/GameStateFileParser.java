@@ -3,14 +3,13 @@ package org.uob.a2.utils;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.LinkedHashMap;
 
 import org.uob.a2.gameobjects.*;
 
 /**
  * Utility class for parsing a game state from a file.
- * 
+ *
  * <p>
  * This class reads a structured text file to create a {@code GameState} object,
  * including the player, map, rooms, items, equipment, features, and exits.
@@ -39,7 +38,8 @@ public class GameStateFileParser {
                 if (parts.length < 2) {
                     continue;
                 }
-                String type = parts[0];
+                String thingID = parts[1].split(",")[0];
+                String type = parts[0].stripIndent() + ":" + thingID;
                 ArrayList<String> values = new ArrayList<>(Arrays.asList(parts[1].split(",")));;
                 parsedData.put(type, values);
             }
@@ -54,7 +54,7 @@ public class GameStateFileParser {
         Room currentEditingRoom = null;
         for (String type : parsedData.keySet()) {
             ArrayList<String> values = parsedData.get(type);
-
+            type = type.split(":")[0];
             switch (type) {
                 case "map" -> {
                     gameState.getMap().setCurrentRoom(values.get(0));

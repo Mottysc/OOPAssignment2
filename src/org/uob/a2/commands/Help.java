@@ -56,7 +56,7 @@ public class Help extends Command {
                     "The combine command allows you to combine two items or pieces of equipment into a new object.";
             case "quit" ->
                     "The quit command allows you to exit the game. To quit the game, type 'quit'.";
-            default ->
+            case null, default ->
                     "To play the game, you can use the following commands:\n" +
                     "• move <exit name>: Move to a different location as defined by an exit’s name.\n" +
                     "• look <room|exit|features>|<item>|<equipment>: Look around the current room, at an exit/feature, or at a specific item/equipment.\n" +
