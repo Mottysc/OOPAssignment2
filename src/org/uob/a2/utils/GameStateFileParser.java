@@ -55,7 +55,9 @@ public class GameStateFileParser {
             ArrayList<String> values = parsedData.get(type);
             System.out.println(gameState);
             switch (type) {
-                case "map" -> gameState.getMap().setCurrentRoom(values.get(0));
+                case "map" -> {
+                    gameState.getMap().setCurrentRoom(values.get(0));
+                }
                 case "room" -> {
                     Room room = new Room(values.get(0), values.get(1), values.get(2), Boolean.parseBoolean(values.get(3)));
                     gameState.getMap().addRoom(room);
@@ -70,6 +72,7 @@ public class GameStateFileParser {
                 }
                 case "container" -> {
                     Container container = new Container(values.get(0), values.get(1), values.get(2), Boolean.parseBoolean(values.get(3)));
+                    System.out.println(container);
                     gameState.getMap().getCurrentRoom().addFeature(container);
                 }
                 case "exit" -> {
