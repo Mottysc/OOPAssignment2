@@ -74,7 +74,7 @@ public class GameStateFileParser {
                 }
                 case "container" -> {
                     Container container = new Container(values.get(0), values.get(1), values.get(2), Boolean.parseBoolean(values.get(3)));
-                    System.out.println(container);
+                    System.out.println(gameState);
                     gameState.getMap().getCurrentRoom().addFeature(container);
                 }
                 case "exit" -> {
