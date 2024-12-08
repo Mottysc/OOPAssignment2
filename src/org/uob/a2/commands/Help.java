@@ -14,12 +14,21 @@ import java.util.ArrayList;
  * </p>
  */
 public class Help extends Command {
-    private String[] validCommandNames = {"move", "look", "get", "drop", "use", "status", "help", "combine", "quit"};
+    private ArrayList<String> validCommandNames = new ArrayList<>();
     private String value;
 
     public Help() {
         this.commandType = CommandType.HELP;
         this.value = null;
+        validCommandNames.add("move");
+        validCommandNames.add("look");
+        validCommandNames.add("get");
+        validCommandNames.add("drop");
+        validCommandNames.add("use");
+        validCommandNames.add("status");
+        validCommandNames.add("help");
+        validCommandNames.add("combine");
+        validCommandNames.add("quit");
 
     }
     public Help(String topic) {
@@ -31,10 +40,9 @@ public class Help extends Command {
     public String execute(GameState gameState) {
         if (this.value != null) {
             boolean validCommandName = false;
-            for (String commandName : validCommandNames) {
-                if (commandName.equals(value)) {
+            for (String command : validCommandNames) {
+                if (command.equalsIgnoreCase(value)) {
                     validCommandName = true;
-                    break;
                 }
             }
             if (!validCommandName) {
