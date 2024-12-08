@@ -65,7 +65,7 @@ public class GameStateFileParser {
                     gameState.getMap().getCurrentRoom().addItem(item);
                 }
                 case "equipment" -> {
-                    Equipment equipment = new Equipment(values.get(0), values.get(1), values.get(2), Boolean.parseBoolean(values.get(3)), new UseInformation(Boolean.parseBoolean(values.get(4)), values.get(5), values.get(6), values.get(7), values.get(8)));
+                    Equipment equipment = new Equipment(values.get(0), values.get(1), values.get(2), Boolean.parseBoolean(values.get(3)), new UseInformation(Boolean.parseBoolean(values.get(3)), values.get(4), values.get(5), values.get(6), values.get(7)));
                     gameState.getPlayer().addEquipment(equipment);
                 }
                 case "container" -> {
