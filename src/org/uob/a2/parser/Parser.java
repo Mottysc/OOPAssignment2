@@ -18,7 +18,7 @@ public class Parser {
     }
 
     public Command parse(ArrayList<Token> tokens) throws CommandErrorException{
-
+        return new Drop("test");
 
     }
  
