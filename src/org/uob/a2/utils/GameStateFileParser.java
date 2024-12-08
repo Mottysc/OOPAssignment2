@@ -61,7 +61,8 @@ public class GameStateFileParser {
                     System.out.println(values.get(0));
                 }
                 case "room" -> {
-                    Room room = new Room(values.get(0), values.get(1), values.get(2), Boolean.parseBoolean(values.get(3)));
+                    System.out.println(values);
+                    Room room   = new Room(values.get(0), values.get(1), values.get(2), Boolean.parseBoolean(values.get(3)));
                     gameState.getMap().addRoom(room);
                 }
                 case "item" -> {
