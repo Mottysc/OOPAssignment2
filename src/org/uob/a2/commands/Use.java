@@ -23,6 +23,7 @@ public class Use extends Command {
 
     public String execute(GameState gameState) {
         Equipment equipment = gameState.getPlayer().getEquipment(equipmentName);
+        GameObject targetObject = null;
         if (equipment == null) {
             return "You do not have the " + equipmentName + " in your inventory.";
         }
@@ -32,7 +33,7 @@ public class Use extends Command {
             if (obj.getName().equals(target)) {
                 if (equipment.getUseInformation().getTarget().equals(target)) {
                     foundValid = true;
-                    return equipment.use(obj, gameState);
+                    targetObject = obj;
                 } else {
                     return "You cannot use the " + equipmentName + " on the " + target + ".";
                 }
@@ -40,6 +41,9 @@ public class Use extends Command {
         }
         if (!foundValid) {
             return "There is no " + target + " in the room.";
+        }
+        else {
+            return equipment.use(targetObject, gameState);
         }
     }
 
