@@ -23,38 +23,42 @@ public class Parser {
         }
         Token firstToken = tokens.get(0);
         switch (firstToken.getTokenType()) {
-            case MOVE:
+            case MOVE -> {
                 return new Move(firstToken.getValue());
-            case GET:
+            }
+            case GET -> {
                 return new Get(firstToken.getValue());
-            case DROP:
+            }
+            case DROP -> {
                 return new Drop(firstToken.getValue());
-            case USE:
+            }
+            case USE -> {
                 if (tokens.size() != 4 || (tokens.get(2).getTokenType() != TokenType.PREPOSITION)) {
                     throw new CommandErrorException("Invalid USE command format. Expected: USE <item> ON <object>");
                 }
 
                 return new Use(tokens.get(1).getValue(), tokens.get(2).getValue());
-            case LOOK:
+            }
+            case LOOK -> {
                 return new Look(tokens.get(1).getValue());
-            case HELP:
+            }
+            case HELP -> {
                 if (tokens.get(1).getTokenType() == TokenType.EOL) {
                     return new Help(null);
                 }
                 return new Help(tokens.get(1).getValue());
-
-            case QUIT:
+            }
+            case QUIT -> {
                 return new Quit();
-            case STATUS:
-                if (tokens.get(1).getTokenType() == TokenType.EOL){
+            }
+            case STATUS -> {
+                if (tokens.get(1).getTokenType() == TokenType.EOL) {
                     return new Status(null);
-                }
-                else {
+                } else {
                     return new Status(tokens.get(1).getValue());
                 }
-
-            default:
-                throw new CommandErrorException("Unrecognized command: " + firstToken.getValue());
+            }
+            default -> throw new CommandErrorException("Unrecognized command: " + firstToken.getValue());
         }
 
     }

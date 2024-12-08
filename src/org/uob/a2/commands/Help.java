@@ -37,6 +37,9 @@ public class Help extends Command {
                 return "No help available for the topic: " + value;
             }
         }
+        if (value == null){
+            value = "null";
+        }
         return switch (value) {
             case "move" ->
                     "The move command allows you to move to a different location in the game.";
@@ -56,7 +59,7 @@ public class Help extends Command {
                     "The combine command allows you to combine two items or pieces of equipment into a new object.";
             case "quit" ->
                     "The quit command allows you to exit the game. To quit the game, type 'quit'.";
-            case null ->
+            case "null" ->
                     "To play the game, you can use the following commands:\n" +
                             "• move <exit name>: Move to a different location as defined by an exit’s name.\n" +
                             "• look <room|exit|features>|<item>|<equipment>: Look around the current room, at an exit/feature, or at a specific item/equipment.\n" +
