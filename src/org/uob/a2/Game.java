@@ -38,7 +38,6 @@ public class Game {
 } catch (IOException e) {
     e.printStackTrace();
 }
-GameState gameState = GameStateFileParser.parse("gamestate.txt");
     GameState gameState = GameStateFileParser.parse("gamestate.txt");
     System.out.println(gameState);
     }
