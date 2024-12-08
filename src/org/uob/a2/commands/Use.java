@@ -13,8 +13,8 @@ import java.util.ArrayList;
  * </p>
  */
 public class Use extends Command {
-    String equipmentName;
-    String target;
+    private String equipmentName;
+    private String target;
     public Use(String equipmentName, String target) {
         this.commandType = CommandType.USE;
         this.equipmentName = equipmentName;

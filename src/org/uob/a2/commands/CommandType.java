@@ -29,6 +29,11 @@ public enum CommandType {
     DROP,
 
     /**
+     * Represents a command to combine two items in the player's inventory.
+     */
+    COMBINE,
+
+    /**
      * Represents a command to look around the current location or inspect an object.
      */
     LOOK,

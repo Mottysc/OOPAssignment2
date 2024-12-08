@@ -2,8 +2,6 @@ package org.uob.a2.commands;
 
 import org.uob.a2.gameobjects.*;
 
-import java.util.ArrayList;
-
 /**
  * Represents the help command, providing the player with instructions or information
  * about various topics related to the game.
@@ -14,14 +12,12 @@ import java.util.ArrayList;
  * </p>
  */
 public class Help extends Command {
-    private String[] validCommandNames = {"move", "look", "get", "drop", "use", "status", "help", "combine", "quit"};
+
     private String value;
 
     public Help() {
         this.commandType = CommandType.HELP;
         this.value = null;
-
-
     }
     public Help(String topic) {
         this.commandType = CommandType.HELP;
@@ -32,10 +28,10 @@ public class Help extends Command {
     public String execute(GameState gameState) {
         if (this.value != null) {
             boolean validCommandName = false;
-            for (String commandName : validCommandNames) {
-                if (commandName.equals(value)) {
+
+            for (CommandType command : CommandType.values()) {
+                if (command.name().equalsIgnoreCase(value)) {
                     validCommandName = true;
-                    break;
                 }
             }
             if (!validCommandName) {

@@ -46,10 +46,16 @@ public class Parser {
                 if (tokens.get(1).getTokenType() == TokenType.EOL) {
                     return new Help(null);
                 }
-                return new Help(tokens.get(1).getValue());
+                return new Help(tokens.get(1).getTokenType().name());
             }
             case QUIT -> {
                 return new Quit();
+            }
+            case COMBINE ->{
+                if (tokens.size() != 4 || (tokens.get(2).getTokenType() != TokenType.PREPOSITION)) {
+                    throw new CommandErrorException("Invalid COMBINE command format. Expected: COMBINE <item> WITH <object>");
+                }
+                return new Combine(tokens.get(1).getValue(), tokens.get(2).getValue());
             }
             case STATUS -> {
                 if (tokens.get(1).getTokenType() == TokenType.EOL) {
