@@ -30,7 +30,10 @@ public class Game {
                 Command help = new Help("move");
         System.out.println(help.execute(gameState));
         */
-    GameState gameState = GameStateFileParser.parse("gamestate.txt");
-    System.out.println(gameState);
+
+        Parser parser = new Parser();
+        Tokeniser tokeniser = new Tokeniser();
+        Scanner scanner = new Scanner(System.in);
+        tokeniser.tokenise(scanner.nextLine());
     }
 }
