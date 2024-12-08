@@ -53,6 +53,7 @@ public class GameStateFileParser {
 
         for (String type : parsedData.keySet()) {
             ArrayList<String> values = parsedData.get(type);
+            System.out.println(gameState);
             switch (type) {
                 case "map" -> gameState.getMap().setCurrentRoom(values.get(0));
                 case "room" -> {
