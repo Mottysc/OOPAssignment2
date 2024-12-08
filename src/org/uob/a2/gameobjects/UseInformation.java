@@ -16,6 +16,14 @@ public class UseInformation {
     private String result;
     private String message;
 
+    public UseInformation(boolean isUsed, String action, String target, String result, String message) {
+        this.isUsed = isUsed;
+        this.action = action;
+        this.target = target;
+        this.result = result;
+        this.message = message;
+    }
+
     public String getAction() {
         return action;
     }
