@@ -15,7 +15,6 @@ import java.util.ArrayList;
  * </p>
  */
 public class Status extends Command {
-
     private String value;
 
     public Status(String topic) {

@@ -56,7 +56,18 @@ public class Help extends Command {
                     "The combine command allows you to combine two items or pieces of equipment into a new object.";
             case "quit" ->
                     "The quit command allows you to exit the game. To quit the game, type 'quit'.";
-            case null, default ->
+            case null ->
+                    "To play the game, you can use the following commands:\n" +
+                            "• move <exit name>: Move to a different location as defined by an exit’s name.\n" +
+                            "• look <room|exit|features>|<item>|<equipment>: Look around the current room, at an exit/feature, or at a specific item/equipment.\n" +
+                            "• get <item|equipment>: Pick up an item or equipment from the room.\n" +
+                            "• drop <item|equipment>: Drop an item or equipment from your inventory.\n" +
+                            "• use <equipment> on|with <feature|item>: Use an item in your inventory on its own, or on a feature or item.\n" +
+                            "• status <inventory|player|item|equipment|map|score>: Check your current status/inventory, get information about a specific item/equipment, or display the map and your score.\n" +
+                            "• help <topic>: Display this help information or get help on a specific command.\n" +
+                            "• combine <item1> and <item2>: Combine two items into a new item or equipment.\n" +
+                            "• quit: Exit the game.\n";
+            default ->
                     "To play the game, you can use the following commands:\n" +
                     "• move <exit name>: Move to a different location as defined by an exit’s name.\n" +
                     "• look <room|exit|features>|<item>|<equipment>: Look around the current room, at an exit/feature, or at a specific item/equipment.\n" +
