@@ -27,19 +27,19 @@ public class Parser {
                 if (tokens.size() != 3) {
                     throw new CommandErrorException("Invalid MOVE command format. Expected: MOVE <direction>");
                 }
-                return new Move(firstToken.getValue());
+                return new Move(tokens.get(1).getValue());
             }
             case GET -> {
                 if (tokens.size() != 3) {
                     throw new CommandErrorException("Invalid GET command format. Expected: GET <item>");
                 }
-                return new Get(firstToken.getValue());
+                return new Get(tokens.get(1).getValue());
             }
             case DROP -> {
                 if (tokens.size() != 3) {
                     throw new CommandErrorException("Invalid DROP command format. Expected: DROP <item>");
                 }
-                return new Drop(firstToken.getValue());
+                return new Drop(tokens.get(1).getValue());
             }
             case USE -> {
                 if (tokens.size() != 5 || (tokens.get(2).getTokenType() != TokenType.PREPOSITION)) {
