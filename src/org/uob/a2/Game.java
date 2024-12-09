@@ -44,6 +44,7 @@ public class Game {
             }
             */
             System.out.println(command.execute(game));
+            System.out.println(command);
             if (command instanceof Quit) {
                 break;
             }
