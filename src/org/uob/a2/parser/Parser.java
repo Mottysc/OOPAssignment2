@@ -33,7 +33,7 @@ public class Parser {
                 return new Drop(firstToken.getValue());
             }
             case USE -> {
-                if (tokens.size() != 4 || (tokens.get(2).getTokenType() != TokenType.PREPOSITION)) {
+                if (tokens.size() != 5 || (tokens.get(2).getTokenType() != TokenType.PREPOSITION)) {
                     throw new CommandErrorException("Invalid USE command format. Expected: USE <item> ON <object>");
                 }
 
@@ -52,7 +52,7 @@ public class Parser {
                 return new Quit();
             }
             case COMBINE -> {
-                if (tokens.size() != 4 || (tokens.get(2).getTokenType() != TokenType.PREPOSITION)) {
+                if (tokens.size() != 5 || (tokens.get(2).getTokenType() != TokenType.PREPOSITION)) {
                     throw new CommandErrorException("Invalid COMBINE command format. Expected: COMBINE <item> WITH <object>");
                 }
                 return new Combine(tokens.get(1).getValue(), tokens.get(2).getValue());
