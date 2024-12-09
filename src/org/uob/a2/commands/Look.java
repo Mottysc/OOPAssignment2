@@ -21,48 +21,67 @@ public class Look extends Command {
     public String execute(GameState gameState) {
         boolean found = false;
         GameObject item = null;
-        ArrayList<GameObject> allInRoom = gameState.getMap().getCurrentRoom().getAll();
-        for (GameObject obj : allInRoom) {
-            if (obj.getHidden()) {
-                continue;
-            }
-            if (obj.getName().equals(value)) {
-                found = true;
-                item = obj;
-                break;
-            }
-        }
-        if (!found) {
-            ArrayList<Item> allInInventory = gameState.getPlayer().getInventory();
-            for (GameObject obj : allInInventory) {
-                if (obj.getHidden()) {
-                    continue;
+        switch (value){
+            case "room":
+                return gameState.getMap().getCurrentRoom().getDescription();
+            case "exits":
+                StringBuilder exits = new StringBuilder();
+                for (Exit exit : gameState.getMap().getCurrentRoom().getExits()) {
+                    exits.append(exit.getDescription()).append("\n");
                 }
-                if (obj.getName().equals(value)) {
-                    found = true;
-                    item = obj;
-                    break;
+                return exits.toString();
+            case "features":
+                StringBuilder features = new StringBuilder();
+                for (Feature feature : gameState.getMap().getCurrentRoom().getFeatures()) {
+                    if (feature.getHidden()) {
+                        continue;
+                    }
+                    features.append(feature.getId()).append(feature.getDescription()).append("\n");
+                }
+                return features.toString();
+            default:
+                ArrayList<GameObject> allInRoom = gameState.getMap().getCurrentRoom().getAll();
+                for (GameObject obj : allInRoom) {
+                    if (obj.getHidden()) {
+                        continue;
+                    }
+                    if (obj.getName().equals(value)) {
+                        found = true;
+                        item = obj;
+                        break;
+                    }
+                }
+                if (!found) {
+                    ArrayList<Item> allInInventory = gameState.getPlayer().getInventory();
+                    for (GameObject obj : allInInventory) {
+                        if (obj.getHidden()) {
+                            continue;
+                        }
+                        if (obj.getName().equals(value)) {
+                            found = true;
+                            item = obj;
+                            break;
+                        }
+                    }
+                }
+                if (!found) {
+                    ArrayList<Equipment> allEquipment = gameState.getPlayer().getEquipment();
+                    for (GameObject obj : allEquipment) {
+                        if (obj.getHidden()) {
+                            continue;
+                        }
+                        if (obj.getName().equals(value)) {
+                            found = true;
+                            item = obj;
+                            break;
+                        }
+                    }
+                }
+                if (found) {
+                    return item.getDescription();
+                } else {
+                    return "You do not see a " + value + " here.";
                 }
             }
-        }
-        if (!found) {
-            ArrayList<Equipment> allEquipment = gameState.getPlayer().getEquipment();
-            for (GameObject obj : allEquipment) {
-                if (obj.getHidden()) {
-                    continue;
-                }
-                if (obj.getName().equals(value)) {
-                    found = true;
-                    item = obj;
-                    break;
-                }
-            }
-        }
-        if (found) {
-            return item.getDescription();
-        }
-        else {
-            return "You do not see a " + value + " here.";
-        }
     }
 }

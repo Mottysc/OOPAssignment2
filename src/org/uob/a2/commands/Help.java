@@ -44,7 +44,7 @@ public class Help extends Command {
         }
         return switch (value) {
             case "move" ->
-                    "The move command allows you to move to a different location in the game.";
+                    "Use the 'move' command to move to a different location in the game. Specify a direction to move in.";
             case "look" ->
                     "The look command allows you to inspect your surroundings. You can look at the current room, an exit, a feature, an item, or a piece of equipment.";
             case "get" ->
@@ -62,33 +62,33 @@ public class Help extends Command {
             case "quit" ->
                     "The quit command allows you to exit the game. To quit the game, type 'quit'.";
             case "null" ->
-                    "To play the game, you can use the following commands:\n" +
-                            "• move <exit name>: Move to a different location as defined by an exit’s name.\n" +
-                            "• look <room|exit|features>|<item>|<equipment>: Look around the current room, at an exit/feature, or at a specific item/equipment.\n" +
-                            "• get <item|equipment>: Pick up an item or equipment from the room.\n" +
-                            "• drop <item|equipment>: Drop an item or equipment from your inventory.\n" +
-                            "• use <equipment> on|with <feature|item>: Use an item in your inventory on its own, or on a feature or item.\n" +
-                            "• status <inventory|player|item|equipment|map|score>: Check your current status/inventory, get information about a specific item/equipment, or display the map and your score.\n" +
-                            "• help <topic>: Display this help information or get help on a specific command.\n" +
-                            "• combine <item1> and <item2>: Combine two items into a new item or equipment.\n" +
-                            "• quit: Exit the game.\n";
+                    "Welcome to the game! You can use the following commands:\n" +
+                            "- MOVE <exit name>: Move to a different location as defined by an exit’s name.\n" +
+                            "- LOOK <room|exit|features>|<item>|<equipment>: Look around the current room, at an exit/feature, or at a specific item/equipment.\n" +
+                            "- GET <item|equipment>: Pick up an item or equipment from the room.\n" +
+                            "- DROP <item|equipment>: Drop an item or equipment from your inventory.\n" +
+                            "- USE <equipment> on|with <feature|item>: Use an item in your inventory on its own, or on a feature or item.\n" +
+                            "- STATUS <inventory|player|item|equipment|map|score>: Check your current status/inventory, get information about a specific item/equipment, or display the map and your score.\n" +
+                            "- HELP <topic>: Display this help information or get help on a specific command.\n" +
+                            "- COMBINE <item1> and <item2>: Combine two items into a new item or equipment.\n" +
+                            "- QUIT: Exit the game.\n";
             default ->
-                    "To play the game, you can use the following commands:\n" +
-                    "• move <exit name>: Move to a different location as defined by an exit’s name.\n" +
-                    "• look <room|exit|features>|<item>|<equipment>: Look around the current room, at an exit/feature, or at a specific item/equipment.\n" +
-                    "• get <item|equipment>: Pick up an item or equipment from the room.\n" +
-                    "• drop <item|equipment>: Drop an item or equipment from your inventory.\n" +
-                    "• use <equipment> on|with <feature|item>: Use an item in your inventory on its own, or on a feature or item.\n" +
-                    "• status <inventory|player|item|equipment|map|score>: Check your current status/inventory, get information about a specific item/equipment, or display the map and your score.\n" +
-                    "• help <topic>: Display this help information or get help on a specific command.\n" +
-                    "• combine <item1> and <item2>: Combine two items into a new item or equipment.\n" +
-                    "• quit: Exit the game.\n";
+                    "Welcome to the game! You can use the following commands:\n" +
+                    "- MOVE <exit name>: Move to a different location as defined by an exit’s name.\n" +
+                    "- LOOK <room|exit|features>|<item>|<equipment>: Look around the current room, at an exit/feature, or at a specific item/equipment.\n" +
+                    "- GET <item|equipment>: Pick up an item or equipment from the room.\n" +
+                    "- DROP <item|equipment>: Drop an item or equipment from your inventory.\n" +
+                    "- USE <equipment> on|with <feature|item>: Use an item in your inventory on its own, or on a feature or item.\n" +
+                    "- STATUS <inventory|player|item|equipment|map|score>: Check your current status/inventory, get information about a specific item/equipment, or display the map and your score.\n" +
+                    "- HELP <topic>: Display this help information or get help on a specific command.\n" +
+                    "- COMBINE <item1> and <item2>: Combine two items into a new item or equipment.\n" +
+                    "- QUIT: Exit the game.\n";
         };
     }
 
     @Override
     public String toString() {
-        return "The help command";
+        return "The HELP command with value " + value;
     }
 
 }
