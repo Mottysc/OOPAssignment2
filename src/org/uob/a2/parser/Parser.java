@@ -33,6 +33,10 @@ public class Parser {
                 if (tokens.size() != 3) {
                     throw new CommandErrorException("Invalid GET command format. Expected: GET <item>");
                 }
+
+                System.out.println(tokens.get(0).getValue());
+                System.out.println(tokens.get(1).getValue());
+                System.out.println(tokens.get(2).getValue());
                 return new Get(tokens.get(1).getValue());
             }
             case DROP -> {
