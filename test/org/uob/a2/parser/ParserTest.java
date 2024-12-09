@@ -17,6 +17,7 @@ class ParserTest {
         ArrayList<Token> tokens = new ArrayList<>();
         tokens.add(new Token(TokenType.MOVE));
         tokens.add(new Token(TokenType.VAR, "north"));
+        tokens.add(new Token(TokenType.EOL));
 
         boolean testPassed = false;
 
@@ -42,6 +43,8 @@ class ParserTest {
         ArrayList<Token> tokens = new ArrayList<>();
         tokens.add(new Token(TokenType.GET));
         tokens.add(new Token(TokenType.VAR, "key"));
+        tokens.add(new Token(TokenType.EOL));
+
 
         boolean testPassed = false;
 
