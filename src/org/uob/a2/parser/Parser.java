@@ -1,8 +1,8 @@
 package org.uob.a2.parser;
 
-import java.util.ArrayList;
-
 import org.uob.a2.commands.*;
+
+import java.util.ArrayList;
 
 /**
  * The {@code Parser} class processes a list of tokens and converts them into {@code Command} objects
