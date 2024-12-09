@@ -38,10 +38,15 @@ public class Game {
             System.out.print(">> ");
             tokeniser.tokenise(scanner.nextLine());
             Command command = parser.parse(tokeniser.getTokens());
+            /*
             for (Token token : tokeniser.getTokens()) {
                 System.out.println(token.getTokenType().name() + ", " + token.getValue());
             }
+            */
             System.out.println(command.execute(game));
+            if (command instanceof Quit) {
+                break;
+            }
         }
     }
 }

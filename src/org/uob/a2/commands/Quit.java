@@ -22,7 +22,10 @@ public class Quit extends Command {
         @Override
         public String execute(GameState gameState){
             saveGame(gameState);
-            StringBuilder result = new StringBuilder(" Game over:\nYou have quit the game. Thank you for playing! In your inventory you had:");
+            StringBuilder result = new StringBuilder("Game over:\nYou have quit the game. Thank you for playing! In your inventory you had:");
+            if (gameState.getPlayer().getInventory().isEmpty()) {
+                result.append(" nothing.");
+            }
             for (Item item : gameState.getPlayer().getInventory()) {
                 result.append(item.getName()).append(": ").append(item.getDescription()).append("\n");
             }
