@@ -49,12 +49,23 @@ public class Status extends Command {
                     return "Your current score is: " + gameState.getPlayer().getScore();
                 default:
                     // Check if the player has the specified item in their inventory
+                    String itemType = null;
                     if (gameState.getPlayer().hasItem(value)) {
-                        // Retrieve the item from the player's inventory
-                        Item item = gameState.getPlayer().getItem(value);
-                        return item.getName() + ": " + item.getDescription();
-                    } else {
-                        return "You do not have a " + value + " in your inventory.";
+                        itemType = "item";
+                    } else if (gameState.getPlayer().hasEquipment(value)) {
+                        itemType = "equipment";
+                    }
+                    switch (itemType) {
+                        case "item":
+                            Item item = gameState.getPlayer().getItem(value);
+                            return item.getName() + ": " + item.getDescription();
+                        case "equipment":
+                            Equipment equip = gameState.getPlayer().getEquipment(value);
+                            return equip.getName() + ": " + equip.getDescription();
+                        case null:
+                            return "";
+                        default:
+                            return "";
                     }
             }
         } else {
@@ -70,8 +81,6 @@ public class Status extends Command {
 
     @Override
     public String toString() {
-        return "The status command.";
+        return "The status command. Status " + this.value;
     }
-
-
 }

@@ -33,8 +33,8 @@ public class Drop extends Command {
                 return "You drop: " + value;
             case "equipment":
                 Equipment droppedEquip = gameState.getPlayer().getEquipment(value);
-                gameState.getPlayer().getEquipment().remove(droppedEquip);
                 gameState.getMap().getCurrentRoom().addEquipment(droppedEquip);
+                gameState.getPlayer().getEquipment().remove(droppedEquip);
                 return "You drop: " + value;
             case null:
                 return "You cannot drop "+value;
