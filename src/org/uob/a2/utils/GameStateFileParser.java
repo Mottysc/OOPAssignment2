@@ -48,7 +48,11 @@ public class GameStateFileParser {
             e.printStackTrace();
         }
 
-        String playerName = parsedData.containsKey("player") ? parsedData.get("player").get(0) : "Player";
+        String playerName = parsedData.keySet().stream()
+                .filter(key -> key.startsWith("player:"))
+                .map(key -> parsedData.get(key).get(0))
+                .findFirst()
+                .orElse("Player");
         GameState gameState = new GameState(new Map(), new Player(playerName));
 
         Room currentEditingRoom = null;

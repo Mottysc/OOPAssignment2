@@ -44,23 +44,23 @@ public class Help extends Command {
         }
         return switch (value) {
             case "move" ->
-                    "Use the 'move' command to move to a different location in the game. Specify a direction to move in.";
+                    "MOVE Command:\nUse the 'move' command to move to a different location in the game. Specify a direction to move in.";
             case "look" ->
-                    "The look command allows you to inspect your surroundings. You can look at the current room, an exit, a feature, an item, or a piece of equipment.";
+                    "LOOK Command:\nThe look command allows you to inspect your surroundings. You can look at the current room, an exit, a feature, an item, or a piece of equipment.";
             case "get" ->
-                    "The get command allows you to pick up an item or a piece of equipment from the current room.";
+                    "GET Command:\nThe get command allows you to pick up an item or a piece of equipment from the current room.";
             case "drop" ->
-                    "The drop command allows you to drop an item or a piece of equipment from your inventory into the current room.";
+                    "DROP Command:\nThe drop command allows you to drop an item or a piece of equipment from your inventory into the current room.";
             case "use" ->
-                    "The use command allows you to use an item or a piece of equipment in your inventory. You can use an item on its own or with another object.";
+                    "USE Command:\nThe use command allows you to use an item or a piece of equipment in your inventory. You can use an item on its own or with another object.";
             case "status" ->
-                    "The status command allows you to check your current status, inventory, score, or the map. You can also get information about a specific item or piece of equipment.";
+                    "STATUS Command:\nThe status command allows you to check your current status, inventory, score, or the map. You can also get information about a specific item or piece of equipment.";
             case "help" ->
-                    "The help command provides you with information on how to play the game.";
+                    "HELP Command:\nThe help command provides you with information on how to play the game.";
             case "combine" ->
-                    "The combine command allows you to combine two items or pieces of equipment into a new object.";
+                    "COMBINE Command:\nThe combine command allows you to combine two items or pieces of equipment into a new object.";
             case "quit" ->
-                    "The quit command allows you to exit the game. To quit the game, type 'quit'.";
+                    "QUIT Command:\nThe quit command allows you to exit the game. To quit the game, type 'quit'.";
             case "null" ->
                     "Welcome to the game! You can use the following commands:\n" +
                             "- MOVE <exit name>: Move to a different location as defined by an exit’s name.\n" +
@@ -88,7 +88,7 @@ public class Help extends Command {
 
     @Override
     public String toString() {
-        return "The HELP command with value " + value;
+        return "HELP command with value " + value;
     }
 
 }

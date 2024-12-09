@@ -15,11 +15,11 @@ public class Tokeniser {
     public Tokeniser() {
     }
     public String sanitise(String s) {
-        return s.trim().toLowerCase();
+        return s.trim().toLowerCase().replaceAll("\\s+", " ");
     }
     public void tokenise(String s) {
         tokensList = new ArrayList<Token>();
-        String[] tokens = s.split(" ");
+        String[] tokens = sanitise(s).split(" ");
         for (String token : tokens) {
             switch (token) {
                 case "move":
@@ -47,7 +47,7 @@ public class Tokeniser {
                     tokensList.add(new Token(TokenType.STATUS));
                     break;
                 case "on", "with":
-                    tokensList.add(new Token(TokenType.PREPOSITION));
+                    tokensList.add(new Token(TokenType.PREPOSITION, token));
                     break;
                 default:
                     tokensList.add(new Token(TokenType.VAR, token));

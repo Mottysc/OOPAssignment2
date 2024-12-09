@@ -23,7 +23,16 @@ public class Look extends Command {
         GameObject item = null;
         switch (value){
             case "room":
-                return gameState.getMap().getCurrentRoom().getDescription();
+                StringBuilder room = new StringBuilder();
+                room.append(gameState.getMap().getCurrentRoom().getDescription()).append("\n");
+                room.append("You can see:\n");
+                for (GameObject obj : gameState.getMap().getCurrentRoom().getAll()) {
+                    if (obj.getHidden()) {
+                        continue;
+                    }
+                    room.append(obj.getId()).append(obj.getDescription()).append("\n");
+                }
+                return room.toString();
             case "exits":
                 StringBuilder exits = new StringBuilder();
                 exits.append("The available exits are:\n");
@@ -82,7 +91,7 @@ public class Look extends Command {
                 if (found) {
                     return item.getDescription();
                 } else {
-                    return "You do not see a " + value + " here.";
+                    return "";
                 }
             }
     }

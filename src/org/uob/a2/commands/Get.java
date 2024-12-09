@@ -21,21 +21,39 @@ public class Get extends Command {
     @Override
     public String execute(GameState gameState) {
         // Check if the item is present in the current room
+        String itemType = null;
         if (gameState.getMap().getCurrentRoom().hasItem(value)) {
-            // Check if the player already has the item
-            if (gameState.getPlayer().hasItem(value)) {
-                return "You already have a " + value + ".";
-            } else {
-                // Add the item to the player's inventory
-                Item item = gameState.getMap().getCurrentRoom().getItemByName(value);
-                gameState.getPlayer().addItem(item);
-                // Remove the item from the current room
-                gameState.getMap().getCurrentRoom().getItems().remove(item);
-                return "You picked up the " + value + ".";
-            }
-        } else {
-            return "There is no " + value + " here.";
+            itemType = "item";
+        } else if (gameState.getMap().getCurrentRoom().hasEquipment(value)) {
+            itemType = "equipment";
+        }
+        switch (itemType) {
+            case "item":
+                if (gameState.getPlayer().hasItem(value)) {
+                    return "You already have " + value;
+                } else{
+                    Item item = gameState.getMap().getCurrentRoom().getItemByName(value);
+                    gameState.getPlayer().addItem(item);
+                    gameState.getMap().getCurrentRoom().getItems().remove(item);
+                    return "You pick up "+value;
+                }
+            case "equipment":
+                if (gameState.getPlayer().hasEquipment(value)) {
+                    return "You already have " + value;
+                } else{
+                    Equipment item = gameState.getMap().getCurrentRoom().getEquipmentByName(value);
+                    gameState.getPlayer().addEquipment(item);
+                    gameState.getMap().getCurrentRoom().getEquipments().remove(item);
+                    return "You pick up "+value;
+                }
+            case null:
+                return "No "+ value + "to get.";
+            default:
+                return "No "+ value + "to get.";
         }
     }
-   
+    @Override
+    public String toString() {
+        return "Get " + this.value;
+    }
 }

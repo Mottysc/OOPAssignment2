@@ -19,19 +19,31 @@ public class Drop extends Command {
     @Override
     public String execute(GameState gameState) {
         // Check if the player has the item
+        String itemType = null;
         if (gameState.getPlayer().hasItem(value)) {
-            // Remove the item from the player's inventory
-            Item droppedItem = gameState.getPlayer().getItem(value);
-            gameState.getPlayer().getInventory().remove(droppedItem);
-            // Add the item to the current room
-            gameState.getMap().getCurrentRoom().addItem(droppedItem);
-            return "You dropped the " + value + ".";
-        } else {
-            return "You do not have a " + value + " to drop.";
+            itemType = "item";
+        } else if (gameState.getPlayer().hasEquipment(value)) {
+            itemType = "equipment";
+        }
+        switch (itemType){
+            case "item":
+                Item droppedItem = gameState.getPlayer().getItem(value);
+                gameState.getPlayer().getInventory().remove(droppedItem);
+                gameState.getMap().getCurrentRoom().addItem(droppedItem);
+                return "You drop: " + value;
+            case "equipment":
+                Equipment droppedEquip = gameState.getPlayer().getEquipment(value);
+                gameState.getPlayer().getInventory().remove(droppedEquip);
+                gameState.getMap().getCurrentRoom().addEquipment(droppedEquip);
+                return "You drop: " + value;
+            case null:
+                return "You cannot drop "+value;
+            default:
+                return "You cannot drop "+value;
         }
     }
     @Override
     public String toString() {
-        return "The drop command";
+        return "Drop " + this.value;
     }
 }

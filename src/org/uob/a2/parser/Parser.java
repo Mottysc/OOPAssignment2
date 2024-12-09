@@ -24,12 +24,21 @@ public class Parser {
         Token firstToken = tokens.get(0);
         switch (firstToken.getTokenType()) {
             case MOVE -> {
+                if (tokens.size() != 3) {
+                    throw new CommandErrorException("Invalid MOVE command format. Expected: MOVE <direction>");
+                }
                 return new Move(firstToken.getValue());
             }
             case GET -> {
+                if (tokens.size() != 3) {
+                    throw new CommandErrorException("Invalid GET command format. Expected: GET <item>");
+                }
                 return new Get(firstToken.getValue());
             }
             case DROP -> {
+                if (tokens.size() != 3) {
+                    throw new CommandErrorException("Invalid DROP command format. Expected: DROP <item>");
+                }
                 return new Drop(firstToken.getValue());
             }
             case USE -> {
@@ -40,6 +49,9 @@ public class Parser {
                 return new Use(tokens.get(1).getValue(), tokens.get(2).getValue());
             }
             case LOOK -> {
+                if (tokens.size() != 3) {
+                    throw new CommandErrorException("Invalid LOOK command format. Expected: LOOK <object>");
+                }
                 return new Look(tokens.get(1).getValue());
             }
             case HELP -> {

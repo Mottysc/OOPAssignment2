@@ -1,5 +1,6 @@
 package org.uob.a2.commands;
 
+import org.uob.a2.gameobjects.Equipment;
 import org.uob.a2.gameobjects.GameState;
 import org.uob.a2.gameobjects.Item;
 
@@ -32,7 +33,10 @@ public class Status extends Command {
                     StringBuilder inventory = new StringBuilder();
                     inventory.append("Inventory:\n");
                     for (Item item : inv) {
-                        inventory.append(item.getName() + "\n");
+                        inventory.append(item.getName()).append("\n");
+                    }
+                    for (Equipment equipment : gameState.getPlayer().getEquipment()) {
+                        inventory.append(equipment.getName()).append("\n");
                     }
                     return inventory.toString();
                 case "player":

@@ -32,6 +32,6 @@ public class Move extends Command {
 
         @Override
         public String toString() {
-            return "The move command.";
+            return "The move command.\nMOVE " + value;
         }
 }
