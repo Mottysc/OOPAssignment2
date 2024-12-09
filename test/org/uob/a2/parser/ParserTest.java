@@ -94,6 +94,8 @@ class ParserTest {
         tokens.add(new Token(TokenType.VAR, "key"));
         tokens.add(new Token(TokenType.PREPOSITION, "on"));
         tokens.add(new Token(TokenType.VAR, "chest"));
+        tokens.add(new Token(TokenType.EOL));
+
 
         boolean testPassed = false;
 
