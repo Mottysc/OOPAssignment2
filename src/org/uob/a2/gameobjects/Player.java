@@ -34,7 +34,7 @@ public class Player {
     }
     public Equipment getEquipment(String equipmentName) {
         for (Equipment e : this.equipment) {
-            if (e.getName().equals(equipmentName)) {
+            if (e.getName().equalsIgnoreCase(equipmentName)) {
                 return e;
             }
         }
@@ -45,7 +45,7 @@ public class Player {
     }
     public Item getItem(String itemName) {
         for (Item i : this.inventory) {
-            if (i.getName().equals(itemName)) {
+            if (i.getName().equalsIgnoreCase(itemName)) {
                 return i;
             }
         }
@@ -67,7 +67,7 @@ public class Player {
     }
     public boolean hasItem(String itemName) {
         for (Item i : this.inventory) {
-            if (i.getName().equals(itemName)) {
+            if (i.getName().equalsIgnoreCase(itemName)) {
                 return true;
             }
         }
@@ -75,7 +75,7 @@ public class Player {
     }
     public boolean hasEquipment(String equipmentName) {
         for (Equipment e : this.equipment) {
-            if (e.getName().equals(equipmentName)) {
+            if (e.getName().equalsIgnoreCase(equipmentName)) {
                 return true;
             }
         }

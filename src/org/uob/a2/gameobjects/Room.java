@@ -57,7 +57,7 @@ public class Room extends GameObject {
     }
     public Item getItem(String id) {
         for (Item i : this.items) {
-            if (i.getId().equals(id)) {
+            if (i.getId().equalsIgnoreCase(id)) {
                 return i;
             }
         }
@@ -65,7 +65,7 @@ public class Room extends GameObject {
     }
     public Item getItemByName(String name) {
         for (Item i : this.items) {
-            if (i.getName().equals(name)) {
+            if (i.getName().equalsIgnoreCase(name)) {
                 return i;
             }
         }
@@ -85,7 +85,7 @@ public class Room extends GameObject {
 
     public Feature getFeatureByName(String name) {
         for (Feature f : this.features) {
-            if (f.getName().equals(name)) {
+            if (f.getName().equalsIgnoreCase(name)) {
                 return f;
             }
         }
@@ -93,7 +93,7 @@ public class Room extends GameObject {
     }
     public Feature getFeature(String id) {
         for (Feature f : this.features) {
-            if (f.getId().equals(id)) {
+            if (f.getId().equalsIgnoreCase(id)) {
                 return f;
             }
         }
@@ -105,7 +105,7 @@ public class Room extends GameObject {
     }
     public Equipment getEquipmentByName(String name) {
         for (Equipment e : this.equipment) {
-            if (e.getName().equals(name)) {
+            if (e.getName().equalsIgnoreCase(name)) {
                 return e;
             }
         }
@@ -113,7 +113,7 @@ public class Room extends GameObject {
     }
     public Equipment getEquipment(String id) {
         for (Equipment e : this.equipment) {
-            if (e.getId().equals(id)) {
+            if (e.getId().equalsIgnoreCase(id)) {
                 return e;
             }
         }
@@ -121,7 +121,7 @@ public class Room extends GameObject {
     }
     public Exit getExit(String id) {
         for (Exit e : this.exits) {
-            if (e.getId().equals(id)) {
+            if (e.getId().equalsIgnoreCase(id)) {
                 return e;
             }
         }
@@ -129,7 +129,7 @@ public class Room extends GameObject {
     }
     public boolean hasItem(String itemName) {
         for (Item i : this.items) {
-            if (i.getName().equals(itemName)) {
+            if (i.getName().equalsIgnoreCase(itemName)) {
                 return true;
             }
         }
@@ -137,7 +137,7 @@ public class Room extends GameObject {
     }
     public boolean hasEquipment(String name) {
         for (Equipment e : this.equipment) {
-            if (e.getName().equals(name)) {
+            if (e.getName().equalsIgnoreCase(name)) {
                 return true;
             }
         }

@@ -25,7 +25,7 @@ public class Map {
 
     public Room getCurrentRoom() {
         for (Room r : this.rooms) {
-            if (r.getId().equals(currentRoom)) {
+            if (r.getId().equalsIgnoreCase(currentRoom)) {
                 return r;
             }
         }
