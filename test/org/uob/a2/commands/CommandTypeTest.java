@@ -17,7 +17,8 @@ class CommandTypeTest {
         CommandType[] values = CommandType.values();
 
         // Validate that all expected CommandType values are present
-        boolean result = (values.length == 8) &&
+        boolean result = (values.length == 9) &&
+                (CommandType.COMBINE == CommandType.valueOf("COMBINE")) &&
                 (CommandType.MOVE == CommandType.valueOf("MOVE")) &&
                 (CommandType.USE == CommandType.valueOf("USE")) &&
                 (CommandType.GET == CommandType.valueOf("GET")) &&
