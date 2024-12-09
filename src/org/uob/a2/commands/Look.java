@@ -26,12 +26,14 @@ public class Look extends Command {
                 return gameState.getMap().getCurrentRoom().getDescription();
             case "exits":
                 StringBuilder exits = new StringBuilder();
+                exits.append("The available exits are:\n");
                 for (Exit exit : gameState.getMap().getCurrentRoom().getExits()) {
                     exits.append(exit.getDescription()).append("\n");
                 }
                 return exits.toString();
             case "features":
                 StringBuilder features = new StringBuilder();
+                features.append("You also see:\n");
                 for (Feature feature : gameState.getMap().getCurrentRoom().getFeatures()) {
                     if (feature.getHidden()) {
                         continue;
