@@ -71,9 +71,14 @@ public class Status extends Command {
         } else {
             // Display the player's inventory
             StringBuilder inventory = new StringBuilder();
+            inventory.append("Player: " + gameState.getPlayer().getName() + "\n");
+            inventory.append("Score: " + gameState.getPlayer().getScore() + "\n");
             inventory.append("Inventory:\n");
             for (Item item : gameState.getPlayer().getInventory()) {
                 inventory.append(item.getName() + "\n");
+            }
+            for (Equipment equipment : gameState.getPlayer().getEquipment()) {
+                inventory.append(equipment.getName() + "\n");
             }
             return inventory.toString();
         }
