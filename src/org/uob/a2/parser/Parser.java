@@ -21,6 +21,9 @@ public class Parser {
         if (tokens.size() == 0) {
             throw new CommandErrorException("No command entered.");
         }
+        for (Token token : tokens) {
+            System.out.println(token.getTokenType().name() + token.getValue());
+        }
         Token firstToken = tokens.get(0);
         switch (firstToken.getTokenType()) {
             case MOVE -> {
