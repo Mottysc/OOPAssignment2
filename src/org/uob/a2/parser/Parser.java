@@ -51,7 +51,7 @@ public class Parser {
             case QUIT -> {
                 return new Quit();
             }
-            case COMBINE ->{
+            case COMBINE -> {
                 if (tokens.size() != 4 || (tokens.get(2).getTokenType() != TokenType.PREPOSITION)) {
                     throw new CommandErrorException("Invalid COMBINE command format. Expected: COMBINE <item> WITH <object>");
                 }

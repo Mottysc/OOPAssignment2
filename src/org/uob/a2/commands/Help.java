@@ -32,6 +32,7 @@ public class Help extends Command {
             for (CommandType command : CommandType.values()) {
                 if (command.name().equalsIgnoreCase(value)) {
                     validCommandName = true;
+                    value = value.toLowerCase();
                 }
             }
             if (!validCommandName) {

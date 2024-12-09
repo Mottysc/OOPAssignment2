@@ -35,6 +35,11 @@ public enum TokenType {
     STATUS,
 
     /**
+     * Represents the "combine" command.
+     */
+    COMBINE,
+
+    /**
      * Represents the "help" command.
      */
     HELP,

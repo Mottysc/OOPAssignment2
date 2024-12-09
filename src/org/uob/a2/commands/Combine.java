@@ -1,4 +1,5 @@
 package org.uob.a2.commands;
+
 import org.uob.a2.gameobjects.*;
 
 public class Combine extends Command {
@@ -6,6 +7,7 @@ public class Combine extends Command {
     protected String secondItem;
 
     public Combine(String firstItem, String secondItem) {
+
         this.commandType = CommandType.COMBINE;
         this.firstItem = firstItem;
         this.secondItem = secondItem;
@@ -27,7 +29,7 @@ public class Combine extends Command {
                 gameState.getPlayer().getEquipment().remove(item2);
                 // Add the new item to the player's inventory
                 String itemID = firstItem + secondItem;
-                Item newItem = new Item(itemID, newItemName, "A new item created by combining "+firstItem+" and " + secondItem, false);
+                Item newItem = new Item(itemID, newItemName, "A new item created by combining " + firstItem + " and " + secondItem, false);
                 gameState.getPlayer().addItem(newItem);
                 return item1.getUseInformation().getMessage();
             } else {
@@ -37,9 +39,9 @@ public class Combine extends Command {
             return "You do not have the required items in your inventory.";
         }
     }
-    }
 
     @Override
     public String toString() {
-        return "Combine " + this.firstItem + " and " + secondItem;
+        return "Combine " + this.firstItem + " and " + this.secondItem;
     }
+}
