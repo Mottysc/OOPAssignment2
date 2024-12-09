@@ -1,10 +1,12 @@
 package org.uob.a2.commands;
 
-import org.uob.a2.gameobjects.*;
+import org.uob.a2.gameobjects.Equipment;
+import org.uob.a2.gameobjects.GameState;
+import org.uob.a2.gameobjects.Item;
 
 /**
  * Represents the get command, allowing the player to pick up an item from the current room and add it to their inventory.
- * 
+ *
  * <p>
  * This command checks if the specified item is present in the current room. If the item exists and the player
  * does not already have it, the item is added to the player's inventory and removed from the room. Otherwise,
@@ -47,9 +49,9 @@ public class Get extends Command {
                     return "You pick up "+value;
                 }
             case null:
-                return "No "+ value + "to get.";
+                return "No "+ value + " to get.";
             default:
-                return "No "+ value + "to get.";
+                return "No "+ value + " to get.";
         }
     }
     @Override

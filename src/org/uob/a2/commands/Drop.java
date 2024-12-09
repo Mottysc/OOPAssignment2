@@ -1,10 +1,12 @@
 package org.uob.a2.commands;
 
-import org.uob.a2.gameobjects.*;
+import org.uob.a2.gameobjects.Equipment;
+import org.uob.a2.gameobjects.GameState;
+import org.uob.a2.gameobjects.Item;
 
 /**
  * Represents the drop command, allowing the player to drop an item from their inventory into the current room.
- * 
+ *
  * <p>
  * This command checks if the player possesses the specified item and, if so, removes it from their inventory
  * and adds it to the current room. If the player does not have the item, an error message is returned.
@@ -33,8 +35,8 @@ public class Drop extends Command {
                 return "You drop: " + value;
             case "equipment":
                 Equipment droppedEquip = gameState.getPlayer().getEquipment(value);
-                gameState.getMap().getCurrentRoom().addEquipment(droppedEquip);
                 gameState.getPlayer().getEquipment().remove(droppedEquip);
+                gameState.getMap().getCurrentRoom().addEquipment(droppedEquip);
                 return "You drop: " + value;
             case null:
                 return "You cannot drop "+value;

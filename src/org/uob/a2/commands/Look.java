@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 /**
  * Represents the look command, allowing the player to examine various elements of the game world.
- * 
+ *
  * <p>
  * The look command can provide details about the current room, its exits, features, or specific items and equipment.
  * Hidden objects are not included in the output unless explicitly revealed.
@@ -30,7 +30,7 @@ public class Look extends Command {
                     if (obj.getHidden()) {
                         continue;
                     }
-                    room.append(obj.getId()).append(" ").append(obj.getDescription()).append("\n");
+                    room.append(obj.getId()).append(obj.getDescription()).append("\n");
                 }
                 return room.toString();
             case "exits":
@@ -47,7 +47,7 @@ public class Look extends Command {
                     if (feature.getHidden()) {
                         continue;
                     }
-                    features.append(feature.getId()).append(" ").append(feature.getDescription()).append("\n");
+                    features.append(feature.getId()).append(feature.getDescription()).append("\n");
                 }
                 return features.toString();
             default:
@@ -93,6 +93,10 @@ public class Look extends Command {
                 } else {
                     return "";
                 }
-            }
+        }
+    }
+    @Override
+    public String toString() {
+        return "Look " + this.value;
     }
 }
