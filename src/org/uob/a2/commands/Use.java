@@ -31,7 +31,7 @@ public class Use extends Command {
         boolean foundValid = false;
         for (GameObject obj : targetObjects) {
             if (obj.getName().equals(target)) {
-                if (equipment.getUseInformation().getTarget().equals(target)) {
+                if (equipment.getUseInformation().getTarget().equals(targetObject.getId())) {
                     foundValid = true;
                     targetObject = obj;
                 } else {
