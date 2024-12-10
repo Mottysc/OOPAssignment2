@@ -37,7 +37,7 @@ public class Get extends Command {
                     Item item = gameState.getMap().getCurrentRoom().getItemByName(value);
                     gameState.getPlayer().addItem(item);
                     gameState.getMap().getCurrentRoom().getItems().remove(item);
-                    return "You pick up "+value;
+                    return "You pick up: "+value;
                 }
             case "equipment":
                 if (gameState.getPlayer().hasEquipment(value)) {
@@ -46,7 +46,7 @@ public class Get extends Command {
                     Equipment item = gameState.getMap().getCurrentRoom().getEquipmentByName(value);
                     gameState.getPlayer().addEquipment(item);
                     gameState.getMap().getCurrentRoom().getEquipments().remove(item);
-                    return "You pick up "+value;
+                    return "You pick up: "+value;
                 }
             default:
                 return "No "+ value + " to get.";
