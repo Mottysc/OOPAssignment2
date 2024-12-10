@@ -18,7 +18,7 @@ public class Parser {
     }
 
     public Command parse(ArrayList<Token> tokens) throws CommandErrorException {
-        System.out.println("Doop");
+
         if (tokens.size() == 0) {
             throw new CommandErrorException("No command entered.");
         }
@@ -35,7 +35,7 @@ public class Parser {
                 if (tokens.size() != 3) {
                     throw new CommandErrorException("Invalid GET command format. Expected: GET <item>");
                 }
-                System.out.println("BABOOP");
+
                 System.out.println(tokens.get(0).getValue());
                 System.out.println(tokens.get(1).getValue());
                 System.out.println(tokens.get(2).getValue());
