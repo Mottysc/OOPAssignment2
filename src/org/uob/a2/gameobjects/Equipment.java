@@ -21,6 +21,12 @@ public class Equipment extends GameObject implements Usable {
                 return "You have already used " + this.name;
             }
             this.useInformation.setUsed(true);
+            if (useInformation.getAction().equals("open")){
+                gameState.getMap().getCurrentRoom().getAll().stream().filter(obj -> obj.getId().equals(target.getId())).forEach(obj -> obj.setHidden(false));
+                return useInformation.getMessage();
+
+
+            }
 
             return "Equipment.use() called";
         }

@@ -13,6 +13,10 @@ public class Container extends Feature {
     public Container(String id, String name, String description, boolean hidden) {
         super(id, name, description, hidden);
     }
+    @Override
+    public String getName() {
+        return this.name;
+    }
     
     /**
      * Returns a string representation of the container.
