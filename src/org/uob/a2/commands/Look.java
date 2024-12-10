@@ -59,7 +59,7 @@ public class Look extends Command {
                     if (obj.getHidden()) {
                         continue;
                     }
-                    if (obj.getName().equals(value)) {
+                    if (obj.getName().equalsIgnoreCase(value)) {
                         found = true;
                         item = obj;
                         break;
@@ -71,7 +71,7 @@ public class Look extends Command {
                         if (obj.getHidden()) {
                             continue;
                         }
-                        if (obj.getName().equals(value)) {
+                        if (obj.getName().equalsIgnoreCase(value)) {
                             found = true;
                             item = obj;
                             break;
@@ -84,7 +84,7 @@ public class Look extends Command {
                         if (obj.getHidden()) {
                             continue;
                         }
-                        if (obj.getName().equals(value)) {
+                        if (obj.getName().equalsIgnoreCase(value)) {
                             found = true;
                             item = obj;
                             break;

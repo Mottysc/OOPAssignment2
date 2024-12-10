@@ -37,8 +37,13 @@ public class Equipment extends GameObject implements Usable {
                     else{
                         return "You cannot use the " + this.name + " here.";
                     }
-                    case "combine":
-                        return "To combine an item, use the 'combine' command.";
+                case "combine":
+                    return "To combine an item, use the 'combine' command.";
+                case "unlock":
+                    gameState.getMap().getCurrentRoom().getExits().stream()
+                            .filter(exit -> exit.getId().equals(useInformation.getTarget()))
+                            .forEach(exit -> exit.setLocked(false));
+                    return useInformation.getMessage();
             }
 
             return "Equipment.use() called";

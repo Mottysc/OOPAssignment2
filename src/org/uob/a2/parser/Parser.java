@@ -3,6 +3,7 @@ package org.uob.a2.parser;
 import org.uob.a2.commands.*;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 /**
  * The {@code Parser} class processes a list of tokens and converts them into {@code Command} objects
@@ -60,7 +61,10 @@ public class Parser {
                 if (tokens.size() != 3) {
                     throw new CommandErrorException("Invalid LOOK command format. Expected: LOOK <object>");
                 }
-                return new Look(tokens.get(1).getValue());
+                return new Look(tokens.stream()
+                      .filter(token -> token.getTokenType() == TokenType.VAR)
+                      .map(Token::getValue)
+                      .collect(Collectors.joining(" ")));
             }
             case HELP -> {
                 if (tokens.get(1).getTokenType() == TokenType.EOL) {
@@ -81,7 +85,10 @@ public class Parser {
                 if (tokens.get(1).getTokenType() == TokenType.EOL) {
                     return new Status(null);
                 } else {
-                    return new Status(tokens.get(1).getValue());
+                    return new Status(tokens.stream()
+                            .filter(token -> token.getTokenType() == TokenType.VAR)
+                            .map(Token::getValue)
+                            .collect(Collectors.joining(" ")));
                 }
             }
             default -> throw new CommandErrorException("Unrecognized command: " + firstToken.getValue());

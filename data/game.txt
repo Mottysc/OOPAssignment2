@@ -1,5 +1,23 @@
-player:pieter
-map:r1
+player:Motty
+map:l1
+    room:l1,Living Room, This is the living room. You see a couch and a TV.,false
+        container:c1,Couch,A comfortable couch.,false
+        container:tv2,TV,A large TV you use to watch your favourite films.,false
+        equipment:k1,Key, Your front door key.,false,false,unlock,fd,xx,You use the key to unlock your front door.
+        exit:north,north,The back door leading outside to the north.,o1,false
+        exit:east,east,The storage room to the east.,sr,false
+        exit:west,west,The front door leading to the kitchen.,k1,false
+    room:k1,Kitchen, This is the kitchen. You see a fridge and a stove. The counter is full of baking supplies including a rolling pin.,false
+        container:f1,Fridge,A large fridge with food.,false
+        container:s1,Stove,A stove you use to cook food.,false
+        equipment:w1,Water,Water for the dough.,false,false,combine,f1,d1,You combine the flour and water to form a dough.
+        equipment:f1,Flour,Flour for the dough.,false,false,combine,w1,d1,You combine the flour and water to form a dough.
+        equipment:d1,Dough,The dough you made.,true,false,bake,o1,m1,You bake the dough into a matzah.
+        equipment:rb1,Ruby,A red ruby.,true,false,reveal,l1,e1,You activate the ruby! Hidden objects become visible!
+        item:d1,Diamond,A test diamond.,false
+        exit:north,north,The back door leading outside to the north.,l1,false
+        exit:west,west,The front door leading to the living room.,l1,false
+
     room:r1,test room,This is a test room for testing. It's bland.,false
         equipment:k0,key,An old rusty key,false,false,open,c1,rb1,You use the rusty key to open the chest. Something falls to the floor...
         container:c1,chest,A solid oak chest.,false

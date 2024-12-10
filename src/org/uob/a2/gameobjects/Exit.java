@@ -9,14 +9,27 @@ package org.uob.a2.gameobjects;
  */
 public class Exit extends GameObject {
     private String nextRoom;
-
+    private boolean locked;
     public Exit(String id, String name, String description, String nextRoom, boolean hidden) {
         super(id, name, description, hidden);
         this.nextRoom = nextRoom;
+        this.locked = false;
+    }
+    public Exit(String id, String name, String description, String nextRoom, boolean hidden, boolean locked) {
+        super(id, name, description, hidden);
+        this.nextRoom = nextRoom;
+        this.locked = locked;
     }
 
     public String getNextRoom() {
         return nextRoom;
+    }
+
+    public boolean isLocked() {
+        return locked;
+    }
+    public void setLocked(boolean locked) {
+        this.locked = locked;
     }
 
     /**

@@ -40,7 +40,7 @@ public class GameStateFileParser {
                 }
                 String thingID = parts[1].split(",")[0];
                 String type = parts[0].stripIndent() + ":" + thingID;
-                ArrayList<String> values = new ArrayList<>(Arrays.asList(parts[1].split(",")));;
+                ArrayList<String> values = new ArrayList<>(Arrays.asList(parts[1].split(",")));
                 parsedData.put(type, values);
             }
             reader.close();
@@ -50,7 +50,7 @@ public class GameStateFileParser {
 
         String playerName = parsedData.keySet().stream()
                 .filter(key -> key.startsWith("player:"))
-                .map(key -> parsedData.get(key).get(0))
+                .map(key -> parsedData.get(key).getFirst())
                 .findFirst()
                 .orElse("Player");
         GameState gameState = new GameState(new Map(), new Player(playerName));
@@ -60,9 +60,8 @@ public class GameStateFileParser {
             ArrayList<String> values = parsedData.get(type);
             type = type.split(":")[0];
             switch (type) {
-                case "map" -> {
-                    gameState.getMap().setCurrentRoom(values.get(0));
-                }
+                case "map" ->
+                    gameState.getMap().setCurrentRoom(values.getFirst());
                 case "room" -> {
                     Room room = new Room(values.get(0), values.get(1), values.get(2), Boolean.parseBoolean(values.get(3)));
                     gameState.getMap().addRoom(room);
@@ -81,8 +80,14 @@ public class GameStateFileParser {
                     currentEditingRoom.addFeature(container);
                 }
                 case "exit" -> {
-                    Exit exit = new Exit(values.get(0), values.get(1), values.get(2), values.get(3), Boolean.parseBoolean(values.get(4)));
-                    currentEditingRoom.addExit(exit);
+                    if (values.size() == 6) {
+                        Exit exit = new Exit(values.get(0), values.get(1), values.get(2), values.get(3), Boolean.parseBoolean(values.get(4)), Boolean.parseBoolean(values.get(5)));
+                        currentEditingRoom.addExit(exit);
+                    }
+                    else {
+                        Exit exit = new Exit(values.get(0), values.get(1), values.get(2), values.get(3), Boolean.parseBoolean(values.get(4)));
+                        currentEditingRoom.addExit(exit);
+                    }
                 }
                 default -> {
                 }
