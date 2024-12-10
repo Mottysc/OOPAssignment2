@@ -134,7 +134,7 @@ public class Status extends Command {
         for (String[] row : grid) {
             for (String cell : row) {
                 if (cell.equals(" ")) {
-                    map.append(" . "); // Empty cell
+                    map.append("   "); // Empty cell
                 } else {
                     map.append(" ").append(cell).append(" ");
                 }
