@@ -49,7 +49,7 @@ public class Tokeniser {
                 case "status":
                     tokensList.add(new Token(TokenType.STATUS));
                     break;
-                case "on", "with":
+                case "on", "with", "and":
                     tokensList.add(new Token(TokenType.PREPOSITION, token));
                     break;
                 default:
