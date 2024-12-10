@@ -1,29 +1,29 @@
 player:Motty
-map:l1
-    room:l1,Living Room,This is the living room. You see a couch and a TV.,false
+map:liv
+    room:liv,Living Room,This is the living room. You see a couch and a TV.,false
         container:c1,Couch,A comfortable couch.,false
         container:tv2,TV,A large TV you use to watch your favourite films.,false
-        equipment:k1,Key, Your front door key.,false,false,unlock,Hs,xx,You use the key to unlock your front door.
-        exit:Ln,north,The back door leading outside to the north.,o1,false
+        equipment:kit,Key, Your front door key.,false,false,unlock,Hs,xx,You use the key to unlock your front door.
+        exit:Ln,north,The back door leading outside to the north.,out,false
         exit:Le,east,The storage room to the east.,sr,false
-        exit:Lw,west,The front door leading to the kitchen.,k1,false
-    room:k1,Kitchen,This is the kitchen. You see a fridge and a stove. The counter is full of baking supplies including a rolling pin.,false
+        exit:Lw,west,The front door leading to the kitchen.,kit,false
+    room:kit,Kitchen,This is the kitchen. You see a fridge and a stove. The counter is full of baking supplies including a rolling pin.,false
         container:f1,Fridge,A large fridge with food.,false
         container:s1,Stove,A stove you use to cook food.,false
         equipment:rp,Rolling Pin,A rolling pin you use to roll out dough.,false,false,open,d,d_flat,You roll out the dough into a flat, unbaked matzah.
         equipment:d_flat,Matzah Dough,The dough you rolled out into a flat matzah.,true,false,combine,matz,matzah,You bake the matzah in the oven.
-        exit:Kn,north,The door leading to the pantry, where food it kept.,p,false
+        exit:Kn,north,The door leading to the pantry where food is kept.,pan,false
+        exit:Ke,east,The door leading east to the living room.,liv,false
+        exit:Ks,south,The south door leading down to the cellar.,cel,false
         exit:Kw,west,The door leading west to the dining room.,dr,false
-        exit:Ke,east,The door leading east to the living room.,l1,false
-        exit:Ks,south,The south door, leading down to the cellar.,cel,false
-    room:p,Pantry,This is the pantry. You see shelves full of food.,false
+    room:pan,Pantry,This is the pantry. You see shelves full of food.,false
         equipment:f,flour,Flour for the dough,false,false,combine,w,d,You combine the flour and water to form a dough.
-        exit:Pn,north,The door leading back to the kitchen.,k1,false
+        exit:Pn,north,The door leading back to the kitchen.,kit,false
     room:dr,Dining Room,This is the dining room. You see a large table and chairs.,false
         container:t,Table,A large table for eating.,false
         container:c,Chairs,Chairs for sitting.,false
         equipment:sk,Storage Key,A key for the storage room,false,false,unlock,sr,xx,You use the storage key to unlock the storage room.
-        exit:Dr,east,The door leading back to the kitchen.,k1,false
+        exit:Dr,east,The door leading back to the kitchen.,kit,false
         exit:Ds,south,The door leading to the hallway.,h,false
     room:h,Hallway,This is the hallway. There is a pile of coats on the floor.,false
         container:co,Coats,A pile of coats.,false
@@ -39,16 +39,16 @@ map:l1
         container:s,Shelves,The shelves have a cup for your Seder, and your seder plate.,false
         equipment:cup,Cup,A cup for wine.,false,false,combine,wine,cupwine,You pour the wine into the cup.
         equipment:sp,Seder Plate,A plate for the Seder.,false,false,combine,matz,sp1,You place the matzah on the Seder plate.
-        exit:Sw,west,The door leading back to the living room.,l1,false
-    room:cel,Cellar,This is the cellar. It's quite dark in here.,false
+        exit:Sw,west,The door leading back to the living room.,liv,false
+    room:cel,Cellar,This is the cellar. It is quite dark in here.,false
         container:bar,Barrels,Barrels for storing wine.,true
         equipment:crow,Crowbar,A crowbar for opening the barrels.,true,false,open,bar,wine,You open the barrel and find some wine.
         equipment:wine,Wine,A bottle of wine.,true,false,combine,cup,cupwine,You pour the wine into the cup.
-        exit:Cn,north,The door leading back to the kitchen.,k1,false
+        exit:Cn,north,The door leading back to the kitchen.,kit,false
     room:out,Outside,This is the outside. You see a garden and a path.,false
         container:g,Garden,A garden with flowers. Among the flowers you spot a torch laying on the ground,false
         equipment:t,Torch,A torch for lighting the way.,false,false,reveal,cel,bar,You light the torch. The cellar becomes visible.
-        exit:Os,south,The door leading back to the living room.,l1,false
+        exit:Os,south,The door leading back to the living room.,liv,false
         exit:Oe,east,The door leading to the matzah oven.,ov,false
     room:ov,Oven,This is the matzah oven. You see a large oven.,false
         container:ov,Oven,A large oven for baking matzah.,false
