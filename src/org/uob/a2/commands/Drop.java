@@ -21,7 +21,7 @@ public class Drop extends Command {
     @Override
     public String execute(GameState gameState) {
         // Check if the player has the item
-        String itemType = null;
+        String itemType = "null";
         if (gameState.getPlayer().hasItem(value)) {
             itemType = "item";
         } else if (gameState.getPlayer().hasEquipment(value)) {

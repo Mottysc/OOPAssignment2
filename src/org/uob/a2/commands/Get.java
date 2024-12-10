@@ -23,7 +23,7 @@ public class Get extends Command {
     @Override
     public String execute(GameState gameState) {
         // Check if the item is present in the current room
-        String itemType = null;
+        String itemType = "null";
         if (gameState.getMap().getCurrentRoom().hasItem(value)) {
             itemType = "item";
         } else if (gameState.getMap().getCurrentRoom().hasEquipment(value)) {
@@ -48,7 +48,7 @@ public class Get extends Command {
                     gameState.getMap().getCurrentRoom().getEquipments().remove(item);
                     return "You pick up: "+value;
                 }
-            case null, default:
+            default:
                 return "No "+ value + " to get.";
         }
     }

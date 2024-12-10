@@ -49,7 +49,7 @@ public class Status extends Command {
                     return "Your current score is: " + gameState.getPlayer().getScore();
                 default:
                     // Check if the player has the specified item in their inventory
-                    String itemType = null;
+                    String itemType = "null";
                     if (gameState.getPlayer().hasItem(value)) {
                         itemType = "item";
                     } else if (gameState.getPlayer().hasEquipment(value)) {
