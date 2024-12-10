@@ -40,7 +40,7 @@ public class Use extends Command {
             }
         }
         if (!foundValid) {
-            return "There is no " + target + " in the room.";
+            return "Invalid use target";
         }
         else {
             return equipment.use(targetObject, gameState);
