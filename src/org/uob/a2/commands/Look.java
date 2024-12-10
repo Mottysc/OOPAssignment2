@@ -30,7 +30,7 @@ public class Look extends Command {
                     if (obj.getHidden()) {
                         continue;
                     }
-                    room.append(obj.getId()).append(" ").append(obj.getDescription()).append("\n");
+                    room.append(obj.getName()).append(" ").append(obj.getDescription()).append("\n");
                 }
                 return room.toString();
             case "exits":
@@ -50,7 +50,7 @@ public class Look extends Command {
                     if (feature.getHidden()) {
                         continue;
                     }
-                    features.append(feature.getId()).append(" ").append(feature.getDescription()).append("\n");
+                    features.append(feature.getName()).append(" ").append(feature.getDescription()).append("\n");
                 }
                 return features.toString();
             default:
