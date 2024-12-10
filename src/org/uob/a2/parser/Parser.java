@@ -42,11 +42,19 @@ public class Parser {
                 return new Drop(tokens.get(1).getValue());
             }
             case USE -> {
-                if (tokens.size() != 5 || (tokens.get(2).getTokenType() != TokenType.PREPOSITION)) {
+                if (tokens.size() == 5){
+                    if (tokens.get(2).getTokenType() != TokenType.PREPOSITION){
+                        throw new CommandErrorException("Invalid USE command format. Expected: USE <item> ON <object>");
+                    }
+                    else {
+                        return new Use(tokens.get(1).getValue(), tokens.get(3).getValue());
+                    }
+                } else if (tokens.size() == 3) {
+                    return new Use(tokens.get(1).getValue(), "room");
+                } else{
                     throw new CommandErrorException("Invalid USE command format. Expected: USE <item> ON <object>");
                 }
 
-                return new Use(tokens.get(1).getValue(), tokens.get(3).getValue());
             }
             case LOOK -> {
                 if (tokens.size() != 3) {

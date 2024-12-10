@@ -27,6 +27,9 @@ public class Use extends Command {
         if (equipment == null) {
             return "You do not have " + equipmentName;
         }
+        if (target.equalsIgnoreCase("room")) {
+            return equipment.use(gameState.getMap().getCurrentRoom(), gameState);
+        }
         ArrayList<GameObject> targetObjects = gameState.getMap().getCurrentRoom().getAll();
         boolean foundValid = false;
         for (GameObject obj : targetObjects) {
