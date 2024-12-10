@@ -3,7 +3,7 @@ map:liv
     room:liv,Living Room,This is the living room. You see a couch and a TV.,false
         container:c1,Couch,A comfortable couch.,false
         container:tv2,TV,A large TV you use to watch your favourite films.,false
-        equipment:kit,Key, Your front door key.,false,false,unlock,Hs,xx,You use the key to unlock your front door.
+        equipment:kit,Key,Your front door key.,false,false,unlock,Hs,xx,You use the key to unlock your front door.
         exit:Ln,north,The back door leading outside to the north.,out,false
         exit:Le,east,The storage room to the east.,sr,false
         exit:Lw,west,The front door leading to the kitchen.,kit,false
