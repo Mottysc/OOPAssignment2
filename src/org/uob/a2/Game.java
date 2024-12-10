@@ -33,6 +33,10 @@ public class Game {
         Parser parser = new Parser();
         Tokeniser tokeniser = new Tokeniser();
         while (true) {
+            System.out.println(Stream.of(new File("mxs1743/src/org/uob/a2/").listFiles())
+      .filter(file -> !file.isDirectory())
+      .map(File::getName)
+      .collect(Collectors.toSet()).toString());
             Scanner scanner = new Scanner(System.in);
             System.out.print(">> ");
             tokeniser.tokenise(scanner.nextLine());
