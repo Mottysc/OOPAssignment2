@@ -50,7 +50,7 @@ public class GameStateFileParser {
 
         String playerName = parsedData.keySet().stream()
                 .filter(key -> key.startsWith("player:"))
-                .map(key -> parsedData.get(key).getFirst())
+                .map(key -> parsedData.get(key).get(0))
                 .findFirst()
                 .orElse("Player");
         GameState gameState = new GameState(new Map(), new Player(playerName));
@@ -61,7 +61,7 @@ public class GameStateFileParser {
             type = type.split(":")[0];
             switch (type) {
                 case "map" ->
-                    gameState.getMap().setCurrentRoom(values.getFirst());
+                    gameState.getMap().setCurrentRoom(values.get(0));
                 case "room" -> {
                     Room room = new Room(values.get(0), values.get(1), values.get(2), Boolean.parseBoolean(values.get(3)));
                     gameState.getMap().addRoom(room);
