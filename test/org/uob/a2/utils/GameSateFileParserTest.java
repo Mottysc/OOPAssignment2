@@ -21,7 +21,7 @@ class GameStateFileParserTest {
                 map:room1
                 room:room1,Living Room,A cozy living room.,false
                 item:item1,Key,A rusty key.,false
-                equipment:equip1,Sword,A sharp blade.,false,open,room1,hiddenTreasure,You opened the treasure!
+                equipment:equip1,Sword,A sharp blade.,false,false,open,room1,hiddenTreasure,You opened the treasure!
                 container:chest1,Old Chest,A dusty old chest.,true
                 exit:exit1,North Exit,Leads to the northern room.,room2,false
                 """;
