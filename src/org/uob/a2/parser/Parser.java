@@ -58,7 +58,7 @@ public class Parser {
 
             }
             case LOOK -> {
-                if (tokens.size() != 3) {
+                if (tokens.size() < 3) {
                     throw new CommandErrorException("Invalid LOOK command format. Expected: LOOK <object>");
                 }
                 return new Look(tokens.stream()
