@@ -11,7 +11,7 @@ import java.util.Map;
  * about their inventory, specific items, or their overall status.
  *
  * <p>
- * The status command can display a list of items in the player's inventory, 
+ * The status command can display a list of items in the player's inventory,
  * provide details about a specific item, or show the player's general status.
  * </p>
  */
@@ -84,7 +84,7 @@ public class Status extends Command {
     }
     public static String generateMap(GameState gameState) {
         ArrayList<Room> rooms = gameState.getMap().getRooms();
-        int gridSize = 10; // Define the size of the grid
+        int gridSize = 6; // Define the size of the grid
         String[][] grid = new String[gridSize][gridSize];
         for (String[] row : grid) {
             java.util.Arrays.fill(row, " "); // Fill grid with empty spaces
@@ -98,14 +98,14 @@ public class Status extends Command {
         Queue<Room> toVisit = new LinkedList<>();
         ArrayList<String> visited = new ArrayList<>();
 
-        roomCoordinates.put(rooms.get(0).getName(), new int[]{centerX, centerY});
-        grid[centerX][centerY] = rooms.get(0).getName();
+        roomCoordinates.put(rooms.get(0).getId(), new int[]{centerX, centerY});
+        grid[centerX][centerY] = rooms.get(0).getId();
         toVisit.add(rooms.get(0));
-        visited.add(rooms.get(0).getName());
+        visited.add(rooms.get(0).getId());
 
         while (!toVisit.isEmpty()) {
             Room currentRoom = toVisit.poll();
-            int[] currentPosition = roomCoordinates.get(currentRoom.getName());
+            int[] currentPosition = roomCoordinates.get(currentRoom.getId());
             int x = currentPosition[0];
             int y = currentPosition[1];
 
@@ -134,9 +134,9 @@ public class Status extends Command {
         for (String[] row : grid) {
             for (String cell : row) {
                 if (cell.equals(" ")) {
-                    map.append("   "); // Empty cell
+                    map.append(" . "); // Empty cell
                 } else {
-                    map.append("[").append(cell).append("]");
+                    map.append(" ").append(cell).append(" ");
                 }
             }
             map.append("\n"); // Newline for next row
