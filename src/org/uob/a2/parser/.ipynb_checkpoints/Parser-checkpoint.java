@@ -1,19 +1,89 @@
 package org.uob.a2.parser;
 
-import java.util.ArrayList;
-
 import org.uob.a2.commands.*;
+
+import java.util.ArrayList;
 
 /**
  * The {@code Parser} class processes a list of tokens and converts them into {@code Command} objects
  * that can be executed by the game.
- * 
+ *
  * <p>
  * The parser identifies the type of command from the tokens and creates the appropriate command object.
  * If the command is invalid or incomplete, a {@code CommandErrorException} is thrown.
  * </p>
  */
 public class Parser {
+    public Parser() {
+    }
 
- 
+    public Command parse(ArrayList<Token> tokens) throws CommandErrorException {
+        if (tokens.size() == 0) {
+            throw new CommandErrorException("No command entered.");
+        }
+
+        Token firstToken = tokens.get(0);
+        switch (firstToken.getTokenType()) {
+            case MOVE -> {
+                if (tokens.size() != 3) {
+                    throw new CommandErrorException("Invalid MOVE command format. Expected: MOVE <direction>");
+                }
+                return new Move(tokens.get(1).getValue());
+            }
+            case GET -> {
+                if (tokens.size() != 3) {
+                    throw new CommandErrorException("Invalid GET command format. Expected: GET <item>");
+                }
+                System.out.println("BABOOP");
+                System.out.println(tokens.get(0).getValue());
+                System.out.println(tokens.get(1).getValue());
+                System.out.println(tokens.get(2).getValue());
+                return new Get(tokens.get(1).getValue());
+            }
+            case DROP -> {
+                if (tokens.size() != 3) {
+                    throw new CommandErrorException("Invalid DROP command format. Expected: DROP <item>");
+                }
+                return new Drop(tokens.get(1).getValue());
+            }
+            case USE -> {
+                if (tokens.size() != 5 || (tokens.get(2).getTokenType() != TokenType.PREPOSITION)) {
+                    throw new CommandErrorException("Invalid USE command format. Expected: USE <item> ON <object>");
+                }
+
+                return new Use(tokens.get(1).getValue(), tokens.get(2).getValue());
+            }
+            case LOOK -> {
+                if (tokens.size() != 3) {
+                    throw new CommandErrorException("Invalid LOOK command format. Expected: LOOK <object>");
+                }
+                return new Look(tokens.get(1).getValue());
+            }
+            case HELP -> {
+                if (tokens.get(1).getTokenType() == TokenType.EOL) {
+                    return new Help(null);
+                }
+                return new Help(tokens.get(1).getTokenType().name());
+            }
+            case QUIT -> {
+                return new Quit();
+            }
+            case COMBINE -> {
+                if (tokens.size() != 5 || (tokens.get(2).getTokenType() != TokenType.PREPOSITION)) {
+                    throw new CommandErrorException("Invalid COMBINE command format. Expected: COMBINE <item> WITH <object>");
+                }
+                return new Combine(tokens.get(1).getValue(), tokens.get(2).getValue());
+            }
+            case STATUS -> {
+                if (tokens.get(1).getTokenType() == TokenType.EOL) {
+                    return new Status(null);
+                } else {
+                    return new Status(tokens.get(1).getValue());
+                }
+            }
+            default -> throw new CommandErrorException("Unrecognized command: " + firstToken.getValue());
+        }
+
+    }
+
 }
