@@ -62,8 +62,6 @@ public class Status extends Command {
                         case "equipment":
                             Equipment equip = gameState.getPlayer().getEquipment(value);
                             return equip.getName() + ": " + equip.getDescription();
-                        case null:
-                            return "";
                         default:
                             return "";
                     }

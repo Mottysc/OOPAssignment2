@@ -48,8 +48,6 @@ public class Get extends Command {
                     gameState.getMap().getCurrentRoom().getEquipments().remove(item);
                     return "You pick up "+value;
                 }
-            case null:
-                return "No "+ value + " to get.";
             default:
                 return "No "+ value + " to get.";
         }
