@@ -16,7 +16,18 @@ public class Equipment extends GameObject implements Usable {
     }
 
     public String use(GameObject target, GameState gameState) {
-        return "Equipment.use() called";
+        if (target.getId().equals(this.useInformation.getTarget())) {
+            if (this.useInformation.isUsed()) {
+                return this.name + " already used";
+            }
+            this.useInformation.setUsed(true);
+
+            return "Equipment.use() called";
+        }
+        else{
+            return "Invalid use target";
+        }
+
     }
 
     /**

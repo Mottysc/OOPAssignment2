@@ -25,7 +25,7 @@ public class Use extends Command {
         Equipment equipment = gameState.getPlayer().getEquipment(equipmentName);
         GameObject targetObject = null;
         if (equipment == null) {
-            return "You do not have the " + equipmentName + " in your inventory.";
+            return "You do not have " + equipmentName;
         }
         ArrayList<GameObject> targetObjects = gameState.getMap().getCurrentRoom().getAll();
         boolean foundValid = false;
