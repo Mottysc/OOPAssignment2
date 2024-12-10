@@ -46,7 +46,7 @@ public class Parser {
                     throw new CommandErrorException("Invalid USE command format. Expected: USE <item> ON <object>");
                 }
 
-                return new Use(tokens.get(1).getValue(), tokens.get(2).getValue());
+                return new Use(tokens.get(1).getValue(), tokens.get(3).getValue());
             }
             case LOOK -> {
                 if (tokens.size() != 3) {
