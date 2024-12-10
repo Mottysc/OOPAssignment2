@@ -18,6 +18,7 @@ public class Parser {
     }
 
     public Command parse(ArrayList<Token> tokens) throws CommandErrorException {
+        System.out.println("Doop");
         if (tokens.size() == 0) {
             throw new CommandErrorException("No command entered.");
         }
