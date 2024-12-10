@@ -20,13 +20,13 @@ public class Move extends Command {
         @Override
         public String execute(GameState gameState) {
             // Check if the specified direction is a valid exit from the current room
-            if (gameState.getMap().getCurrentRoom().getExit(value) != null) {
+            if (gameState.getMap().getCurrentRoom().getExit(value) != null && !gameState.getMap().getCurrentRoom().getExit(value).getHidden()) {
                 // Update the player's location to the connected room
                 String nextRoom = gameState.getMap().getCurrentRoom().getExit(value).getId();
                 gameState.getMap().setCurrentRoom(nextRoom);
-                return "You move " + value + ".";
+                return "Moving towards " + value + "\n";
             } else {
-                return "You cannot move " + value + " from here.";
+                return "No exit found in that direction.";
             }
         }
 
