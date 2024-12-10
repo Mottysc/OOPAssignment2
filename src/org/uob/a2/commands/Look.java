@@ -37,6 +37,9 @@ public class Look extends Command {
                 StringBuilder exits = new StringBuilder();
                 exits.append("The available exits are:\n");
                 for (Exit exit : gameState.getMap().getCurrentRoom().getExits()) {
+                    if (exit.getHidden()) {
+                        continue;
+                    }
                     exits.append(exit.getDescription()).append("\n");
                 }
                 return exits.toString();
