@@ -18,11 +18,9 @@ public class Parser {
     }
 
     public Command parse(ArrayList<Token> tokens) throws CommandErrorException {
-
         if (tokens.size() == 0) {
             throw new CommandErrorException("No command entered.");
         }
-
         Token firstToken = tokens.get(0);
         switch (firstToken.getTokenType()) {
             case MOVE -> {
@@ -35,10 +33,6 @@ public class Parser {
                 if (tokens.size() != 3) {
                     throw new CommandErrorException("Invalid GET command format. Expected: GET <item>");
                 }
-
-                System.out.println(tokens.get(0).getValue());
-                System.out.println(tokens.get(1).getValue());
-                System.out.println(tokens.get(2).getValue());
                 return new Get(tokens.get(1).getValue());
             }
             case DROP -> {
