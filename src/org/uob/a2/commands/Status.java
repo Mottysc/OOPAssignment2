@@ -1,10 +1,10 @@
 package org.uob.a2.commands;
 
-import org.uob.a2.gameobjects.Equipment;
-import org.uob.a2.gameobjects.GameState;
-import org.uob.a2.gameobjects.Item;
+import org.uob.a2.gameobjects.*;
 
 import java.util.ArrayList;
+import java.util.*;
+import java.util.Map;
 
 /**
  * Represents the status command, allowing the player to retrieve information
@@ -44,7 +44,8 @@ public class Status extends Command {
                     player.append("Score:" + gameState.getPlayer().getScore() + "\n");
                     return player.toString();
                 case "map":
-                    return gameState.getMap().toString();
+                    ArrayList<Room> rooms = (gameState.getMap().getRooms());
+                    return generateMap(gameState);
                 case "score":
                     return "Your current score is: " + gameState.getPlayer().getScore();
                 default:
@@ -81,6 +82,69 @@ public class Status extends Command {
             return inventory.toString();
         }
     }
+    public static String generateMap(GameState gameState) {
+        ArrayList<Room> rooms = gameState.getMap().getRooms();
+        int gridSize = 10; // Define the size of the grid
+        String[][] grid = new String[gridSize][gridSize];
+        for (String[] row : grid) {
+            java.util.Arrays.fill(row, " "); // Fill grid with empty spaces
+        }
+
+        // Start in the center of the grid
+        int centerX = gridSize / 2;
+        int centerY = gridSize / 2;
+
+        HashMap<String, int[]> roomCoordinates = new HashMap<>();
+        Queue<Room> toVisit = new LinkedList<>();
+        ArrayList<String> visited = new ArrayList<>();
+
+        roomCoordinates.put(rooms.get(0).getName(), new int[]{centerX, centerY});
+        grid[centerX][centerY] = rooms.get(0).getName();
+        toVisit.add(rooms.get(0));
+        visited.add(rooms.get(0).getName());
+
+        while (!toVisit.isEmpty()) {
+            Room currentRoom = toVisit.poll();
+            int[] currentPosition = roomCoordinates.get(currentRoom.getName());
+            int x = currentPosition[0];
+            int y = currentPosition[1];
+
+            for (Exit exit : currentRoom.getExits()) {
+                if (!visited.contains(exit.getNextRoom())) {
+                    int newX = x, newY = y;
+                    switch (exit.getId().toLowerCase()) {
+                        case "north" -> newX = x - 1;
+                        case "south" -> newX = x + 1;
+                        case "east" -> newY = y + 1;
+                        case "west" -> newY = y - 1;
+                    }
+
+                    roomCoordinates.put(exit.getNextRoom(), new int[]{newX, newY});
+                    grid[newX][newY] = exit.getNextRoom();
+                    toVisit.add(gameState.getMap().getRooms().stream()
+                            .filter(room -> room.getName().equals(exit.getNextRoom()))
+                            .findFirst().get());
+                    visited.add(exit.getNextRoom());
+                }
+            }
+        }
+
+        // Convert the grid to a string
+        StringBuilder map = new StringBuilder();
+        for (String[] row : grid) {
+            for (String cell : row) {
+                if (cell.equals(" ")) {
+                    map.append("   "); // Empty cell
+                } else {
+                    map.append("[").append(cell).append("]");
+                }
+            }
+            map.append("\n"); // Newline for next row
+        }
+
+        return map.toString();
+    }
+
 
     @Override
     public String toString() {
