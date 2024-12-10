@@ -18,7 +18,7 @@ public class Equipment extends GameObject implements Usable {
     public String use(GameObject target, GameState gameState) {
         if (target.getId().equals(this.useInformation.getTarget())) {
             if (this.useInformation.isUsed()) {
-                return this.name + " already used";
+                return "You have already used " + this.name;
             }
             this.useInformation.setUsed(true);
 
