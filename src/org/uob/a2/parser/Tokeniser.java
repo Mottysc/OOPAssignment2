@@ -34,6 +34,9 @@ public class Tokeniser {
                 case "use":
                     tokensList.add(new Token(TokenType.USE));
                     break;
+                case "combine":
+                    tokensList.add(new Token(TokenType.COMBINE));
+                    break;
                 case "look":
                     tokensList.add(new Token(TokenType.LOOK));
                     break;
