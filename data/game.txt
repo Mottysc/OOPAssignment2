@@ -10,11 +10,7 @@ map:l1
     room:k1,Kitchen, This is the kitchen. You see a fridge and a stove. The counter is full of baking supplies including a rolling pin.,false
         container:f1,Fridge,A large fridge with food.,false
         container:s1,Stove,A stove you use to cook food.,false
-        equipment:w1,Water,Water for the dough.,false,false,combine,f1,d1,You combine the flour and water to form a dough.
-        equipment:f1,Flour,Flour for the dough.,false,false,combine,w1,d1,You combine the flour and water to form a dough.
-        equipment:d1,Dough,The dough you made.,true,false,bake,o1,m1,You bake the dough into a matzah.
-        equipment:rb1,Ruby,A red ruby.,true,false,reveal,l1,e1,You activate the ruby! Hidden objects become visible!
-        item:d1,Diamond,A test diamond.,false
+        equipment:rp,Rolling Pin, A rolling pin you use to roll out dough.,false,false,open,d1,d2,You roll out the dough into a matzah.
         exit:north,north,The back door leading outside to the north.,l1,false
         exit:west,west,The front door leading to the living room.,l1,false
 
