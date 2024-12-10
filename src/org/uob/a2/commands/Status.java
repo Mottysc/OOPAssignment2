@@ -112,7 +112,7 @@ public class Status extends Command {
             for (Exit exit : currentRoom.getExits()) {
                 if (!visited.contains(exit.getNextRoom())) {
                     int newX = x, newY = y;
-                    switch (exit.getId().toLowerCase()) {
+                    switch (exit.getName().toLowerCase()) {
                         case "north" -> newX = x - 1;
                         case "south" -> newX = x + 1;
                         case "east" -> newY = y + 1;
@@ -122,8 +122,8 @@ public class Status extends Command {
                     roomCoordinates.put(exit.getNextRoom(), new int[]{newX, newY});
                     grid[newX][newY] = exit.getNextRoom();
                     toVisit.add(gameState.getMap().getRooms().stream()
-                            .filter(room -> room.getName().equals(exit.getNextRoom()))
-                            .findFirst().get());
+                            .filter(room -> room.getId().equals(exit.getNextRoom()))
+                            .findFirst().orElse(null));
                     visited.add(exit.getNextRoom());
                 }
             }
