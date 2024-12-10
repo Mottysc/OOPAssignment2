@@ -61,10 +61,11 @@ public class Parser {
                 if (tokens.size() < 3) {
                     throw new CommandErrorException("Invalid LOOK command format. Expected: LOOK <object>");
                 }
-                return new Look(tokens.stream()
-                      .filter(token -> token.getTokenType() == TokenType.VAR)
-                      .map(Token::getValue)
-                      .collect(Collectors.joining(" ")));
+                String object = tokens.stream()
+                        .filter(token -> token.getTokenType() == TokenType.VAR)
+                        .map(Token::getValue)
+                        .collect(Collectors.joining(" "));
+                return new Look(object);
             }
             case HELP -> {
                 if (tokens.get(1).getTokenType() == TokenType.EOL) {

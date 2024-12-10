@@ -10,7 +10,7 @@ map:l1
     room:k1,Kitchen, This is the kitchen. You see a fridge and a stove. The counter is full of baking supplies including a rolling pin.,false
         container:f1,Fridge,A large fridge with food.,false
         container:s1,Stove,A stove you use to cook food.,false
-        equipment:rp,Rolling Pin, A rolling pin you use to roll out dough.,false,false,open,d1,d2,You roll out the dough into a matzah.
+        equipment:rp,Rolling Pin,A rolling pin you use to roll out dough.,false,false,open,d1,d2,You roll out the dough into a matzah.
         exit:north,north,The back door leading outside to the north.,l1,false
         exit:west,west,The front door leading to the living room.,l1,false
 
