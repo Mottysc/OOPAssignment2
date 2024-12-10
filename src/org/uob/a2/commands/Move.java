@@ -22,7 +22,7 @@ public class Move extends Command {
             // Check if the specified direction is a valid exit from the current room
             if (gameState.getMap().getCurrentRoom().getExit(value) != null && !gameState.getMap().getCurrentRoom().getExit(value).getHidden()) {
                 // Update the player's location to the connected room
-                String nextRoom = gameState.getMap().getCurrentRoom().getExit(value).getId();
+                String nextRoom = gameState.getMap().getCurrentRoom().getExit(value).getNextRoom();
                 gameState.getMap().setCurrentRoom(nextRoom);
                 return "Moving towards " + value + "\n";
             } else {
