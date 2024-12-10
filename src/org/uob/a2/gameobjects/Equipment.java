@@ -37,6 +37,8 @@ public class Equipment extends GameObject implements Usable {
                     else{
                         return "You cannot use the " + this.name + " here.";
                     }
+                    case "combine":
+                        return "To combine an item, use the 'combine' command.";
             }
 
             return "Equipment.use() called";

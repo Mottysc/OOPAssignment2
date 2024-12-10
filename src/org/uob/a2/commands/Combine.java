@@ -16,21 +16,30 @@ public class Combine extends Command {
     @Override
     public String execute(GameState gameState) {
         // Check if the player has the specified items in their inventory
-        if (gameState.getPlayer().hasItem(firstItem) && gameState.getPlayer().hasItem(secondItem)) {
+        if (gameState.getPlayer().hasEquipment(firstItem) && gameState.getPlayer().hasEquipment(secondItem)) {
             // Retrieve the items from the player's inventory
             Equipment item1 = gameState.getPlayer().getEquipment(firstItem);
             Equipment item2 = gameState.getPlayer().getEquipment(secondItem);
             // Check if the items can be combined
-            if (item1.getUseInformation().getTarget().equals(secondItem) && item2.getUseInformation().getTarget().equals(firstItem) && item1.getUseInformation().getAction().equals("combine") && item2.getUseInformation().getAction().equals("combine")) {
+            if (item1.getUseInformation().getTarget().equals(item2.getId()) && item2.getUseInformation().getTarget().equals(item1.getId()) && item1.getUseInformation().getAction().equals("combine") && item2.getUseInformation().getAction().equals("combine")) {
                 // Combine the items
-                String newItemName = item1.getUseInformation().getResult();
+                String newItemId = item1.getUseInformation().getResult();
                 // Remove the original items from the player's inventory
                 gameState.getPlayer().getEquipment().remove(item1);
                 gameState.getPlayer().getEquipment().remove(item2);
                 // Add the new item to the player's inventory
-                String itemID = firstItem + secondItem;
-                Item newItem = new Item(itemID, newItemName, "A new item created by combining " + firstItem + " and " + secondItem, false);
-                gameState.getPlayer().addItem(newItem);
+                Item createdItem = gameState.getMap().getCurrentRoom().getItem(newItemId);
+                if (createdItem == null) {
+                    Equipment createdEquipment = gameState.getMap().getCurrentRoom().getEquipment(newItemId);
+                    createdEquipment.setHidden(false);
+                    gameState.getPlayer().addEquipment(createdEquipment);
+                    gameState.getMap().getCurrentRoom().getAll().remove(createdEquipment);
+                }
+                else {
+                    createdItem.setHidden(false);
+                    gameState.getPlayer().addItem(createdItem);
+                    gameState.getMap().getCurrentRoom().getAll().remove(createdItem);
+                }
                 return item1.getUseInformation().getMessage();
             } else {
                 return "You cannot combine the " + firstItem + " and " + secondItem + ".";
