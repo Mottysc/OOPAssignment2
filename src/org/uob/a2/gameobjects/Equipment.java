@@ -23,7 +23,7 @@ public class Equipment extends GameObject implements Usable {
             this.useInformation.setUsed(true);
             if (useInformation.getAction().equals("open")){
                 gameState.getMap().getCurrentRoom().getAll().stream()
-                        .filter(obj -> obj.getId().equals(useInformation.getTarget()))
+                        .filter(obj -> obj.getId().equals(useInformation.getResult()))
                         .forEach(obj -> obj.setHidden(false));
                 return useInformation.getMessage();
 
