@@ -28,7 +28,11 @@ public class Quit extends Command {
             if (this.value == "save"){
                 saveGame(gameState);
             }
-            StringBuilder result = new StringBuilder("Game over:\nYou have quit the game. The current game has been saved in gamestate.txt\nIn your inventory you had:\n");
+            StringBuilder result = new StringBuilder("Game over:\nYou have quit the game.");
+            if (this.value.equalsIgnoreCase("save")){
+                result.append("The current game has been saved in gamestate.txt");
+            }
+            result.append("\nIn your inventory you had:\n");
             if (gameState.getPlayer().getInventory().isEmpty() && gameState.getPlayer().getEquipment().isEmpty()) {
                 result.append("Nothing.");
             }
