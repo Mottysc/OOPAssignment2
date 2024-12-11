@@ -10,7 +10,7 @@ map:liv
     room:kit,Kitchen,The heart of the home filled with the smell of spices and the sight of baking supplies on the counter.,false
         container:f1,Fridge,A big fridge filled with delicious possibilities.,false
         container:s1,Stove,A sturdy stove ready to bring your creations to life.,false
-        equipment:rp,Rolling Pin,A rolling pin that has seen many loaves and pastries.,false,false,open,d,d_flat,You roll out the dough into a flat unbaked matzah.
+        equipment:rp,Rolling Pin,A rolling pin that has seen many loaves and pastries.,false,false,combine,d,d_flat,You roll out the dough into a flat unbaked matzah.
         equipment:d_flat,Matzah Dough,The dough you carefully rolled out into a flat matzah.,true,false,combine,fir,matzah,You bake the matzah in the oven.
         equipment:d,Dough,A lump of dough soft and pliable,true,false,combine,rp,d_flat,You roll out the dough into a flat unbaked matzah.
         exit:Kn,North,The door leading to the pantry where food is kept.,pan,false
@@ -48,7 +48,7 @@ map:liv
         exit:Cn,North,The door leading back to the kitchen.,kit,false
     room:out,Outside,The garden is blooming with a peaceful path leading into the distance.,false
         container:g,Garden,Flowers bloom here and amidst them lies a torch waiting to be found.,false
-        equipment:t,Torch,A torch that can light up the darkest places.,false,false,reveal,cel,bar,You light the torch and the dark cellar becomes visible.
+        equipment:t,Torch,A torch that can light up the darkest places.,false,false,reveal,cel,wine,You light the torch and the dark cellar becomes visible.
         exit:Os,South,The door leading back to the living room.,liv,false
         exit:Oe,East,The door leading to the matzah oven.,ov,false
     room:ov,Oven,The matzah oven radiates warmth ready to bake something special.,false

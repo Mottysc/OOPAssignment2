@@ -31,7 +31,7 @@ public class Equipment extends GameObject implements Usable {
                 case "reveal":
                     if (gameState.getMap().getCurrentRoom().getId().equalsIgnoreCase(useInformation.getTarget())){
                         gameState.getMap().getCurrentRoom().getAll().stream()
-                                .filter(GameObject::getHidden)
+                                .filter(obj -> obj.getHidden() && !obj.getId().equalsIgnoreCase(useInformation.getTarget()))
                                 .forEach(obj -> obj.setHidden(false));
                         return useInformation.getMessage();
                     }
