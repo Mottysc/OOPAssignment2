@@ -51,31 +51,46 @@ public class Parser {
                 return new Drop(object);
             }
             case USE -> {
-                if (tokens.size() >= 5) {
-                    StringBuilder item = new StringBuilder();
-                    StringBuilder target = new StringBuilder();
-                    boolean foundPreposition = false;
-
-                    for (Token token : tokens) {
-                        if (token.getTokenType() == TokenType.PREPOSITION) {
-                            foundPreposition = true;
-                            continue;
-                        }
-                        if (token.getTokenType() == TokenType.EOL) {
-                            break;
-                        }
-                        if (foundPreposition) {
-                            target.append(token.getValue()).append(" ");
-                        } else {
-                            item.append(token.getValue()).append(" ");
-                        }
-                    }
-                    return new Use(item.toString().trim(), target.toString().trim());
-                } else if (tokens.size() == 3) {
-                    return new Use(tokens.get(1).getValue(), "room");
-                } else {
+                if (tokens.size() < 3) {
                     throw new CommandErrorException("Invalid USE command format. Expected: USE <item> ON <object>");
                 }
+
+                StringBuilder item = new StringBuilder();
+                StringBuilder target = new StringBuilder();
+                boolean foundPreposition = false;
+
+                for (Token token : tokens.subList(1, tokens.size())) {
+                    if (token.getTokenType() == TokenType.EOL) {
+                        break;
+                    }
+                    if (token.getTokenType() == TokenType.PREPOSITION) {
+                        foundPreposition = true;
+                        continue;
+                    }
+                    if (foundPreposition) {
+                        if (target.length() > 0){
+                            target.append(" ");
+                        }
+                        target.append(token.getValue());
+                    } else {
+                        if (item.length() > 0){
+                            item.append(" ");
+                        }
+                        item.append(token.getValue());
+                    }
+                }
+
+                String itemString = item.toString().trim();
+                String targetString = target.toString().trim();
+
+                // Default to "room" if no target is specified
+                if (targetString.isEmpty() && !foundPreposition) {
+                    targetString = "room";
+                } else if (targetString.isEmpty()) {
+                    throw new CommandErrorException("Invalid USE command format. Expected: USE <item> ON <object>");
+                }
+
+                return new Use(itemString, targetString);
             }
             case LOOK -> {
                 if (tokens.size() < 3) {
@@ -103,10 +118,43 @@ public class Parser {
                 return new Quit();
             }
             case COMBINE -> {
-                if (tokens.size() != 5 || (tokens.get(2).getTokenType() != TokenType.PREPOSITION)) {
-                    throw new CommandErrorException("Invalid COMBINE command format. Expected: COMBINE <item> WITH <object>");
+                if (tokens.size() < 5) {
+                    throw new CommandErrorException("Invalid COMBINE command format. Expected: COMBINE <item> WITH <item>");
                 }
-                return new Combine(tokens.get(1).getValue(), tokens.get(3).getValue());
+
+                StringBuilder item1 = new StringBuilder();
+                StringBuilder item2 = new StringBuilder();
+                boolean foundPreposition = false;
+
+                for (Token token : tokens.subList(1, tokens.size())) {
+                    if (token.getTokenType() == TokenType.EOL) {
+                        break;
+                    }
+                    if (token.getTokenType() == TokenType.PREPOSITION) {
+                        foundPreposition = true;
+                        continue;
+                    }
+                    if (foundPreposition) {
+                        if (item2.length() > 0){
+                            item2.append(" ");
+                        }
+                        item2.append(token.getValue());
+                    } else {
+                        if (item1.length() > 0){
+                            item1.append(" ");
+                        }
+                        item1.append(token.getValue());
+                    }
+                }
+
+                String itemString = item1.toString().trim();
+                String targetString = item2.toString().trim();
+
+                if (targetString.isEmpty() || !foundPreposition || itemString.isEmpty()) {
+                    throw new CommandErrorException("Invalid COMBINE command format. Expected: COMBINE <item> WITH <item>");
+                }
+
+                return new Combine(itemString, targetString);
             }
             case STATUS -> {
                 if (tokens.get(1).getTokenType() == TokenType.EOL) {
