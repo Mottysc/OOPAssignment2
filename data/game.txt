@@ -30,7 +30,7 @@ map:liv
         exit:Hn,North,The door leading to the dining room.,dr,false
         exit:Hs,South,The door leading outside to the water pump.,wp,false,true
     room:wp,Water Pump,The air is fresh here with the gentle sound of water dripping from the pump.,false
-        equipment:b,Bucket,A sturdy bucket ready to hold water.,false,false,use,p,w,You pump the water into the bucket.
+        equipment:b,Bucket,A sturdy bucket ready to hold water.,false,false,open,p,w,You pump the water into the bucket.
         container:p,Pump,A heavy pump that requires effort to use.,false
         equipment:w,Water,Clear cool water for your dough,true,false,combine,f,d,You combine the flour and water to form a dough.
         equipment:d,Dough,A lump of dough soft and pliable,true,false,combine,rp,d_flat,You bake the dough into a matzah.
