@@ -136,7 +136,7 @@ public class Status extends Command {
                 if (cell.equals(" ")) {
                     map.append("   "); // Empty cell
                 } else {
-                    if (gameState.getMap().getCurrentRoom().getId() == cell){
+                    if (gameState.getMap().getCurrentRoom().getId().equalsIgnoreCase(cell)){
                         cell = cell.toUpperCase();
                     }
                     map.append(" ").append(cell.charAt(0)).append(" ");

@@ -31,31 +31,51 @@ public class Parser {
                 return new Move(tokens.get(1).getValue());
             }
             case GET -> {
-                if (tokens.size() != 3) {
+                if (tokens.size() < 3) {
                     throw new CommandErrorException("Invalid GET command format. Expected: GET <item>");
                 }
-                return new Get(tokens.get(1).getValue());
+                String object = tokens.stream()
+                        .filter(token -> token.getTokenType() == TokenType.VAR)
+                        .map(Token::getValue)
+                        .collect(Collectors.joining(" "));
+                return new Get(object);
             }
             case DROP -> {
-                if (tokens.size() != 3) {
+                if (tokens.size() < 3) {
                     throw new CommandErrorException("Invalid DROP command format. Expected: DROP <item>");
                 }
-                return new Drop(tokens.get(1).getValue());
+                String object = tokens.stream()
+                        .filter(token -> token.getTokenType() == TokenType.VAR)
+                        .map(Token::getValue)
+                        .collect(Collectors.joining(" "));
+                return new Drop(object);
             }
             case USE -> {
-                if (tokens.size() == 5){
-                    if (tokens.get(2).getTokenType() != TokenType.PREPOSITION){
-                        throw new CommandErrorException("Invalid USE command format. Expected: USE <item> ON <object>");
+                if (tokens.size() >= 5) {
+                    StringBuilder item = new StringBuilder();
+                    StringBuilder target = new StringBuilder();
+                    boolean foundPreposition = false;
+
+                    for (Token token : tokens) {
+                        if (token.getTokenType() == TokenType.PREPOSITION) {
+                            foundPreposition = true;
+                            continue;
+                        }
+                        if (token.getTokenType() == TokenType.EOL) {
+                            break;
+                        }
+                        if (foundPreposition) {
+                            target.append(token.getValue()).append(" ");
+                        } else {
+                            item.append(token.getValue()).append(" ");
+                        }
                     }
-                    else {
-                        return new Use(tokens.get(1).getValue(), tokens.get(3).getValue());
-                    }
+                    return new Use(item.toString().trim(), target.toString().trim());
                 } else if (tokens.size() == 3) {
                     return new Use(tokens.get(1).getValue(), "room");
-                } else{
+                } else {
                     throw new CommandErrorException("Invalid USE command format. Expected: USE <item> ON <object>");
                 }
-
             }
             case LOOK -> {
                 if (tokens.size() < 3) {
