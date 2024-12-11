@@ -40,7 +40,8 @@ public class Combine extends Command {
                     gameState.getPlayer().addItem(createdItem);
                     gameState.getMap().getCurrentRoom().getAll().remove(createdItem);
                 }
-                return item1.getUseInformation().getMessage();
+                gameState.getPlayer().addScore(5);
+                return item1.getUseInformation().getMessage() + "\n+5 points!";
             } else {
                 return "You cannot combine the " + firstItem + " and " + secondItem + ".";
             }
