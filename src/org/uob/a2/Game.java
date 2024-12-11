@@ -35,7 +35,7 @@ public class Game {
         */
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to the game!");
-        System.out.println("Do you want to start a new game or load a saved game? (New/Load)");
+        System.out.println("Do you want to start a new game or load a saved game? (New/Load)\n>>");
         String choice = scanner.nextLine();
         GameState game = null;
         switch (choice.toUpperCase()) {
@@ -44,7 +44,7 @@ public class Game {
                 game = GameStateFileParser.parse("data/game.txt");
                 break;
             case "LOAD":
-                System.out.println("Enter the location of the saved file:");
+                System.out.println("Enter the location of the saved file:\n>>");
                 String filename = scanner.nextLine();
                 try {
                     File file = new File(filename);
