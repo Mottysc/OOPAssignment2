@@ -74,7 +74,7 @@ public class Parser {
                 return new Help(tokens.get(1).getTokenType().name());
             }
             case QUIT -> {
-                if (tokens.size() != 2 || !tokens.get(1).getValue().equalsIgnoreCase("save")){
+                if (tokens.size() != 2 && !tokens.get(1).getValue().equalsIgnoreCase("save")){
                     throw new CommandErrorException("Invalid QUIT command format. Expected: QUIT [SAVE]");
                 }
                 return new Quit(tokens.get(1).getValue());
