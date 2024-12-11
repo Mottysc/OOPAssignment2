@@ -21,6 +21,7 @@ public class Player {
         this.name = name;
         this.inventory = new ArrayList<>();
         this.equipment = new ArrayList<>();
+        this.combinations = new ArrayList<>();
         this.Score = 0;
     }
     public void addEquipment(Equipment equipment) {
