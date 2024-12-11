@@ -61,7 +61,7 @@ public class GameStateFileParser {
             type = type.split(":")[0];
             switch (type) {
                 case "map" ->
-                    gameState.getMap().setCurrentRoom(values.get(0));
+                        gameState.getMap().setCurrentRoom(values.get(0));
                 case "room" -> {
                     Room room = new Room(values.get(0), values.get(1), values.get(2), Boolean.parseBoolean(values.get(3)));
                     gameState.getMap().addRoom(room);
@@ -90,22 +90,14 @@ public class GameStateFileParser {
                     }
                 }
                 case "inventory" -> {
-                    for (String itemID : values) {
-                        for (Room room : gameState.getMap().getRooms()) {
-                            Item item = room.getItem(itemID);
-                            if (item != null) {
-                                gameState.getPlayer().addItem(item);
-                                room.getItems().remove(item);
-                                break;
-                            }
-                            else {
-                                Equipment equipment = room.getEquipment(itemID);
-                                if (equipment.getId().equals(itemID)) {
-                                    gameState.getPlayer().addEquipment(equipment);
-                                    room.getEquipments().remove(equipment);
-                                    break;
-                                }
-                            }
+                    switch (values.get(0)) {
+                        case "item" -> {
+                            Item item = new Item(values.get(1), values.get(2), values.get(3), Boolean.parseBoolean(values.get(4)));
+                            gameState.getPlayer().addItem(item);
+                        }
+                        case "equipment" -> {
+                            Equipment equipment = new Equipment(values.get(1), values.get(2), values.get(3), Boolean.parseBoolean(values.get(4)), new UseInformation(Boolean.parseBoolean(values.get(5)), values.get(6), values.get(7), values.get(8), values.get(9)));
+                            gameState.getPlayer().addEquipment(equipment);
                         }
                     }
                 }

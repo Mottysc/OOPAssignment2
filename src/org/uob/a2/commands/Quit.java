@@ -61,20 +61,13 @@ public class Quit extends Command {
                         writer.write("exit:" + exit.getId() + "," + exit.getName() + "," + exit.getDescription() + "," + exit.getNextRoom() + "," + exit.getHidden() + (exit.isLocked() ? "," + exit.isLocked(): "") + "\n");
                     }
                 }
-                if (gameState.getPlayer().getInventory().size() + gameState.getPlayer().getEquipment().size() > 0) {
-                    writer.write("inventory:");
-                }
                 for (Item item : gameState.getPlayer().getInventory()) {
-                    writer.write(item.getId());
-                    if (gameState.getPlayer().getInventory().indexOf(item) != gameState.getPlayer().getInventory().size() - 1 || !gameState.getPlayer().getEquipment().isEmpty()) {
-                        writer.write(",");
-                    }
+                    writer.write("inventory:item," + item.getId() + "," + item.getName() + "," + item.getDescription() + "," + item.getHidden() + "\n");
                 }
                 for (Equipment equipment : gameState.getPlayer().getEquipment()) {
-                    writer.write(equipment.getId());
-                    if (gameState.getPlayer().getEquipment().indexOf(equipment) != gameState.getPlayer().getEquipment().size() - 1) {
-                        writer.write(",");
-                    }
+                    UseInformation useInfo = equipment.getUseInformation();
+                    writer.write("inventory:equipment," + equipment.getId() + "," + equipment.getName() + "," + equipment.getDescription() + "," + equipment.getHidden() + "," +
+                            useInfo.isUsed() + "," + useInfo.getAction() + "," + useInfo.getTarget() + "," + useInfo.getResult() + "," + useInfo.getMessage() + "\n");
                 }
             } catch (IOException e) {
                 e.printStackTrace();
