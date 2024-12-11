@@ -23,6 +23,7 @@ map:liv
     room:dr,Dining Room,The dining room is warm and inviting with a table set as if ready for guests.,false
         container:t,Table,A large wooden table that has hosted many happy meals.,false
         container:c,Chairs,Comfortable chairs that seem to invite you to sit.,false
+        equipment:sp1,Seder Plate,Your Seder Plate with the matzah placed on it,false,false,drop,dr,xx,You place the Seder plate on the table.
         equipment:sk,Storage Key,A small brass key for the storage room,false,false,unlock,Le,xx,You use the storage key to unlock the storage room.
         exit:Dr,East,The door leading back to the kitchen.,kit,false
         exit:Ds,South,The door leading to the hallway.,h,false
@@ -37,9 +38,9 @@ map:liv
         exit:Wn,North,The door leading back to the hallway.,h,false
     room:sr,Storage Room,This quiet room is packed with Passover essentials waiting to be used.,false
         container:s,Shelves,The shelves are full of Passover treasures like your seder plate.,false
-        equipment:cup,Cup,A beautiful cup for your Seder wine.,false,false,combine,wine,cupwine,You pour the wine into the cup.
-        item:cupwine,Cup of wine,A cup filled with rich red wine.,true
-        equipment:sp,Seder Plate,A special plate for holding symbolic foods for the Seder.,false,false,combine,matz,sp1,You place the matzah on the Seder plate.
+        equipment:cup,Cup,A beautiful cup for your Seder wine.,false,false,combine,wine,cupwine,You pour the wine into the cup. You should probably put this on your dining room table.
+        equipment:cupwine,Cup of wine,A cup filled with rich red wine.,true,false,drop,dr,xx,You place the cup of wine on the table.
+        equipment:sp,Seder Plate,A special plate for holding symbolic foods for the Seder.,false,false,combine,matz,sp1,You place the matzah on the Seder plate. You should probably put this on your dining room table.
         exit:Sw,West,The door leading back to the living room.,liv,false
     room:cel,Cellar,The cellar is dark and musty but you sense something hidden in the shadows.,false
         container:bar,Barrels,Large barrels that seem to hide their secrets.,true
@@ -57,3 +58,4 @@ map:liv
         equipment:matz,Matzah,The matzah you baked in the oven.,true,false,combine,sp,sp1,You place the matzah on the Seder plate.
         equipment:mat,Matches,A small box of matches for lighting the fire.,false,false,open,cont_ov,fir,You strike the matches and light the oven.
         exit:Ow,West,The door leading back to the outside.,out,false
+inventory:0,item,clue,Quest list,Your goal is to make Matzah and a cup of wine and place them on the dining room table.,false

@@ -31,7 +31,7 @@ public class Equipment extends GameObject implements Usable {
                 case "reveal":
                     if (gameState.getMap().getCurrentRoom().getId().equalsIgnoreCase(useInformation.getTarget())){
                         gameState.getMap().getCurrentRoom().getAll().stream()
-                                .filter(obj -> obj.getHidden() && !obj.getId().equalsIgnoreCase(useInformation.getTarget()))
+                                .filter(obj -> obj.getHidden() && !obj.getId().equalsIgnoreCase(useInformation.getResult()))
                                 .forEach(obj -> obj.setHidden(false));
                         return useInformation.getMessage();
                     }
@@ -40,6 +40,16 @@ public class Equipment extends GameObject implements Usable {
                     }
                 case "combine":
                     return "To combine an item, use the 'combine' command.";
+                case "drop":
+                    if (gameState.getMap().getCurrentRoom().getId().equalsIgnoreCase(useInformation.getTarget())){
+                        gameState.getMap().getCurrentRoom().addEquipment(this);
+                        gameState.getPlayer().getEquipment().remove(this);
+                        gameState.getPlayer().addScore(5);
+                        return useInformation.getMessage() +"\n+5 points!";
+                    }
+                    else{
+                        return "You cannot use the " + this.name + " here.";
+                    }
                 case "unlock":
                     gameState.getMap().getCurrentRoom().getExits().stream()
                             .filter(exit -> exit.getId().equalsIgnoreCase(useInformation.getTarget()))
