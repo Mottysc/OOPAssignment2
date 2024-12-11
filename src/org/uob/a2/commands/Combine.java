@@ -24,13 +24,18 @@ public class Combine extends Command {
             if (item1.getUseInformation().getTarget().equals(item2.getId()) && item2.getUseInformation().getTarget().equals(item1.getId()) && item1.getUseInformation().getAction().equals("combine") && item2.getUseInformation().getAction().equals("combine")) {
                 // Combine the items
                 String newItemId = item1.getUseInformation().getResult();
+
                 // Remove the original items from the player's inventory
                 gameState.getPlayer().getEquipment().remove(item1);
                 gameState.getPlayer().getEquipment().remove(item2);
+
                 // Add the new item to the player's inventory
                 Item createdItem = gameState.getMap().getCurrentRoom().getItem(newItemId);
                 if (createdItem == null) {
                     Equipment createdEquipment = gameState.getMap().getCurrentRoom().getEquipment(newItemId);
+                    if (createdEquipment == null) {
+                        return "Error: Item not found in the room. Try combining it elsewhere.";
+                    }
                     createdEquipment.setHidden(false);
                     gameState.getPlayer().addEquipment(createdEquipment);
                     gameState.getMap().getCurrentRoom().getAll().remove(createdEquipment);

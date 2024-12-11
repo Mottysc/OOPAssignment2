@@ -27,6 +27,9 @@ public class Move extends Command {
             }
             // Check if the specified direction is a valid exit from the current room
             if (gameState.getMap().getCurrentRoom().getExit(exitId) != null && !gameState.getMap().getCurrentRoom().getExit(exitId).getHidden()) {
+                if (gameState.getMap().getCurrentRoom().getExit(exitId).isLocked() ){
+                    return "The door is locked. You need a key to open it";
+                }
                 // Update the player's location to the connected room
                 String nextRoom = gameState.getMap().getCurrentRoom().getExit(exitId).getNextRoom();
                 gameState.getMap().setCurrentRoom(nextRoom);

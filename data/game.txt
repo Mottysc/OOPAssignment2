@@ -5,7 +5,7 @@ map:liv
         container:tv2,TV,A large TV where you watch your favourite shows and films.,false
         equipment:kitk,Key,Your front door key. It feels sturdy and well-used.,false,false,unlock,Hs,xx,You use the key to unlock your front door.
         exit:Ln,North,The back door leading outside to the north.,out,false
-        exit:Le,East,The storage room to the east.,sr,false
+        exit:Le,East,The storage room to the east.,sr,false,true
         exit:Lw,West,The west door leading to the kitchen.,kit,false
     room:kit,Kitchen,The heart of the home filled with the smell of spices and the sight of baking supplies on the counter.,false
         container:f1,Fridge,A big fridge filled with delicious possibilities.,false
@@ -18,7 +18,7 @@ map:liv
         exit:Kw,West,The door leading west to the dining room.,dr,false
     room:pan,Pantry,The pantry is stocked full its shelves sagging under the weight of food supplies.,false
         equipment:f,Flour,A soft white bag of flour perfect for dough,false,false,combine,w,d,You combine the flour and water to form a dough.
-        exit:Pn,North,The door leading back to the kitchen.,kit,false
+        exit:Ps,South,The door leading back to the kitchen.,kit,false
     room:dr,Dining Room,The dining room is warm and inviting with a table set as if ready for guests.,false
         container:t,Table,A large wooden table that has hosted many happy meals.,false
         container:c,Chairs,Comfortable chairs that seem to invite you to sit.,false
