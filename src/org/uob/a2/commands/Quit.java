@@ -18,10 +18,16 @@ public class Quit extends Command {
         public Quit() {
             this.commandType = CommandType.QUIT;
         }
+        public Quit(String save) {
+            this.commandType = CommandType.QUIT;
+            this.value = save;
+        }
 
         @Override
         public String execute(GameState gameState){
-            saveGame(gameState);
+            if (this.value == "save"){
+                saveGame(gameState);
+            }
             StringBuilder result = new StringBuilder("Game over:\nYou have quit the game. The current game has been saved in gamestate.txt\nIn your inventory you had:\n");
             if (gameState.getPlayer().getInventory().isEmpty() && gameState.getPlayer().getEquipment().isEmpty()) {
                 result.append("Nothing.");
