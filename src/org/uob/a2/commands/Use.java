@@ -1,12 +1,14 @@
 package org.uob.a2.commands;
 
-import org.uob.a2.gameobjects.*;
+import org.uob.a2.gameobjects.Equipment;
+import org.uob.a2.gameobjects.GameObject;
+import org.uob.a2.gameobjects.GameState;
 
 import java.util.ArrayList;
 
 /**
  * Represents the use command, allowing the player to use equipment on a specific target in the game.
- * 
+ *
  * <p>
  * The use command checks if the player has the specified equipment and whether it can interact with
  * the target. The target can be a feature, item, or the current room, depending on the game context.
@@ -33,8 +35,8 @@ public class Use extends Command {
         ArrayList<GameObject> targetObjects = gameState.getMap().getCurrentRoom().getAll();
         boolean foundValid = false;
         for (GameObject obj : targetObjects) {
-            if (obj.getName().equals(target)) {
-                if (equipment.getUseInformation().getTarget().equals(obj.getId())) {
+            if (obj.getName().equalsIgnoreCase(target)) {
+                if (equipment.getUseInformation().getTarget().equalsIgnoreCase(obj.getId())) {
                     foundValid = true;
                     targetObject = obj;
                 } else {

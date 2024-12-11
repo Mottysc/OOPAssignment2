@@ -21,7 +21,7 @@ public class Combine extends Command {
             Equipment item1 = gameState.getPlayer().getEquipment(firstItem);
             Equipment item2 = gameState.getPlayer().getEquipment(secondItem);
             // Check if the items can be combined
-            if (item1.getUseInformation().getTarget().equals(item2.getId()) && item2.getUseInformation().getTarget().equals(item1.getId()) && item1.getUseInformation().getAction().equals("combine") && item2.getUseInformation().getAction().equals("combine")) {
+            if (item1.getUseInformation().getTarget().equalsIgnoreCase(item2.getId()) && item2.getUseInformation().getTarget().equalsIgnoreCase(item1.getId()) && item1.getUseInformation().getAction().equalsIgnoreCase("combine") && item2.getUseInformation().getAction().equalsIgnoreCase("combine")) {
                 // Combine the items
                 String newItemId = item1.getUseInformation().getResult();
 

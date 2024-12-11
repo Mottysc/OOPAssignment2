@@ -16,7 +16,7 @@ public class Equipment extends GameObject implements Usable {
     }
 
     public String use(GameObject target, GameState gameState) {
-        if (target.getId().equals(this.useInformation.getTarget())) {
+        if (target.getId().equalsIgnoreCase(this.useInformation.getTarget())) {
             if (this.useInformation.isUsed()) {
                 return "You have already used " + this.name;
             }
@@ -24,11 +24,11 @@ public class Equipment extends GameObject implements Usable {
             switch (useInformation.getAction()){
                 case "open":
                     gameState.getMap().getCurrentRoom().getAll().stream()
-                            .filter(obj -> obj.getId().equals(useInformation.getResult()))
+                            .filter(obj -> obj.getId().equalsIgnoreCase(useInformation.getResult()))
                             .forEach(obj -> obj.setHidden(false));
                     return useInformation.getMessage();
                 case "reveal":
-                    if (gameState.getMap().getCurrentRoom().getId().equals(useInformation.getTarget())){
+                    if (gameState.getMap().getCurrentRoom().getId().equalsIgnoreCase(useInformation.getTarget())){
                         gameState.getMap().getCurrentRoom().getAll().stream()
                                 .filter(GameObject::getHidden)
                                 .forEach(obj -> obj.setHidden(false));
@@ -41,7 +41,7 @@ public class Equipment extends GameObject implements Usable {
                     return "To combine an item, use the 'combine' command.";
                 case "unlock":
                     gameState.getMap().getCurrentRoom().getExits().stream()
-                            .filter(exit -> exit.getId().equals(useInformation.getTarget()))
+                            .filter(exit -> exit.getId().equalsIgnoreCase(useInformation.getTarget()))
                             .forEach(exit -> exit.setLocked(false));
                     return useInformation.getMessage();
             }

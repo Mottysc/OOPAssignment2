@@ -122,7 +122,7 @@ public class Status extends Command {
                     roomCoordinates.put(exit.getNextRoom(), new int[]{newX, newY});
                     grid[newX][newY] = exit.getNextRoom();
                     toVisit.add(gameState.getMap().getRooms().stream()
-                            .filter(room -> room.getId().equals(exit.getNextRoom()))
+                            .filter(room -> room.getId().equalsIgnoreCase(exit.getNextRoom()))
                             .findFirst().orElse(null));
                     visited.add(exit.getNextRoom());
                 }
@@ -133,7 +133,7 @@ public class Status extends Command {
         StringBuilder map = new StringBuilder();
         for (String[] row : grid) {
             for (String cell : row) {
-                if (cell.equals(" ")) {
+                if (cell.equalsIgnoreCase(" ")) {
                     map.append(" . "); // Empty cell
                 } else {
                     if (gameState.getMap().getCurrentRoom().getId().equalsIgnoreCase(cell)){
