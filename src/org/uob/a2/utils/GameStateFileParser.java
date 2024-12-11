@@ -72,7 +72,14 @@ public class GameStateFileParser {
                     currentEditingRoom.addItem(item);
                 }
                 case "equipment" -> {
-                    Equipment equipment = new Equipment(values.get(0), values.get(1), values.get(2), Boolean.parseBoolean(values.get(3)), new UseInformation(Boolean.parseBoolean(values.get(4)), values.get(5), values.get(6), values.get(7), values.get(8)));
+                    Equipment equipment;
+                    if (values.size() == 9){
+                        equipment = new Equipment(values.get(0), values.get(1), values.get(2), Boolean.parseBoolean(values.get(3)), new UseInformation(Boolean.parseBoolean(values.get(4)), values.get(5), values.get(6), values.get(7), values.get(8)));
+                    }
+                    else{
+                        equipment = new Equipment(values.get(0), values.get(1), values.get(2), Boolean.parseBoolean(values.get(3)), new UseInformation(false, values.get(4), values.get(5), values.get(6), values.get(7));
+                    }
+
                     currentEditingRoom.addEquipment(equipment);
                 }
                 case "container" -> {
