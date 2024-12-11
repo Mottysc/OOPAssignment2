@@ -40,7 +40,7 @@ public class Look extends Command {
                     if (exit.getHidden()) {
                         continue;
                     }
-                    exits.append(exit.getDescription()).append("\n");
+                    exits.append(exit.getName()).append(exit.getDescription()).append("\n");
                 }
                 return exits.toString();
             case "features":
