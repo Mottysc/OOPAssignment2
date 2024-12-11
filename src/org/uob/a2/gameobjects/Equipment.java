@@ -20,19 +20,31 @@ public class Equipment extends GameObject implements Usable {
             if (this.useInformation.isUsed()) {
                 return "You have already used " + this.name;
             }
-            this.useInformation.setUsed(true);
             switch (useInformation.getAction()){
                 case "open":
                     gameState.getMap().getCurrentRoom().getAll().stream()
                             .filter(obj -> obj.getId().equalsIgnoreCase(useInformation.getResult()))
                             .forEach(obj -> obj.setHidden(false));
                     gameState.getPlayer().getEquipment().remove(this);
+                    this.useInformation.setUsed(true);
                     return useInformation.getMessage();
                 case "reveal":
                     if (gameState.getMap().getCurrentRoom().getId().equalsIgnoreCase(useInformation.getTarget())){
                         gameState.getMap().getCurrentRoom().getAll().stream()
+                                .filter(obj -> obj.getHidden() && obj.getId().equalsIgnoreCase(useInformation.getResult()))
+                                .forEach(obj -> obj.setHidden(false));
+                        this.useInformation.setUsed(true);
+                        return useInformation.getMessage();
+                    }
+                    else{
+                        return "You cannot use the " + this.name + " here.";
+                    }
+                case "revealx":
+                    if (gameState.getMap().getCurrentRoom().getId().equalsIgnoreCase(useInformation.getTarget())){
+                        gameState.getMap().getCurrentRoom().getAll().stream()
                                 .filter(obj -> obj.getHidden() && !obj.getId().equalsIgnoreCase(useInformation.getResult()))
                                 .forEach(obj -> obj.setHidden(false));
+                        this.useInformation.setUsed(true);
                         return useInformation.getMessage();
                     }
                     else{
@@ -45,6 +57,7 @@ public class Equipment extends GameObject implements Usable {
                         gameState.getMap().getCurrentRoom().addEquipment(this);
                         gameState.getPlayer().getEquipment().remove(this);
                         gameState.getPlayer().addScore(5);
+                        this.useInformation.setUsed(true);
                         return useInformation.getMessage() +"\n+5 points!";
                     }
                     else{
@@ -55,6 +68,7 @@ public class Equipment extends GameObject implements Usable {
                             .filter(exit -> exit.getId().equalsIgnoreCase(useInformation.getTarget()))
                             .forEach(exit -> exit.setLocked(false));
                     gameState.getPlayer().getEquipment().remove(this);
+                    this.useInformation.setUsed(true);
                     return useInformation.getMessage();
             }
 
