@@ -29,7 +29,7 @@ public class Quit extends Command {
                 saveGame(gameState);
             }
             StringBuilder result = new StringBuilder("Game over:\nYou have quit the game.");
-            if (this.value.equalsIgnoreCase("save")){
+            if (this.value == "save"){
                 result.append("The current game has been saved in gamestate.txt");
             }
             result.append("\nIn your inventory you had:\n");
