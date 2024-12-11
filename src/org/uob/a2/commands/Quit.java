@@ -29,6 +29,9 @@ public class Quit extends Command {
             for (Item item : gameState.getPlayer().getInventory()) {
                 result.append(item.getName()).append(": ").append(item.getDescription()).append("\n");
             }
+            for (Equipment equipment : gameState.getPlayer().getEquipment()) {
+                result.append(equipment.getName()).append(": ").append(equipment.getDescription()).append("\n");
+            }
             return result.toString();
 
 
@@ -62,10 +65,16 @@ public class Quit extends Command {
                     writer.write("inventory:");
                 }
                 for (Item item : gameState.getPlayer().getInventory()) {
-                    writer.write(item.getId()+",");
+                    writer.write(item.getId());
+                    if (gameState.getPlayer().getInventory().indexOf(item) != gameState.getPlayer().getInventory().size() - 1 || !gameState.getPlayer().getEquipment().isEmpty()) {
+                        writer.write(",");
+                    }
                 }
                 for (Equipment equipment : gameState.getPlayer().getEquipment()) {
-                    writer.write(equipment.getId()+",");
+                    writer.write(equipment.getId());
+                    if (gameState.getPlayer().getEquipment().indexOf(equipment) != gameState.getPlayer().getEquipment().size() - 1) {
+                        writer.write(",");
+                    }
                 }
             } catch (IOException e) {
                 e.printStackTrace();
