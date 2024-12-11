@@ -33,19 +33,19 @@ public class Combine extends Command {
                         return "Error: Item not found in the room. Try combining it elsewhere.";
                     }
                     createdEquipment.setHidden(false);
-                    gameState.getPlayer().addEquipment(createdEquipment);
+
                     // Remove the original items from the player's inventory
                     gameState.getPlayer().getEquipment().remove(item1);
                     gameState.getPlayer().getEquipment().remove(item2);
-                    gameState.getMap().getCurrentRoom().getAll().remove(createdEquipment);
+
                 }
                 else {
                     createdItem.setHidden(false);
-                    gameState.getPlayer().addItem(createdItem);
+
                     // Remove the original items from the player's inventory
                     gameState.getPlayer().getEquipment().remove(item1);
                     gameState.getPlayer().getEquipment().remove(item2);
-                    gameState.getMap().getCurrentRoom().getAll().remove(createdItem);
+
                 }
                 gameState.getPlayer().addScore(5);
                 return item1.getUseInformation().getMessage() + "\n+5 points!";
