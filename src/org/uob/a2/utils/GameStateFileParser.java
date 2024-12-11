@@ -108,6 +108,10 @@ public class GameStateFileParser {
                         }
                     }
                 }
+                case "combination" -> {
+                    Combination combination = new Combination(values.get(1), values.get(2), values.get(3), values.get(4));
+                    gameState.getPlayer().addCombination(combination);
+                }
                 default -> {
                 }
             }

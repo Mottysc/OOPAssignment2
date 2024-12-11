@@ -14,6 +14,7 @@ public class Player {
     private String name;
     private ArrayList<Item> inventory;
     private ArrayList<Equipment> equipment;
+    private ArrayList<Combination> combinations;
     private int Score;
 
     public Player(String name) {
@@ -27,6 +28,12 @@ public class Player {
     }
     public void addItem(Item item) {
         this.inventory.add(item);
+    }
+    public void addCombination(Combination combination) {
+        this.combinations.add(combination);
+    }
+    public ArrayList<Combination> getCombinations() {
+        return combinations;
     }
 
     public ArrayList<Equipment> getEquipment() {

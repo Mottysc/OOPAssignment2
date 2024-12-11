@@ -16,45 +16,42 @@ public class Combine extends Command {
     @Override
     public String execute(GameState gameState) {
         // Check if the player has the specified items in their inventory
-        if (gameState.getPlayer().hasEquipment(firstItem) && gameState.getPlayer().hasEquipment(secondItem)) {
+        if (gameState.getPlayer().hasItem(firstItem) && gameState.getPlayer().hasItem(secondItem)) {
             // Retrieve the items from the player's inventory
-            Equipment item1 = gameState.getPlayer().getEquipment(firstItem);
-            Equipment item2 = gameState.getPlayer().getEquipment(secondItem);
+            Item item1 = gameState.getPlayer().getItem(firstItem);
+            Item item2 = gameState.getPlayer().getItem(secondItem);
             // Check if the items can be combined
-            if (item1.getUseInformation().getTarget().equalsIgnoreCase(item2.getId()) && item2.getUseInformation().getTarget().equalsIgnoreCase(item1.getId()) && item1.getUseInformation().getAction().equalsIgnoreCase("combine") && item2.getUseInformation().getAction().equalsIgnoreCase("combine")) {
-                // Combine the items
-                String newItemId = item1.getUseInformation().getResult();
-
-                // Add the new item to the player's inventory
-                Item createdItem = gameState.getMap().getCurrentRoom().getItem(newItemId);
-                if (createdItem == null) {
-                    Equipment createdEquipment = gameState.getMap().getCurrentRoom().getEquipment(newItemId);
-                    if (createdEquipment == null) {
-                        return "Error: Item not found in the room. Try combining it elsewhere.";
+            boolean canCombine = false;
+            for (Combination combo : gameState.getPlayer().getCombinations()){
+                if (combo.getItem1().equalsIgnoreCase(item1.getId()) && combo.getItem2().equalsIgnoreCase(item2.getId()) || combo.getItem1().equalsIgnoreCase(item2.getId()) && combo.getItem2().equalsIgnoreCase(item1.getId())){
+                    canCombine = true;
+                    // Combine the items
+                    String newItemId = combo.getResult();
+                    // Add the new item to the player's inventory
+                    for (Room room : gameState.getMap().getRooms()) {
+                        Item createdItem = room.getItem(newItemId);
+                        if (createdItem == null) {
+                            Equipment createdEquipment = room.getEquipment(newItemId);
+                            createdEquipment.setHidden(false);
+                        } else {
+                            createdItem.setHidden(false);
+                        }
+                        // Remove the original items from the player's inventory
+                        gameState.getPlayer().getInventory().remove(item1);
+                        gameState.getPlayer().getInventory().remove(item2);
+                        gameState.getPlayer().addScore(5);
+                        return combo.getDescription() + "\n+5 points!";
                     }
-                    createdEquipment.setHidden(false);
-
-                    // Remove the original items from the player's inventory
-                    gameState.getPlayer().getEquipment().remove(item1);
-                    gameState.getPlayer().getEquipment().remove(item2);
-
                 }
-                else {
-                    createdItem.setHidden(false);
-
-                    // Remove the original items from the player's inventory
-                    gameState.getPlayer().getEquipment().remove(item1);
-                    gameState.getPlayer().getEquipment().remove(item2);
-
-                }
-                gameState.getPlayer().addScore(5);
-                return item1.getUseInformation().getMessage() + "\n+5 points!";
-            } else {
+            }
+            if (!canCombine) {
                 return "You cannot combine the " + firstItem + " and " + secondItem + ".";
             }
-        } else {
+        }
+        else {
             return "You do not have the required items in your inventory.";
         }
+        return null;
     }
 
     @Override
