@@ -22,7 +22,7 @@ map:liv
     room:dr,Dining Room,The dining room is warm and inviting with a table set as if ready for guests.,false
         container:t,Table,A large wooden table that has hosted many happy meals.,false
         container:c,Chairs,Comfortable chairs that seem to invite you to sit.,false
-        equipment:sk,Storage Key,A small brass key for the storage room,false,false,unlock,sr,xx,You use the storage key to unlock the storage room.
+        equipment:sk,Storage Key,A small brass key for the storage room,false,false,unlock,Le,xx,You use the storage key to unlock the storage room.
         exit:Dr,East,The door leading back to the kitchen.,kit,false
         exit:Ds,South,The door leading to the hallway.,h,false
     room:h,Hallway,The hallway feels snug its walls lined with family photos.,false
