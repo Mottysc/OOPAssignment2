@@ -74,10 +74,13 @@ public class Parser {
                 return new Help(tokens.get(1).getTokenType().name());
             }
             case QUIT -> {
-                if (tokens.size() != 2 && !tokens.get(1).getValue().equalsIgnoreCase("save")){
+                if (tokens.size() != 2) {
+                    if (tokens.get(1).getValue().equalsIgnoreCase("save")) {
+                        return new Quit("save");
+                    }
                     throw new CommandErrorException("Invalid QUIT command format. Expected: QUIT [SAVE]");
                 }
-                return new Quit(tokens.get(1).getValue());
+                return new Quit();
             }
             case COMBINE -> {
                 if (tokens.size() != 5 || (tokens.get(2).getTokenType() != TokenType.PREPOSITION)) {

@@ -60,7 +60,7 @@ public class Help extends Command {
             case "combine" ->
                     "COMBINE Command:\nThe combine command allows you to combine two items or pieces of equipment into a new object.";
             case "quit" ->
-                    "QUIT Command:\nThe quit command allows you to exit the game. To quit the game, type 'quit'.";
+                    "QUIT [save] Command:\nThe quit command allows you to exit the game. To quit the game, type 'quit'. Include 'save' to save your progress.";
             case "null" ->
                     "Welcome to the game! You can use the following commands:\n" +
                             "- MOVE <exit name>: Move to a different location as defined by an exit’s name.\n" +
@@ -71,7 +71,7 @@ public class Help extends Command {
                             "- STATUS <inventory|player|item|equipment|map|score>: Check your current status/inventory, get information about a specific item/equipment, or display the map and your score.\n" +
                             "- HELP <topic>: Display this help information or get help on a specific command.\n" +
                             "- COMBINE <item1> and <item2>: Combine two items into a new item or equipment.\n" +
-                            "- QUIT: Exit the game.\n";
+                            "- QUIT [save]: Exit the game. Include \'save\' to save your progress\n";
             default ->
                     "Welcome to the game! You can use the following commands:\n" +
                     "- MOVE <exit name>: Move to a different location as defined by an exit’s name.\n" +
@@ -82,7 +82,7 @@ public class Help extends Command {
                     "- STATUS <inventory|player|item|equipment|map|score>: Check your current status/inventory, get information about a specific item/equipment, or display the map and your score.\n" +
                     "- HELP <topic>: Display this help information or get help on a specific command.\n" +
                     "- COMBINE <item1> and <item2>: Combine two items into a new item or equipment.\n" +
-                    "- QUIT: Exit the game.\n";
+                    "- QUIT [save]: Exit the game. Include \'save\' to save your progress\n";
         };
     }
 
