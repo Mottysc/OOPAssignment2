@@ -55,7 +55,7 @@ public class Quit extends Command {
                                 useInfo.isUsed() + "," + useInfo.getAction() + "," + useInfo.getTarget() + "," + useInfo.getResult() + "," + useInfo.getMessage() + "\n");
                     }
                     for (Exit exit : room.getExits()) {
-                        writer.write("exit:" + exit.getId() + "," + exit.getName() + "," + exit.getDescription() + "," + exit.getNextRoom() + "," + exit.getHidden() + "\n");
+                        writer.write("exit:" + exit.getId() + "," + exit.getName() + "," + exit.getDescription() + "," + exit.getNextRoom() + "," + exit.getHidden() + (exit.isLocked() ? exit.isLocked(): "") + "\n");
                     }
                 }
             } catch (IOException e) {
