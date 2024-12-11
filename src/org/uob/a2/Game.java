@@ -38,7 +38,7 @@ public class Game {
         System.out.print("Do you want to start a new game or load a saved game? (New/Load)\n>> ");
         String choice = scanner.nextLine();
         GameState game = null;
-        switch (choice.toUpperCase()) {
+        switch (choice.toUpperCase().trim()) {
             case "NEW":
                 System.out.println("Starting a new game...");
                 game = GameStateFileParser.parse("data/game.txt");
