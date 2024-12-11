@@ -12,6 +12,7 @@ map:liv
         container:s1,Stove,A sturdy stove ready to bring your creations to life.,false
         equipment:rp,Rolling Pin,A rolling pin that has seen many loaves and pastries.,false,false,open,d,d_flat,You roll out the dough into a flat unbaked matzah.
         equipment:d_flat,Matzah Dough,The dough you carefully rolled out into a flat matzah.,true,false,combine,matz,matzah,You bake the matzah in the oven.
+        equipment:d,Dough,A lump of dough soft and pliable,true,false,combine,rp,d_flat,You bake the dough into a matzah.
         exit:Kn,North,The door leading to the pantry where food is kept.,pan,false
         exit:Ke,East,The door leading east to the living room.,liv,false
         exit:Ks,South,The south door leading down to the cellar.,cel,false
@@ -33,7 +34,6 @@ map:liv
         equipment:b,Bucket,A sturdy bucket ready to hold water.,false,false,open,p,w,You pump the water into the bucket.
         container:p,Pump,A heavy pump that requires effort to use.,false
         equipment:w,Water,Clear cool water for your dough,true,false,combine,f,d,You combine the flour and water to form a dough.
-        equipment:d,Dough,A lump of dough soft and pliable,true,false,combine,rp,d_flat,You bake the dough into a matzah.
         exit:Wn,North,The door leading back to the hallway.,h,false
     room:sr,Storage Room,This quiet room is packed with Passover essentials waiting to be used.,false
         container:s,Shelves,The shelves are full of Passover treasures like your seder plate.,false
