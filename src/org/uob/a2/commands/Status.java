@@ -139,7 +139,7 @@ public class Status extends Command {
                     if (gameState.getMap().getCurrentRoom().getId() == cell){
                         cell = cell.toUpperCase();
                     }
-                    map.append(" ").append(cell).append(" ");
+                    map.append(" ").append(cell.charAt(0)).append(" ");
                 }
             }
             map.append("\n"); // Newline for next row
