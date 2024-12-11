@@ -3,7 +3,7 @@ package org.uob.a2.commands;
 import org.uob.a2.gameobjects.*;
 import java.io.*;
 import java.io.IOException;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
 
 /**
  * Represents the quit command, allowing the player to exit the game.
@@ -71,12 +71,16 @@ public class Quit extends Command {
                         writer.write("exit:" + exit.getId() + "," + exit.getName() + "," + exit.getDescription() + "," + exit.getNextRoom() + "," + exit.getHidden() + (exit.isLocked() ? "," + exit.isLocked(): "") + "\n");
                     }
                 }
-                for (Item item : gameState.getPlayer().getInventory()) {
-                    writer.write("inventory:item," + item.getId() + "," + item.getName() + "," + item.getDescription() + "," + item.getHidden() + "\n");
+                ArrayList<Item> itemArrayList = gameState.getPlayer().getInventory();
+                for (int i = 0; i < itemArrayList.size(); i++) {
+                    Item item = itemArrayList.get(i);
+                    writer.write("inventory:"+i+",item," + item.getId() + "," + item.getName() + "," + item.getDescription() + "," + item.getHidden() + "\n");
                 }
-                for (Equipment equipment : gameState.getPlayer().getEquipment()) {
+                ArrayList<Equipment> equipmentArrayList = gameState.getPlayer().getEquipment();
+                for (int i = 0; i < equipmentArrayList.size(); i++) {
+                    Equipment equipment = equipmentArrayList.get(i);
                     UseInformation useInfo = equipment.getUseInformation();
-                    writer.write("inventory:equipment," + equipment.getId() + "," + equipment.getName() + "," + equipment.getDescription() + "," + equipment.getHidden() + "," +
+                    writer.write("inventory:"+i+",equipment," + equipment.getId() + "," + equipment.getName() + "," + equipment.getDescription() + "," + equipment.getHidden() + "," +
                             useInfo.isUsed() + "," + useInfo.getAction() + "," + useInfo.getTarget() + "," + useInfo.getResult() + "," + useInfo.getMessage() + "\n");
                 }
             } catch (IOException e) {

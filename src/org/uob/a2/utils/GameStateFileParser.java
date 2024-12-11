@@ -90,13 +90,13 @@ public class GameStateFileParser {
                     }
                 }
                 case "inventory" -> {
-                    switch (values.get(0)) {
+                    switch (values.get(1)) {
                         case "item" -> {
-                            Item item = new Item(values.get(1), values.get(2), values.get(3), Boolean.parseBoolean(values.get(4)));
+                            Item item = new Item(values.get(2), values.get(3), values.get(4), Boolean.parseBoolean(values.get(5)));
                             gameState.getPlayer().addItem(item);
                         }
                         case "equipment" -> {
-                            Equipment equipment = new Equipment(values.get(1), values.get(2), values.get(3), Boolean.parseBoolean(values.get(4)), new UseInformation(Boolean.parseBoolean(values.get(5)), values.get(6), values.get(7), values.get(8), values.get(9)));
+                            Equipment equipment = new Equipment(values.get(2), values.get(3), values.get(4), Boolean.parseBoolean(values.get(5)), new UseInformation(Boolean.parseBoolean(values.get(6)), values.get(7), values.get(8), values.get(9), values.get(10)));
                             gameState.getPlayer().addEquipment(equipment);
                         }
                     }
