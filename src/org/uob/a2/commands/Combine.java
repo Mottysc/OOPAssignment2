@@ -25,8 +25,6 @@ public class Combine extends Command {
                 // Combine the items
                 String newItemId = item1.getUseInformation().getResult();
 
-
-
                 // Add the new item to the player's inventory
                 Item createdItem = gameState.getMap().getCurrentRoom().getItem(newItemId);
                 if (createdItem == null) {

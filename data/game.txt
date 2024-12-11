@@ -38,7 +38,7 @@ map:liv
     room:sr,Storage Room,This quiet room is packed with Passover essentials waiting to be used.,false
         container:s,Shelves,The shelves are full of Passover treasures like your seder plate.,false
         equipment:cup,Cup,A beautiful cup for your Seder wine.,false,false,combine,wine,cupwine,You pour the wine into the cup.
-        equipment:cupwine,Cup of wine,A cup filled with rich red wine.,true,false,combine,
+        item:cupwine,Cup of wine,A cup filled with rich red wine.,true
         equipment:sp,Seder Plate,A special plate for holding symbolic foods for the Seder.,false,false,combine,matz,sp1,You place the matzah on the Seder plate.
         exit:Sw,West,The door leading back to the living room.,liv,false
     room:cel,Cellar,The cellar is dark and musty but you sense something hidden in the shadows.,false
