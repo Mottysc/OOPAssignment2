@@ -36,27 +36,26 @@ public class Quit extends Command {
         public void saveGame(GameState gameState) {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter("gamestate.txt"))) {
                 writer.write("player:" + gameState.getPlayer().getName() + "\n");
-                writer.write("map:" + gameState.getMap().getRooms().stream().map(Room::getName).collect(Collectors.joining(",")) + "\n");
+                writer.write("map:" + gameState.getMap().getCurrentRoom() + "\n");
 
                 for (Room room : gameState.getMap().getRooms()) {
-                    writer.write("room:" + room.getId() + "," + room.getName() + "," + room.getDescription() + "\n");
+                    writer.write("room:" + room.getId() + "," + room.getName() + "," + room.getDescription() + "," + room.getHidden() + "\n");
                     for (Item item : room.getItems()) {
                         writer.write("item:" + item.getId() + "," + item.getName() + "," + item.getDescription() + "," + item.getHidden() + "\n");
                     }
                     for (Feature feature : room.getFeatures()) {
-                        if (feature instanceof Container) {
-                            Container container = (Container) feature;
-                            writer.write("container:" + container.getId() + "," + container.getName() + "," + container.getDescription() + "\n");
+                        if (feature instanceof Container container) {
+                            writer.write("container:" + container.getId() + "," + container.getName() + "," + container.getDescription() + "," + container.getHidden() + "\n");
                         }
                     }
                     for (Exit exit : room.getExits()) {
-                        writer.write("exit:" + exit.getId() + "," + exit.getName() + "," + exit.getDescription() + "," + exit.getNextRoom() + "\n");
+                        writer.write("exit:" + exit.getId() + "," + exit.getName() + "," + exit.getDescription() + "," + exit.getNextRoom() + "," + exit.getHidden() + "\n");
                     }
                 }
 
                 for (Equipment equipment : gameState.getPlayer().getEquipment()) {
                     UseInformation useInfo = equipment.getUseInformation();
-                    writer.write("equipment:" + equipment.getId()  + "," + equipment.getName() + "," + equipment.getDescription() + "," +
+                    writer.write("equipment:" + equipment.getId()  + "," + equipment.getName() + "," + equipment.getDescription() + "," + equipment.getHidden() + "," +
                             useInfo.isUsed() + "," + useInfo.getAction() + "," + useInfo.getTarget() + "," + useInfo.getResult() + "," + useInfo.getMessage() + "\n");
                 }
             } catch (IOException e) {
