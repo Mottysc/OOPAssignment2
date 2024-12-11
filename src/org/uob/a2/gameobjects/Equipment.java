@@ -26,6 +26,7 @@ public class Equipment extends GameObject implements Usable {
                     gameState.getMap().getCurrentRoom().getAll().stream()
                             .filter(obj -> obj.getId().equalsIgnoreCase(useInformation.getResult()))
                             .forEach(obj -> obj.setHidden(false));
+                    gameState.getPlayer().getEquipment().remove(this);
                     return useInformation.getMessage();
                 case "reveal":
                     if (gameState.getMap().getCurrentRoom().getId().equalsIgnoreCase(useInformation.getTarget())){
@@ -43,6 +44,7 @@ public class Equipment extends GameObject implements Usable {
                     gameState.getMap().getCurrentRoom().getExits().stream()
                             .filter(exit -> exit.getId().equalsIgnoreCase(useInformation.getTarget()))
                             .forEach(exit -> exit.setLocked(false));
+                    gameState.getPlayer().getEquipment().remove(this);
                     return useInformation.getMessage();
             }
 

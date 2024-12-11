@@ -25,9 +25,7 @@ public class Combine extends Command {
                 // Combine the items
                 String newItemId = item1.getUseInformation().getResult();
 
-                // Remove the original items from the player's inventory
-                gameState.getPlayer().getEquipment().remove(item1);
-                gameState.getPlayer().getEquipment().remove(item2);
+
 
                 // Add the new item to the player's inventory
                 Item createdItem = gameState.getMap().getCurrentRoom().getItem(newItemId);
@@ -38,11 +36,17 @@ public class Combine extends Command {
                     }
                     createdEquipment.setHidden(false);
                     gameState.getPlayer().addEquipment(createdEquipment);
+                    // Remove the original items from the player's inventory
+                    gameState.getPlayer().getEquipment().remove(item1);
+                    gameState.getPlayer().getEquipment().remove(item2);
                     gameState.getMap().getCurrentRoom().getAll().remove(createdEquipment);
                 }
                 else {
                     createdItem.setHidden(false);
                     gameState.getPlayer().addItem(createdItem);
+                    // Remove the original items from the player's inventory
+                    gameState.getPlayer().getEquipment().remove(item1);
+                    gameState.getPlayer().getEquipment().remove(item2);
                     gameState.getMap().getCurrentRoom().getAll().remove(createdItem);
                 }
                 gameState.getPlayer().addScore(5);
