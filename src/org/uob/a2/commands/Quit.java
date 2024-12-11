@@ -48,14 +48,14 @@ public class Quit extends Command {
                             writer.write("container:" + container.getId() + "," + container.getName() + "," + container.getDescription() + "," + container.getHidden() + "\n");
                         }
                     }
-                    for (Exit exit : room.getExits()) {
-                        writer.write("exit:" + exit.getId() + "," + exit.getName() + "," + exit.getDescription() + "," + exit.getNextRoom() + "," + exit.getHidden() + "\n");
-                    }
 
                     for (Equipment equipment : room.getEquipments()) {
                         UseInformation useInfo = equipment.getUseInformation();
                         writer.write("equipment:" + equipment.getId() + "," + equipment.getName() + "," + equipment.getDescription() + "," + equipment.getHidden() + "," +
                                 useInfo.isUsed() + "," + useInfo.getAction() + "," + useInfo.getTarget() + "," + useInfo.getResult() + "," + useInfo.getMessage() + "\n");
+                    }
+                    for (Exit exit : room.getExits()) {
+                        writer.write("exit:" + exit.getId() + "," + exit.getName() + "," + exit.getDescription() + "," + exit.getNextRoom() + "," + exit.getHidden() + "\n");
                     }
                 }
             } catch (IOException e) {
