@@ -19,11 +19,12 @@ map:liv
         exit:Kw,West,The door leading west to the dining room.,dr,false
     room:pan,Pantry,The pantry is stocked full its shelves sagging under the weight of food supplies.,false
         equipment:f,Flour,A soft white bag of flour perfect for dough,false,combine,w,d,You combine the flour and water to form a dough.
+        item:egg,Eggs,A carton of free-range eggs.,false
         exit:Ps,South,The door leading back to the kitchen.,kit,false
     room:dr,Dining Room,The dining room is warm and inviting with a table set as if ready for guests.,false
         container:t,Table,A large wooden table that has hosted many happy meals.,false
         container:c,Chairs,Comfortable chairs that seem to invite you to sit.,false
-        equipment:sp1,Seder Plate,Your Seder Plate with the matzah placed on it,false,drop,dr,xx,You place the Seder plate on the table.
+        equipment:sp1,Seder Plate,Your Seder Plate with the matzah placed on it,true,drop,dr,xx,You place the Seder plate on the table.
         equipment:sk,Storage Key,A small brass key for the storage room,false,unlock,Le,xx,You use the storage key to unlock the storage room.
         exit:Dr,East,The door leading back to the kitchen.,kit,false
         exit:Ds,South,The door leading to the hallway.,h,false
@@ -32,12 +33,14 @@ map:liv
         exit:Hn,North,The door leading to the dining room.,dr,false
         exit:Hs,South,The door leading outside to the water pump.,wp,false,true
     room:wp,Water Pump,The air is fresh here with the gentle sound of water dripping from the pump.,false
-        equipment:b,Bucket,A sturdy bucket ready to hold water.,false,open,p,w,You pump the water into the bucket.
         container:p,Pump,A heavy pump that requires effort to use.,false
+        equipment:b,Bucket,A sturdy bucket ready to hold water.,false,open,p,w,You pump the water into the bucket.
         equipment:w,Water,Clear cool water for your dough,true,combine,f,d,You combine the flour and water to form a dough.
         exit:Wn,North,The door leading back to the hallway.,h,false
     room:sr,Storage Room,This quiet room is packed with Passover essentials waiting to be used.,false
         container:s,Shelves,The shelves are full of Passover treasures like your seder plate.,false
+        item:mar,Maror,Bitter herbs for the Seder.,false
+        item:nmp,Name plates,Name plates for each guest at the Seder.,false
         equipment:cup,Cup,A beautiful cup for your Seder wine.,false,combine,wine,cupwine,You pour the wine into the cup. You should probably put this on your dining room table.
         equipment:cupwine,Cup of wine,A cup filled with rich red wine.,true,drop,dr,xx,You place the cup of wine on the table.
         equipment:sp,Seder Plate,A special plate for holding symbolic foods for the Seder.,false,combine,matz,sp1,You place the matzah on the Seder plate. You should probably put this on your dining room table.
@@ -49,6 +52,7 @@ map:liv
         exit:Cn,North,The door leading back to the kitchen.,kit,false
     room:out,Outside,The garden is blooming with a peaceful path leading into the distance.,false
         container:g,Garden,Flowers bloom here and amidst them lies a torch waiting to be found.,false
+        item:flow,Flower,A pretty flower that brightens up your day.,false
         equipment:t,Torch,A torch that can light up the darkest places.,false,revealx,cel,wine,You light the torch and the dark cellar becomes visible.
         exit:Os,South,The door leading back to the living room.,liv,false
         exit:Oe,East,The door leading to the matzah oven.,ov,false
