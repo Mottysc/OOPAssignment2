@@ -10,15 +10,15 @@ map:liv
     room:kit,Kitchen,The heart of the home filled with the smell of spices and the sight of baking supplies on the counter.,false
         container:f1,Fridge,A big fridge filled with delicious possibilities.,false
         container:s1,Stove,A sturdy stove ready to bring your creations to life.,false
-        item:rp,Rolling Pin,A rolling pin that has seen many loaves and pastries.,d,d_flat,false
-        item:d_flat,Matzah Dough,The dough you carefully rolled out into a flat matzah.,fir,matzah,true
-        item:d,Dough,A lump of dough soft and pliable,rp,d_flat,true
+        item:rp,Rolling Pin,A rolling pin that has seen many loaves and pastries.,false
+        item:d_flat,Matzah Dough,The dough you carefully rolled out into a flat matzah.,true
+        item:d,Dough,A lump of dough soft and pliable,true
         exit:Kn,North,The door leading to the pantry where food is kept.,pan,false
         exit:Ke,East,The door leading east to the living room.,liv,false
         exit:Ks,South,The south door leading down to the cellar.,cel,false
         exit:Kw,West,The door leading west to the dining room.,dr,false
     room:pan,Pantry,The pantry is stocked full its shelves sagging under the weight of food supplies.,false
-        item:f,Flour,A soft white bag of flour perfect for dough,w,d,false
+        item:f,Flour,A soft white bag of flour perfect for dough,false
         item:egg,Eggs,A carton of free-range eggs.,false
         exit:Ps,South,The door leading back to the kitchen.,kit,false
     room:dr,Dining Room,The dining room is warm and inviting with a table set as if ready for guests.,false
@@ -35,20 +35,20 @@ map:liv
     room:wp,Water Pump,The air is fresh here with the gentle sound of water dripping from the pump.,false
         container:p,Pump,A heavy pump that requires effort to use.,false
         equipment:b,Bucket,A sturdy bucket ready to hold water.,false,open,p,w,You pump the water into the bucket.
-        item:w,Water,Clear cool water for your dough,f,d,true
+        item:w,Water,Clear cool water for your dough,true
         exit:Wn,North,The door leading back to the hallway.,h,false
     room:sr,Storage Room,This quiet room is packed with Passover essentials waiting to be used.,false
         container:s,Shelves,The shelves are full of Passover treasures like your seder plate.,false
         item:mar,Maror,Bitter herbs for the Seder.,false
         item:nmp,Name plates,Name plates for each guest at the Seder.,false
-        item:cup,Cup,A beautiful cup for your Seder wine.,wine,cupwine,false
+        item:cup,Cup,A beautiful cup for your Seder wine.,false
         equipment:cupwine,Cup of wine,A cup filled with rich red wine.,true,drop,dr,xx,You place the cup of wine on the table.
-        item:sp,Seder Plate,A special plate for holding symbolic foods for the Seder.,matz,sp1,false
+        item:sp,Seder Plate,A special plate for holding symbolic foods for the Seder.,false
         exit:Sw,West,The door leading back to the living room.,liv,false
     room:cel,Cellar,The cellar is dark and musty but you sense something hidden in the shadows.,false
         container:bar,Barrels,Large barrels that seem to hide their secrets.,true
         equipment:crow,Crowbar,A heavy crowbar perfect for prying things open.,true,open,bar,wine,You open the barrel and find some wine.
-        item:wine,Wine,A bottle of rich red wine.,cup,cupwine,true
+        item:wine,Wine,A bottle of rich red wine.,true
         exit:Cn,North,The door leading back to the kitchen.,kit,false
     room:out,Outside,The garden is blooming with a peaceful path leading into the distance.,false
         container:g,Garden,Flowers bloom here and amidst them lies a torch waiting to be found.,false
@@ -58,18 +58,18 @@ map:liv
         exit:Oe,East,The door leading to the matzah oven.,ov,false
     room:ov,Oven,The matzah oven radiates warmth ready to bake something special.,false
         container:cont_ov,Oven,A sturdy oven its surface slightly warm to the touch.,false
-        item:fir,Fire,A small but steady fire to bake your matzah.,d_flat,matz,true
-        item:matz,Matzah,The matzah you baked in the oven.,sp,sp1,true
+        item:fir,Fire,A small but steady fire to bake your matzah.,true
+        item:matz,Matzah,The matzah you baked in the oven.,true
         equipment:mat,Matches,A small box of matches for lighting the fire.,false,open,cont_ov,fir,You strike the matches and light the oven.
         exit:Ow,West,The door leading back to the outside.,out,false
 inventory:0,item,clue,Quest list,Your goal is to make Matzah and a cup of wine and place them on the dining room table.,false
-combination:0,d,d_flat,You roll out the dough into a flat unbaked matzah.
-combination:1,fir,matzah,You bake the matzah in the oven.
-combination:2,rp,d_flat,You roll out the dough into a flat unbaked matzah.
-combination:3,w,d,You combine the flour and water to form a dough.
-combination:4,f,d,You combine the flour and water to form a dough.
-combination:5,matz,sp1,You place the matzah on the Seder plate. You should probably put this on your dining room table.
-combination:6,wine,cupwine,You pour the wine into the cup. You should probably put this on your dining room table.
-combination:7,cup,cupwine,You pour the wine into the cup.
-combination:8,d_flat,matz,You bake the matzah in the oven.
-combination:9,sp,sp1,You place the matzah on the Seder plate.
+combination:0,rp,d,d_flat,You roll out the dough into a flat unbaked matzah.
+combination:1,d_flat,fir,matz,You bake the matzah in the oven.
+combination:2,d,rp,d_flat,You roll out the dough into a flat unbaked matzah.
+combination:3,f,w,d,You combine the flour and water to form a dough.
+combination:4,w,f,d,You combine the flour and water to form a dough.
+combination:5,sp,matz,sp1,You place the matzah on the Seder plate. You should probably put this on your dining room table.
+combination:6,cup,wine,cupwine,You pour the wine into the cup. You should probably put this on your dining room table.
+combination:7,wine,cup,cupwine,You pour the wine into the cup.
+combination:8,fir,d_flat,matz,You bake the matzah in the oven.
+combination:9,matz,sp,sp1,You place the matzah on the Seder plate.
