@@ -89,6 +89,26 @@ public class GameStateFileParser {
                         currentEditingRoom.addExit(exit);
                     }
                 }
+                case "inventory" -> {
+                    for (String itemID : values) {
+                        for (Room room : gameState.getMap().getRooms()) {
+                            Item item = room.getItem(itemID);
+                            if (item != null) {
+                                gameState.getPlayer().addItem(item);
+                                room.getItems().remove(item);
+                                break;
+                            }
+                            else {
+                                Equipment equipment = room.getEquipment(itemID);
+                                if (equipment.getId().equals(itemID)) {
+                                    gameState.getPlayer().addEquipment(equipment);
+                                    room.getEquipments().remove(equipment);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
                 default -> {
                 }
             }

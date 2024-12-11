@@ -22,7 +22,7 @@ public class Quit extends Command {
         @Override
         public String execute(GameState gameState){
             saveGame(gameState);
-            StringBuilder result = new StringBuilder("Game over:\nYou have quit the game. Thank you for playing! In your inventory you had:");
+            StringBuilder result = new StringBuilder("Game over:\nYou have quit the game. The current game has been saved in gamestate.txt\nThank you for playing! In your inventory you had:");
             if (gameState.getPlayer().getInventory().isEmpty()) {
                 result.append(" nothing.");
             }
@@ -55,8 +55,17 @@ public class Quit extends Command {
                                 useInfo.isUsed() + "," + useInfo.getAction() + "," + useInfo.getTarget() + "," + useInfo.getResult() + "," + useInfo.getMessage() + "\n");
                     }
                     for (Exit exit : room.getExits()) {
-                        writer.write("exit:" + exit.getId() + "," + exit.getName() + "," + exit.getDescription() + "," + exit.getNextRoom() + "," + exit.getHidden() + (exit.isLocked() ? exit.isLocked(): "") + "\n");
+                        writer.write("exit:" + exit.getId() + "," + exit.getName() + "," + exit.getDescription() + "," + exit.getNextRoom() + "," + exit.getHidden() + (exit.isLocked() ? "," + exit.isLocked(): "") + "\n");
                     }
+                }
+                if (gameState.getPlayer().getInventory().size() + gameState.getPlayer().getEquipment().size() > 0) {
+                    writer.write("inventory:");
+                }
+                for (Item item : gameState.getPlayer().getInventory()) {
+                    writer.write("," + item.getId());
+                }
+                for (Equipment equipment : gameState.getPlayer().getEquipment()) {
+                    writer.write("," + equipment.getId());
                 }
             } catch (IOException e) {
                 e.printStackTrace();
