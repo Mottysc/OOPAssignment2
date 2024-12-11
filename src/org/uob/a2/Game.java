@@ -7,6 +7,7 @@ import org.uob.a2.parser.*;
 import org.uob.a2.utils.*;
 
 import java.io.File;
+import java.util.Locale;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -14,7 +15,7 @@ import java.util.stream.Stream;
 
 /**
  * Main class for the game application. Handles game setup, input parsing, and game execution.
- * 
+ *
  * <p>
  * This class initializes the game state, reads user input, processes commands, and maintains the game loop.
  * </p>
@@ -32,26 +33,51 @@ public class Game {
                 Command help = new Help("move");
         System.out.println(help.execute(gameState));
         */
-        GameState game = GameStateFileParser.parse("data/game.txt");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Welcome to the game!");
+        System.out.println("Do you want to start a new game or load a saved game? (New/Load)");
+        String choice = scanner.nextLine();
+        GameState game = null;
+        switch (choice.toUpperCase()) {
+            case "NEW":
+                System.out.println("Starting a new game...");
+                game = GameStateFileParser.parse("data/game.txt");
+                break;
+            case "LOAD":
+                System.out.println("Enter the location of the saved file:");
+                String filename = scanner.nextLine();
+                try {
+                    File file = new File(filename);
+                    if (!file.exists()) {
+                        System.out.println("File not found. Exiting...");
+                        return;
+                    }
+                } catch (Exception e) {
+                    System.out.println("Invalid file path. Exiting...");
+                    return;
+                }
+                game = GameStateFileParser.parse(filename);
+                System.out.println("Loading a saved game...");
+                break;
+            default:
+                System.out.println("Invalid choice. Exiting...");
+                return;
+        }
         Parser parser = new Parser();
         Tokeniser tokeniser = new Tokeniser();
         while (true) {
+            try {
+                System.out.print(">> ");
+                tokeniser.tokenise(scanner.nextLine());
+                Command command = parser.parse(tokeniser.getTokens());
+                System.out.println(command.execute(game));
 
-            Scanner scanner = new Scanner(System.in);
-            System.out.print(">> ");
-            tokeniser.tokenise(scanner.nextLine());
-            Command command = parser.parse(tokeniser.getTokens());
-            /*
-            for (Token token : tokeniser.getTokens()) {
-                System.out.println(token.getTokenType().name() + ", " + token.getValue());
+                if (command instanceof Quit) {
+                    break;
+                }
             }
-             */
-
-
-            System.out.println(command.execute(game));
-            //System.out.println(command.execute(game).isEmpty());
-            if (command instanceof Quit) {
-                break;
+            catch (CommandErrorException e) {
+                System.out.println(e.getMessage());
             }
         }
     }

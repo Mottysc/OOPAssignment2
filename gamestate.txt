@@ -1,3 +1,41 @@
 player:Player
-map:Test Room
-room:1,Test Room,A simple test room.
+map:Living Room,Kitchen,Pantry,Dining Room,Hallway,Water Pump,Storage Room,Cellar,Outside,Oven
+room:liv,Living Room,This is the living room. The couch looks inviting after a long day and the TV reminds you of relaxing evenings.
+container:c1,Couch,An old but very comfortable couch where you often nap.
+container:tv2,TV,A large TV where you watch your favourite shows and films.
+exit:Ln,North,The back door leading outside to the north.,out
+exit:Le,East,The storage room to the east.,sr
+exit:Lw,West,The west door leading to the kitchen.,kit
+room:kit,Kitchen,The heart of the home filled with the smell of spices and the sight of baking supplies on the counter.
+container:f1,Fridge,A big fridge filled with delicious possibilities.
+container:s1,Stove,A sturdy stove ready to bring your creations to life.
+exit:Kn,North,The door leading to the pantry where food is kept.,pan
+exit:Ke,East,The door leading east to the living room.,liv
+exit:Ks,South,The south door leading down to the cellar.,cel
+exit:Kw,West,The door leading west to the dining room.,dr
+room:pan,Pantry,The pantry is stocked full its shelves sagging under the weight of food supplies.
+exit:Ps,South,The door leading back to the kitchen.,kit
+room:dr,Dining Room,The dining room is warm and inviting with a table set as if ready for guests.
+container:t,Table,A large wooden table that has hosted many happy meals.
+container:c,Chairs,Comfortable chairs that seem to invite you to sit.
+exit:Dr,East,The door leading back to the kitchen.,kit
+exit:Ds,South,The door leading to the hallway.,h
+room:h,Hallway,The hallway feels snug its walls lined with family photos.
+container:co,Coats,A messy pile of coats that smells faintly of outdoors.
+exit:Hn,North,The door leading to the dining room.,dr
+exit:Hs,South,The door leading outside to the water pump.,wp
+room:wp,Water Pump,The air is fresh here with the gentle sound of water dripping from the pump.
+exit:Wn,North,The door leading back to the hallway.,h
+room:sr,Storage Room,This quiet room is packed with Passover essentials waiting to be used.
+container:s,Shelves,The shelves are full of Passover treasures like your seder plate.
+exit:Sw,West,The door leading back to the living room.,liv
+room:cel,Cellar,The cellar is dark and musty but you sense something hidden in the shadows.
+container:bar,Barrels,Large barrels that seem to hide their secrets.
+exit:Cn,North,The door leading back to the kitchen.,kit
+room:out,Outside,The garden is blooming with a peaceful path leading into the distance.
+container:g,Garden,Flowers bloom here and amidst them lies a torch waiting to be found.
+exit:Os,South,The door leading back to the living room.,liv
+exit:Oe,East,The door leading to the matzah oven.,ov
+room:ov,Oven,The matzah oven radiates warmth ready to bake something special.
+container:cont_ov,Oven,A sturdy oven its surface slightly warm to the touch.
+exit:Ow,West,The door leading back to the outside.,out
