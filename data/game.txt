@@ -49,7 +49,7 @@ map:liv
         exit:Cn,North,The door leading back to the kitchen.,kit,false
     room:out,Outside,The garden is blooming with a peaceful path leading into the distance.,false
         container:g,Garden,Flowers bloom here and amidst them lies a torch waiting to be found.,false
-        equipment:t,Torch,A torch that can light up the darkest places.,false,reveal,cel,winex,You light the torch and the dark cellar becomes visible.
+        equipment:t,Torch,A torch that can light up the darkest places.,false,revealx,cel,wine,You light the torch and the dark cellar becomes visible.
         exit:Os,South,The door leading back to the living room.,liv,false
         exit:Oe,East,The door leading to the matzah oven.,ov,false
     room:ov,Oven,The matzah oven radiates warmth ready to bake something special.,false
