@@ -23,7 +23,7 @@ public class Quit extends Command {
         public String execute(GameState gameState){
             saveGame(gameState);
             StringBuilder result = new StringBuilder("Game over:\nYou have quit the game. The current game has been saved in gamestate.txt\nThank you for playing! In your inventory you had:");
-            if (gameState.getPlayer().getInventory().isEmpty()) {
+            if (gameState.getPlayer().getInventory().isEmpty() && gameState.getPlayer().getEquipment().isEmpty()) {
                 result.append(" nothing.");
             }
             for (Item item : gameState.getPlayer().getInventory()) {
@@ -62,10 +62,10 @@ public class Quit extends Command {
                     writer.write("inventory:");
                 }
                 for (Item item : gameState.getPlayer().getInventory()) {
-                    writer.write("," + item.getId());
+                    writer.write(item.getId()+",");
                 }
                 for (Equipment equipment : gameState.getPlayer().getEquipment()) {
-                    writer.write("," + equipment.getId());
+                    writer.write(equipment.getId()+",");
                 }
             } catch (IOException e) {
                 e.printStackTrace();
