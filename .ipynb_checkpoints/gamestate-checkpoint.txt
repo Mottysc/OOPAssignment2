@@ -1,3 +1,56 @@
-player:Player
-map:Test Room
-room:1,Test Room,A simple test room.
+player:Motty
+map:kit
+room:liv,Living Room,This is the living room. The couch looks inviting after a long day and the TV reminds you of relaxing evenings.,false
+container:c1,Couch,An old but very comfortable couch where you often nap.,false
+container:tv2,TV,A large TV where you watch your favourite shows and films.,false
+exit:Ln,North,The back door leading outside to the north.,out,false
+exit:Le,East,The storage room to the east.,sr,false,true
+exit:Lw,West,The west door leading to the kitchen.,kit,false
+room:kit,Kitchen,The heart of the home filled with the smell of spices and the sight of baking supplies on the counter.,false
+container:f1,Fridge,A big fridge filled with delicious possibilities.,false
+container:s1,Stove,A sturdy stove ready to bring your creations to life.,false
+equipment:d_flat,Matzah Dough,The dough you carefully rolled out into a flat matzah.,true,false,combine,fir,matzah,You bake the matzah in the oven.
+equipment:d,Dough,A lump of dough soft and pliable,false,false,combine,rp,d_flat,You bake the dough into a matzah.
+exit:Kn,North,The door leading to the pantry where food is kept.,pan,false
+exit:Ke,East,The door leading east to the living room.,liv,false
+exit:Ks,South,The south door leading down to the cellar.,cel,false
+exit:Kw,West,The door leading west to the dining room.,dr,false
+room:pan,Pantry,The pantry is stocked full its shelves sagging under the weight of food supplies.,false
+exit:Ps,South,The door leading back to the kitchen.,kit,false
+room:dr,Dining Room,The dining room is warm and inviting with a table set as if ready for guests.,false
+container:t,Table,A large wooden table that has hosted many happy meals.,false
+container:c,Chairs,Comfortable chairs that seem to invite you to sit.,false
+exit:Dr,East,The door leading back to the kitchen.,kit,false
+exit:Ds,South,The door leading to the hallway.,h,false
+room:h,Hallway,The hallway feels snug its walls lined with family photos.,false
+container:co,Coats,A messy pile of coats that smells faintly of outdoors.,false
+exit:Hn,North,The door leading to the dining room.,dr,false
+exit:Hs,South,The door leading outside to the water pump.,wp,false
+room:wp,Water Pump,The air is fresh here with the gentle sound of water dripping from the pump.,false
+container:p,Pump,A heavy pump that requires effort to use.,false
+exit:Wn,North,The door leading back to the hallway.,h,false
+room:sr,Storage Room,This quiet room is packed with Passover essentials waiting to be used.,false
+container:s,Shelves,The shelves are full of Passover treasures like your seder plate.,false
+equipment:cup,Cup,A beautiful cup for your Seder wine.,false,false,combine,wine,cupwine,You pour the wine into the cup.
+item:cupwine,Cup of wine,A cup filled with rich red wine.,true
+equipment:sp,Seder Plate,A special plate for holding symbolic foods for the Seder.,false,false,combine,matz,sp1,You place the matzah on the Seder plate.
+exit:Sw,West,The door leading back to the living room.,liv,false
+room:cel,Cellar,The cellar is dark and musty but you sense something hidden in the shadows.,false
+container:bar,Barrels,Large barrels that seem to hide their secrets.,true
+equipment:crow,Crowbar,A heavy crowbar perfect for prying things open.,true,false,open,bar,wine,You open the barrel and find some wine.
+equipment:wine,Wine,A bottle of rich red wine.,true,false,combine,cup,cupwine,You pour the wine into the cup.
+exit:Cn,North,The door leading back to the kitchen.,kit,false
+room:out,Outside,The garden is blooming with a peaceful path leading into the distance.,false
+container:g,Garden,Flowers bloom here and amidst them lies a torch waiting to be found.,false
+equipment:t,Torch,A torch that can light up the darkest places.,false,false,reveal,cel,wine,You light the torch and the dark cellar becomes visible.
+exit:Os,South,The door leading back to the living room.,liv,false
+exit:Oe,East,The door leading to the matzah oven.,ov,false
+room:ov,Oven,The matzah oven radiates warmth ready to bake something special.,false
+container:cont_ov,Oven,A sturdy oven its surface slightly warm to the touch.,false
+equipment:fir,Fire,A small but steady fire to bake your matzah.,true,false,combine,d_flat,matz,You bake the matzah in the oven.
+equipment:matz,Matzah,The matzah you baked in the oven.,true,false,combine,sp,sp1,You place the matzah on the Seder plate.
+equipment:mat,Matches,A small box of matches for lighting the fire.,false,false,open,cont_ov,fir,You strike the matches and light the oven.
+exit:Ow,West,The door leading back to the outside.,out,false
+inventory:0,equipment,rp,Rolling Pin,A rolling pin that has seen many loaves and pastries.,false,false,combine,d,d_flat,You roll out the dough into a flat unbaked matzah.
+inventory:1,equipment,sk,Storage Key,A small brass key for the storage room,false,false,unlock,Le,xx,You use the storage key to unlock the storage room.
+inventory:2,equipment,d,Dough,A lump of dough soft and pliable,false,false,combine,rp,d_flat,You bake the dough into a matzah.
