@@ -72,13 +72,13 @@ public class Quit extends Command {
                 ArrayList<Item> itemArrayList = gameState.getPlayer().getInventory();
                 for (int i = 0; i < itemArrayList.size(); i++) {
                     Item item = itemArrayList.get(i);
-                    writer.write("inventory:"+i+",item," + item.getId() + "," + item.getName() + "," + item.getDescription() + "," + item.getHidden() + "\n");
+                    writer.write("inventory:i"+i+",item," + item.getId() + "," + item.getName() + "," + item.getDescription() + "," + item.getHidden() + "\n");
                 }
                 ArrayList<Equipment> equipmentArrayList = gameState.getPlayer().getEquipment();
                 for (int i = 0; i < equipmentArrayList.size(); i++) {
                     Equipment equipment = equipmentArrayList.get(i);
                     UseInformation useInfo = equipment.getUseInformation();
-                    writer.write("inventory:"+i+",equipment," + equipment.getId() + "," + equipment.getName() + "," + equipment.getDescription() + "," + equipment.getHidden() + "," +
+                    writer.write("inventory:e"+i+",equipment," + equipment.getId() + "," + equipment.getName() + "," + equipment.getDescription() + "," + equipment.getHidden() + "," +
                             useInfo.isUsed() + "," + useInfo.getAction() + "," + useInfo.getTarget() + "," + useInfo.getResult() + "," + useInfo.getMessage() + "\n");
                 }
                 ArrayList<Combination> combinationArrayList = gameState.getPlayer().getCombinations();
