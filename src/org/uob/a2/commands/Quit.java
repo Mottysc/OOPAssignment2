@@ -81,6 +81,12 @@ public class Quit extends Command {
                     writer.write("inventory:"+i+",equipment," + equipment.getId() + "," + equipment.getName() + "," + equipment.getDescription() + "," + equipment.getHidden() + "," +
                             useInfo.isUsed() + "," + useInfo.getAction() + "," + useInfo.getTarget() + "," + useInfo.getResult() + "," + useInfo.getMessage() + "\n");
                 }
+                ArrayList<Combination> combinationArrayList = gameState.getPlayer().getCombinations();
+                for (int i = 0; i < combinationArrayList.size(); i++) {
+                    Combination combination = combinationArrayList.get(i);
+                    writer.write("combination:"+i+","+combination.getItem1()+","+combination.getItem2()+","+combination.getResult()+","+combination.getDescription()+"\n");
+                }
+                writer.write("score:" + gameState.getPlayer().getScore() + "\n");
             } catch (IOException e) {
                 e.printStackTrace();
             }

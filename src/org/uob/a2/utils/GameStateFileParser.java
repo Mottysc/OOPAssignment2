@@ -112,6 +112,9 @@ public class GameStateFileParser {
                     Combination combination = new Combination(values.get(1), values.get(2), values.get(3), values.get(4));
                     gameState.getPlayer().addCombination(combination);
                 }
+                case "score" -> {
+                    gameState.getPlayer().setScore(Integer.parseInt(values.get(0)));
+                }
                 default -> {
                 }
             }
