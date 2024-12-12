@@ -22,30 +22,21 @@ import java.util.stream.Stream;
  */
 public class Game {
     public static void main(String[] args) throws CommandErrorException {
-        /*
-         Setup game state
-                Room currentRoom = new Room("1", "Start Room", "This is the starting room.", false);
-                Map map = new Map();
-                map.addRoom(currentRoom);
-                map.setCurrentRoom("1");
-                GameState gameState = new GameState(map, new Player("Player"));
-
-                Command help = new Help("move");
-        System.out.println(help.execute(gameState));
-        */
         Scanner scanner = new Scanner(System.in);
+
         System.out.println("Welcome to the game!");
         System.out.print("Do you want to start a new game or load a saved game? (New/Load)\n>> ");
         String choice = scanner.nextLine();
         GameState game = null;
-        switch (choice.toUpperCase().trim()) {
-            case "NEW":
+        switch (choice.toLowerCase().trim()) {
+            case "new":
                 System.out.println("Starting a new game...");
                 game = GameStateFileParser.parse("data/game.txt");
                 break;
-            case "LOAD":
+            case "load":
                 System.out.print("Enter the location of the saved file:\n>> ");
                 String filename = scanner.nextLine();
+                // Open the file
                 try {
                     File file = new File(filename);
                     if (!file.exists()) {
@@ -53,7 +44,7 @@ public class Game {
                         return;
                     }
                 } catch (Exception e) {
-                    System.out.println("Invalid file path. Exiting...");
+                    System.out.println("Invalid file. Exiting...");
                     return;
                 }
                 game = GameStateFileParser.parse(filename);
@@ -63,6 +54,7 @@ public class Game {
                 System.out.println("Invalid choice. Exiting...");
                 return;
         }
+        
         Parser parser = new Parser();
         Tokeniser tokeniser = new Tokeniser();
         while (true) {

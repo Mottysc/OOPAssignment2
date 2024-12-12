@@ -65,11 +65,6 @@ map:liv
 inventory:0,item,clue,Quest list,Your goal is to make Matzah and a cup of wine and place them on the dining room table.,false
 combination:0,rp,d,d_flat,You roll out the dough into a flat unbaked matzah.
 combination:1,d_flat,fir,matz,You bake the matzah in the oven.
-combination:2,d,rp,d_flat,You roll out the dough into a flat unbaked matzah.
-combination:3,f,w,d,You combine the flour and water to form a dough.
-combination:4,w,f,d,You combine the flour and water to form a dough.
-combination:5,sp,matz,sp1,You place the matzah on the Seder plate. You should probably put this on your dining room table.
-combination:6,cup,wine,cupwine,You pour the wine into the cup. You should probably put this on your dining room table.
-combination:7,wine,cup,cupwine,You pour the wine into the cup.
-combination:8,fir,d_flat,matz,You bake the matzah in the oven.
-combination:9,matz,sp,sp1,You place the matzah on the Seder plate.
+combination:2,w,f,d,You combine the flour and water to form a dough.
+combination:3,sp,matz,sp1,You place the matzah on the Seder plate. You should probably put this on your dining room table.
+combination:4,cup,wine,cupwine,You pour the wine into the cup. You should probably put this on your dining room table.

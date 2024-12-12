@@ -82,6 +82,7 @@ public class Status extends Command {
             return inventory.toString();
         }
     }
+    
     public static String generateMap(GameState gameState) {
         ArrayList<Room> rooms = gameState.getMap().getRooms();
         int gridSize = 6; // Define the size of the grid

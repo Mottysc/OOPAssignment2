@@ -1,5 +1,14 @@
 package org.uob.a2.gameobjects;
 
+/**
+ * Represents a combination of two items that can be used to create a new item.
+ *
+ * <p>
+ * Combinations are used to create new items by combining two existing items.
+ * <br>Each combination has the two items used, the resulting item, and a description of the result.
+ * </p>
+ */
+
 public class Combination {
     private String item1;
     private String item2;

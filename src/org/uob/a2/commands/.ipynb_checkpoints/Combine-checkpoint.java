@@ -23,6 +23,7 @@ public class Combine extends Command {
             // Check if the items can be combined
             boolean canCombine = false;
             for (Combination combo : gameState.getPlayer().getCombinations()){
+                // Allow for the items to be put either way, eg "combine flour with eggs"/"combine eggs with flour"
                 if (combo.getItem1().equalsIgnoreCase(item1.getId()) && combo.getItem2().equalsIgnoreCase(item2.getId()) || combo.getItem1().equalsIgnoreCase(item2.getId()) && combo.getItem2().equalsIgnoreCase(item1.getId())){
                     canCombine = true;
                     // Combine the items
