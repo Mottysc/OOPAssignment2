@@ -32,15 +32,27 @@ public class Combine extends Command {
                         Item createdItem = room.getItem(newItemId);
                         if (createdItem == null) {
                             Equipment createdEquipment = room.getEquipment(newItemId);
-                            createdEquipment.setHidden(false);
+                            if (createdEquipment != null) {
+                                gameState.getPlayer().addEquipment(createdEquipment);
+                                createdEquipment.setHidden(false);
+                                // Remove the original items from the player's inventory
+                                gameState.getPlayer().getInventory().remove(item1);
+                                gameState.getPlayer().getInventory().remove(item2);
+                                room.getEquipments().remove(createdEquipment);
+                                gameState.getPlayer().addScore(5);
+                                return combo.getDescription() + "\n+5 points!";
+                            }
                         } else {
+                            gameState.getPlayer().addItem(createdItem);
                             createdItem.setHidden(false);
+                            // Remove the original items from the player's inventory
+                            gameState.getPlayer().getInventory().remove(item1);
+                            gameState.getPlayer().getInventory().remove(item2);
+                            room.getItems().remove(createdItem);
+                            gameState.getPlayer().addScore(5);
+                            return combo.getDescription() + "\n+5 points!";
                         }
-                        // Remove the original items from the player's inventory
-                        gameState.getPlayer().getInventory().remove(item1);
-                        gameState.getPlayer().getInventory().remove(item2);
-                        gameState.getPlayer().addScore(5);
-                        return combo.getDescription() + "\n+5 points!";
+
                     }
                 }
             }
